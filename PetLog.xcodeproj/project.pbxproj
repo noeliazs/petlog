@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		76724867BBE95CBE09F07361 /* Pods_PetLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA47B4B7D7BA47E5EB998C1B /* Pods_PetLog.framework */; };
 		7C1BBAAA24F3FAB2002308A9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1BBAA924F3FAB2002308A9 /* HomeViewController.swift */; };
+		7C1BBAAC24F4038F002308A9 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C1BBAAB24F4038F002308A9 /* HomeViewController.xib */; };
 		7C3446C124F3D00F00F91F39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3446C024F3D00F00F91F39 /* AppDelegate.swift */; };
 		7C3446C324F3D00F00F91F39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3446C224F3D00F00F91F39 /* SceneDelegate.swift */; };
 		7C3446C524F3D00F00F91F39 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3446C424F3D00F00F91F39 /* AuthViewController.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		6AA424B3C0F6A52E8CECDA40 /* Pods-PetLog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetLog.debug.xcconfig"; path = "Target Support Files/Pods-PetLog/Pods-PetLog.debug.xcconfig"; sourceTree = "<group>"; };
 		7C1BBAA924F3FAB2002308A9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		7C1BBAAB24F4038F002308A9 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		7C3446BD24F3D00F00F91F39 /* PetLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C3446C024F3D00F00F91F39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C3446C224F3D00F00F91F39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				7C3446C224F3D00F00F91F39 /* SceneDelegate.swift */,
 				7C3446C424F3D00F00F91F39 /* AuthViewController.swift */,
 				7C3446C624F3D00F00F91F39 /* Main.storyboard */,
+				7C1BBAAB24F4038F002308A9 /* HomeViewController.xib */,
 				7C1BBAA924F3FAB2002308A9 /* HomeViewController.swift */,
 				7C3446CC24F3D01000F91F39 /* Assets.xcassets */,
 				7C3446CE24F3D01000F91F39 /* LaunchScreen.storyboard */,
@@ -162,6 +165,7 @@
 			files = (
 				7C3446D024F3D01000F91F39 /* LaunchScreen.storyboard in Resources */,
 				7C3446D824F3E18100F91F39 /* GoogleService-Info.plist in Resources */,
+				7C1BBAAC24F4038F002308A9 /* HomeViewController.xib in Resources */,
 				7C3446CD24F3D01000F91F39 /* Assets.xcassets in Resources */,
 				7C3446C824F3D00F00F91F39 /* Main.storyboard in Resources */,
 			);
