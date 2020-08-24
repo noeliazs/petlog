@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  AuthViewController.swift
 //  PetLog
 //
 //  Created by NOELIA ZARZOSO on 24/08/2020.
@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import Firebase
 
-class ViewController: UIViewController {
+class AuthViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        title = "Autenticación"
     }
 
 

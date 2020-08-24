@@ -3,29 +3,37 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		76724867BBE95CBE09F07361 /* Pods_PetLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA47B4B7D7BA47E5EB998C1B /* Pods_PetLog.framework */; };
+		7C1BBAAA24F3FAB2002308A9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1BBAA924F3FAB2002308A9 /* HomeViewController.swift */; };
 		7C3446C124F3D00F00F91F39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3446C024F3D00F00F91F39 /* AppDelegate.swift */; };
 		7C3446C324F3D00F00F91F39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3446C224F3D00F00F91F39 /* SceneDelegate.swift */; };
-		7C3446C524F3D00F00F91F39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3446C424F3D00F00F91F39 /* ViewController.swift */; };
+		7C3446C524F3D00F00F91F39 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3446C424F3D00F00F91F39 /* AuthViewController.swift */; };
 		7C3446C824F3D00F00F91F39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C3446C624F3D00F00F91F39 /* Main.storyboard */; };
 		7C3446CB24F3D00F00F91F39 /* PetLog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C3446C924F3D00F00F91F39 /* PetLog.xcdatamodeld */; };
 		7C3446CD24F3D01000F91F39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C3446CC24F3D01000F91F39 /* Assets.xcassets */; };
 		7C3446D024F3D01000F91F39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C3446CE24F3D01000F91F39 /* LaunchScreen.storyboard */; };
+		7C3446D824F3E18100F91F39 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C3446D724F3E18100F91F39 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6AA424B3C0F6A52E8CECDA40 /* Pods-PetLog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetLog.debug.xcconfig"; path = "Target Support Files/Pods-PetLog/Pods-PetLog.debug.xcconfig"; sourceTree = "<group>"; };
+		7C1BBAA924F3FAB2002308A9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		7C3446BD24F3D00F00F91F39 /* PetLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C3446C024F3D00F00F91F39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C3446C224F3D00F00F91F39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7C3446C424F3D00F00F91F39 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7C3446C424F3D00F00F91F39 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		7C3446C724F3D00F00F91F39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7C3446CA24F3D00F00F91F39 /* PetLog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PetLog.xcdatamodel; sourceTree = "<group>"; };
 		7C3446CC24F3D01000F91F39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C3446CF24F3D01000F91F39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C3446D124F3D01000F91F39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C3446D724F3E18100F91F39 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		92287AAEC3AF2411F9E6CFEB /* Pods-PetLog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetLog.release.xcconfig"; path = "Target Support Files/Pods-PetLog/Pods-PetLog.release.xcconfig"; sourceTree = "<group>"; };
+		EA47B4B7D7BA47E5EB998C1B /* Pods_PetLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76724867BBE95CBE09F07361 /* Pods_PetLog.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +53,8 @@
 			children = (
 				7C3446BF24F3D00F00F91F39 /* PetLog */,
 				7C3446BE24F3D00F00F91F39 /* Products */,
+				F807319B0C44A4F0036BD81B /* Pods */,
+				EFA7FD1FE68DFD541B362FF8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,14 +71,33 @@
 			children = (
 				7C3446C024F3D00F00F91F39 /* AppDelegate.swift */,
 				7C3446C224F3D00F00F91F39 /* SceneDelegate.swift */,
-				7C3446C424F3D00F00F91F39 /* ViewController.swift */,
+				7C3446C424F3D00F00F91F39 /* AuthViewController.swift */,
 				7C3446C624F3D00F00F91F39 /* Main.storyboard */,
+				7C1BBAA924F3FAB2002308A9 /* HomeViewController.swift */,
 				7C3446CC24F3D01000F91F39 /* Assets.xcassets */,
 				7C3446CE24F3D01000F91F39 /* LaunchScreen.storyboard */,
 				7C3446D124F3D01000F91F39 /* Info.plist */,
 				7C3446C924F3D00F00F91F39 /* PetLog.xcdatamodeld */,
+				7C3446D724F3E18100F91F39 /* GoogleService-Info.plist */,
 			);
 			path = PetLog;
+			sourceTree = "<group>";
+		};
+		EFA7FD1FE68DFD541B362FF8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EA47B4B7D7BA47E5EB998C1B /* Pods_PetLog.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F807319B0C44A4F0036BD81B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6AA424B3C0F6A52E8CECDA40 /* Pods-PetLog.debug.xcconfig */,
+				92287AAEC3AF2411F9E6CFEB /* Pods-PetLog.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +107,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7C3446D424F3D01000F91F39 /* Build configuration list for PBXNativeTarget "PetLog" */;
 			buildPhases = (
+				0BBAAE737E28C57D468F1DE8 /* [CP] Check Pods Manifest.lock */,
 				7C3446B924F3D00F00F91F39 /* Sources */,
 				7C3446BA24F3D00F00F91F39 /* Frameworks */,
 				7C3446BB24F3D00F00F91F39 /* Resources */,
+				9FFBF84489A9A4DCA37AD902 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C3446D024F3D01000F91F39 /* LaunchScreen.storyboard in Resources */,
+				7C3446D824F3E18100F91F39 /* GoogleService-Info.plist in Resources */,
 				7C3446CD24F3D01000F91F39 /* Assets.xcassets in Resources */,
 				7C3446C824F3D00F00F91F39 /* Main.storyboard in Resources */,
 			);
@@ -136,12 +169,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0BBAAE737E28C57D468F1DE8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PetLog-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9FFBF84489A9A4DCA37AD902 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PetLog/Pods-PetLog-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PetLog/Pods-PetLog-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PetLog/Pods-PetLog-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7C3446B924F3D00F00F91F39 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C3446C524F3D00F00F91F39 /* ViewController.swift in Sources */,
+				7C1BBAAA24F3FAB2002308A9 /* HomeViewController.swift in Sources */,
+				7C3446C524F3D00F00F91F39 /* AuthViewController.swift in Sources */,
 				7C3446C124F3D00F00F91F39 /* AppDelegate.swift in Sources */,
 				7C3446CB24F3D00F00F91F39 /* PetLog.xcdatamodeld in Sources */,
 				7C3446C324F3D00F00F91F39 /* SceneDelegate.swift in Sources */,
@@ -286,6 +362,7 @@
 		};
 		7C3446D524F3D01000F91F39 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6AA424B3C0F6A52E8CECDA40 /* Pods-PetLog.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -304,6 +381,7 @@
 		};
 		7C3446D624F3D01000F91F39 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92287AAEC3AF2411F9E6CFEB /* Pods-PetLog.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
