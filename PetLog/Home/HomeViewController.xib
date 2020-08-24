@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="PetLog" customModuleProvider="target">
+            <connections>
+                <outlet property="closeSesionButton" destination="7SK-vO-EqC" id="6nk-NE-Fli"/>
+                <outlet property="emailLabel" destination="Zoa-d2-c5X" id="9Oe-6O-uEO"/>
+                <outlet property="providerLabel" destination="7E4-I9-u37" id="iEg-dZ-kB7"/>
+                <outlet property="view" destination="jtr-4u-kUZ" id="1Ow-MJ-7dA"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="jtr-4u-kUZ">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="LEP-he-O0S">
+                    <rect key="frame" x="16" y="60" width="382" height="171"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zoa-d2-c5X">
+                            <rect key="frame" x="0.0" y="0.0" width="382" height="45"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Proveedor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7E4-I9-u37">
+                            <rect key="frame" x="0.0" y="63" width="382" height="45"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7SK-vO-EqC">
+                            <rect key="frame" x="0.0" y="126" width="382" height="45"/>
+                            <color key="backgroundColor" red="0.49019607840000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="45" id="sM0-Xq-h4H"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="22"/>
+                            <state key="normal" title="Cerrar sesión">
+                                <color key="titleColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </state>
+                            <connections>
+                                <action selector="closeSesionAction:" destination="-1" eventType="touchUpInside" id="5Bx-nj-m5R"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="LEP-he-O0S" firstAttribute="leading" secondItem="jtr-4u-kUZ" secondAttribute="leading" constant="16" id="pAS-zx-n4e"/>
+                <constraint firstItem="LEP-he-O0S" firstAttribute="top" secondItem="b2z-1I-Qer" secondAttribute="top" constant="16" id="yeL-Cn-Lt8"/>
+                <constraint firstItem="b2z-1I-Qer" firstAttribute="trailing" secondItem="LEP-he-O0S" secondAttribute="trailing" constant="16" id="zo9-Ks-1vz"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="b2z-1I-Qer"/>
+            <point key="canvasLocation" x="284" y="-252"/>
+        </view>
+    </objects>
+</document>

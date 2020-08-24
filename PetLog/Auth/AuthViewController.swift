@@ -30,7 +30,7 @@ class AuthViewController: UIViewController {
                 (result,error)in
                 if let result = result, error == nil{
                     
-                    self.navigationController?.pushViewController(HomeViewController(email: result.user.email!,provider: .basic), animated: true)
+                    self.navigationController?.pushViewController(HomeViewController(), animated: true)
                 }else{
                     let alert = UIAlertController(title: "Error" , message: "No se ha podido registrar el usuario" , preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Aceptar", style: .default))
@@ -47,9 +47,9 @@ class AuthViewController: UIViewController {
                (result,error)in
                if let result = result, error == nil{
                    
-                   self.navigationController?.pushViewController(HomeViewController(email: result.user.email!,provider: .basic), animated: true)
+                   self.navigationController?.pushViewController(HomeViewController(), animated: true)
                }else{
-                   let alert = UIAlertController(title: "Error" , message: "Ese usuario no está registrado" , preferredStyle: .alert)
+                   let alert = UIAlertController(title: "Error" , message: "El usuario no puede acceder. Revise sus credenciales" , preferredStyle: .alert)
                    alert.addAction(UIAlertAction(title: "Aceptar", style: .default))
                    self.present(alert,animated: true, completion: nil)
                }
