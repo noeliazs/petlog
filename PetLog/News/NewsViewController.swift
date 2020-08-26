@@ -12,16 +12,17 @@ class NewsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var networkManager = NetworkManager()
-    
     var arrayNews : [Results] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Noticias"
         tableView.register(UINib(nibName: "NewsCell",bundle:nil), forCellReuseIdentifier: "ReusableCell")
                
             networkManager.fetchData()
             tableView.dataSource=self
             tableView.delegate=self
+            tableView.rowHeight = 60
             let timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(relanzar), userInfo: nil, repeats: false)
              
     }
@@ -37,7 +38,6 @@ class NewsViewController: UIViewController {
 extension NewsViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(networkManager.posts.count)
         return networkManager.posts.count
       
     }
@@ -51,7 +51,6 @@ extension NewsViewController: UITableViewDataSource{
         let nombre = networkManager.posts[indexPath.row].title
     
         cell.nombreLabel.text = nombre
-        print(nombre)
        
         return cell
     }
@@ -62,9 +61,14 @@ extension NewsViewController: UITableViewDataSource{
 
 extension NewsViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-          let url = networkManager.posts[indexPath.row].url
-         //asignar esa url a la siguiente vista
-        print(url)
+        let webViewController = WebViewController()
+        if let url = networkManager.posts[indexPath.row].url{
+            navigationController?.pushViewController(webViewController, animated: true)
+            webViewController.url = url
+           
+        }
+
+       
     }
 }
 

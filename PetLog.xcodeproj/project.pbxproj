@@ -20,6 +20,8 @@
 		7C2CD04324F67A2A00BBD1E4 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2CD04124F67A2900BBD1E4 /* PostData.swift */; };
 		7C2CD04E24F67EA400BBD1E4 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2CD04C24F67EA400BBD1E4 /* NewsCell.swift */; };
 		7C2CD05324F67F1600BBD1E4 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C2CD05224F67F1500BBD1E4 /* NewsCell.xib */; };
+		7C2CD05624F69B7A00BBD1E4 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2CD05424F69B7A00BBD1E4 /* WebViewController.swift */; };
+		7C2CD05724F69B7A00BBD1E4 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C2CD05524F69B7A00BBD1E4 /* WebViewController.xib */; };
 		7C3446C124F3D00F00F91F39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3446C024F3D00F00F91F39 /* AppDelegate.swift */; };
 		7C3446C324F3D00F00F91F39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3446C224F3D00F00F91F39 /* SceneDelegate.swift */; };
 		7C3446C524F3D00F00F91F39 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3446C424F3D00F00F91F39 /* AuthViewController.swift */; };
@@ -44,6 +46,8 @@
 		7C2CD04124F67A2900BBD1E4 /* PostData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		7C2CD04C24F67EA400BBD1E4 /* NewsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		7C2CD05224F67F1500BBD1E4 /* NewsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewsCell.xib; path = ../../../NewsCell.xib; sourceTree = "<group>"; };
+		7C2CD05424F69B7A00BBD1E4 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		7C2CD05524F69B7A00BBD1E4 /* WebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		7C3446BD24F3D00F00F91F39 /* PetLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C3446C024F3D00F00F91F39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C3446C224F3D00F00F91F39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +124,15 @@
 			path = ../../Models;
 			sourceTree = "<group>";
 		};
+		7C2CD05824F69B7E00BBD1E4 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				7C2CD05424F69B7A00BBD1E4 /* WebViewController.swift */,
+				7C2CD05524F69B7A00BBD1E4 /* WebViewController.xib */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
 		7C3446B424F3D00F00F91F39 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +160,7 @@
 				7C2CD03C24F6782500BBD1E4 /* News */,
 				7C1BBAAD24F40C22002308A9 /* Auth */,
 				7C1BBAB324F51DDB002308A9 /* Main */,
+				7C2CD05824F69B7E00BBD1E4 /* WebView */,
 				7C1BBAAE24F40C2D002308A9 /* Home */,
 				7C3446CC24F3D01000F91F39 /* Assets.xcassets */,
 				7C3446CE24F3D01000F91F39 /* LaunchScreen.storyboard */,
@@ -237,6 +251,7 @@
 				7C3446D024F3D01000F91F39 /* LaunchScreen.storyboard in Resources */,
 				7C3446D824F3E18100F91F39 /* GoogleService-Info.plist in Resources */,
 				7C1BBAAC24F4038F002308A9 /* HomeViewController.xib in Resources */,
+				7C2CD05724F69B7A00BBD1E4 /* WebViewController.xib in Resources */,
 				7C3446CD24F3D01000F91F39 /* Assets.xcassets in Resources */,
 				7C1BBAB524F52BDD002308A9 /* MainViewController.xib in Resources */,
 				7C3446C824F3D00F00F91F39 /* Main.storyboard in Resources */,
@@ -305,6 +320,7 @@
 				7C2CD03A24F6782100BBD1E4 /* NewsViewController.swift in Sources */,
 				7C1BBAB924F5695D002308A9 /* Alert.swift in Sources */,
 				7C2CD04324F67A2A00BBD1E4 /* PostData.swift in Sources */,
+				7C2CD05624F69B7A00BBD1E4 /* WebViewController.swift in Sources */,
 				7C3446C324F3D00F00F91F39 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
