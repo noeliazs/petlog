@@ -18,6 +18,7 @@ class NewsViewController: UIViewController {
         super.viewDidLoad()
         title = "Noticias"
         tableView.register(UINib(nibName: "NewsCell",bundle:nil), forCellReuseIdentifier: "ReusableCell")
+       
                
             networkManager.fetchData()
             tableView.dataSource=self
@@ -51,6 +52,7 @@ extension NewsViewController: UITableViewDataSource{
         let nombre = networkManager.posts[indexPath.row].title
     
         cell.nombreLabel.text = nombre
+        cell.selectionStyle = .none
        
         return cell
     }
