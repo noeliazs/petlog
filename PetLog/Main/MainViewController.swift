@@ -43,6 +43,7 @@ class MainViewController: UIViewController {
     
     @IBAction func newsButtonAction(_ sender: Any){
         print("Noticias")
+        navigationController?.pushViewController(NewsViewController(), animated: true)
         
     }
     
