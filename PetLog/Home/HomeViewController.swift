@@ -20,6 +20,7 @@ class HomeViewController: UIViewController {
     //recupera el usuario que está registrado
     let user = Auth.auth().currentUser
     let alert=Alert()
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,13 +37,9 @@ class HomeViewController: UIViewController {
     
     @IBAction func saveChangesButtonAction(_ sender: Any) {
     
-        
         //comprobar si los tres estan vacios
         if nameTextField.text?.count==0 && passTextField.text?.count==0 && emailTextField.text?.count==0 {
-            print("no se cambia nada")
-            let alert = UIAlertController(title: "Error" , message: "No ha introducido ningún campo para modificar" , preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Aceptar", style: .default))
-            self.present(alert,animated: true, completion: nil)
+            alert.viewSimpleAlert(view: self,title:"Error",message:"No se ha introducido ningún campo para modificar")
         }
         else{
             if let user = user, let name = nameTextField.text{
@@ -59,21 +56,38 @@ class HomeViewController: UIViewController {
              }
              
              if let user = user , let email = emailTextField.text{
-                 user.updateEmail(to: email) { (error) in
-                     print(user.email)
-                 }
+                if email != ""{
+                    if isValidEmail(string: email){
+                        user.updateEmail(to: email) { (error) in
+                        print(user.email)
+                        }
+                    }
+                    else{
+                        alert.viewSimpleAlert(view: self,title:"Error",message:"E-mail no válido. No se cambiará ese campo")
+                    }
+                }
+               
              }
              
              if let user = user, let password = passTextField.text{
-                 user.updatePassword(to: password) { (error) in
-                    print(password)
-                 }
+                if password != ""{
+                    if isValidPassword(string: password){
+                        user.updatePassword(to: password) { (error) in
+                            print(password)
+                        }
+                    }
+                    else{
+                        alert.viewSimpleAlert(view: self,title:"Error",message:"Contraseña no válida. No se cambiará ese campo")
+                    }
+                    
+                }
+                
              }
              
             
              alert.showAlert(viewController: self)
              
-             let timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(changeView), userInfo: nil, repeats: false)
+             let timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(reload), userInfo: nil, repeats: false)
         }
         
 
@@ -81,15 +95,35 @@ class HomeViewController: UIViewController {
        
     }
     
-    @objc func changeView()
+    @objc func reload()
     {
         alert.stopAlert(viewController: self)
-        navigationController?.pushViewController(HomeViewController(),animated: true)
+        viewDidLoad()
+        emailTextField.text = ""
+        nameTextField.text = ""
+        passTextField.text = ""
+        
     }
     
+    func isValidEmail(string: String) -> Bool {
+        let emailReg = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailReg)
+        return emailTest.evaluate(with: string)
+    }
     
-   
+    func isValidPassword(string: String) -> Bool{
+        if string.count<6{
+            return false
+        }
+        else{
+            return true
+        }
+    }
     
 
+   
+
 }
+
+
 

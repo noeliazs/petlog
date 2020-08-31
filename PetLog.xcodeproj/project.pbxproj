@@ -133,6 +133,13 @@
 			path = WebView;
 			sourceTree = "<group>";
 		};
+		7C2CD05B24FD3F0000BBD1E4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		7C3446B424F3D00F00F91F39 = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +161,7 @@
 		7C3446BF24F3D00F00F91F39 /* PetLog */ = {
 			isa = PBXGroup;
 			children = (
+				7C2CD05B24FD3F0000BBD1E4 /* Utils */,
 				7C3446C024F3D00F00F91F39 /* AppDelegate.swift */,
 				7C3446C224F3D00F00F91F39 /* SceneDelegate.swift */,
 				7C2CD03F24F67A2900BBD1E4 /* Models */,
