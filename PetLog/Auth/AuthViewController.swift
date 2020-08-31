@@ -20,35 +20,35 @@ class AuthViewController: UIViewController {
     @IBOutlet weak var signupButton: UIButton!
     
     let alert=Alert()
+    let colors=Colors()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Autenticación"
-        let brownColor = UIColor(red: 125/255, green: 90/255, blue: 90/255, alpha: 1)
         
-        let DarkpinkColor = UIColor(red: 241/255, green: 209/255, blue: 209/255, alpha: 1)
         
         emailText.layer.cornerRadius=10
         emailText.layer.masksToBounds=true
         emailText.layer.borderWidth = 2
-        emailText.layer.borderColor = brownColor.cgColor
         passText.layer.cornerRadius=10
         passText.layer.masksToBounds=true
         passText.layer.borderWidth = 2
-        passText.layer.borderColor = brownColor.cgColor
+        putColors(isTrue: true)
         
         
             
-        emailText.attributedPlaceholder = NSAttributedString(string: "E-mail",attributes: [NSAttributedString.Key.foregroundColor:DarkpinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
+        emailText.attributedPlaceholder = NSAttributedString(string: "E-mail",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
         
-        passText.attributedPlaceholder = NSAttributedString(string: "Contraseña",attributes: [NSAttributedString.Key.foregroundColor:DarkpinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
+        passText.attributedPlaceholder = NSAttributedString(string: "Contraseña",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
     }
 
     
     @IBAction func signupButtonAction(_ sender: Any) {
         if let email = emailText.text,let password = passText.text{
             if isValidEmail(string: email){
+                emailText.layer.borderColor = colors.brownColor.cgColor
                 if isValidPassword(string: password){
+                    passText.layer.borderColor = colors.brownColor.cgColor
                     Auth.auth().createUser(withEmail: email, password: password){
                         (result,error)in
                         if let result = result, error == nil{
@@ -56,15 +56,19 @@ class AuthViewController: UIViewController {
                             self.navigationController?.pushViewController(HomeViewController(), animated: true)
                         }else{
                             self.alert.viewSimpleAlert(view: self,title:"Error",message:"No se ha podido registrar el usuario")
+                            self.putColors(isTrue: false)
                         }
                     }
                 }
                 else{
                      self.alert.viewSimpleAlert(view: self,title:"Error",message:"Contraseña no válida. Introduzca al menos 6 caracteres.")
+                     passText.layer.borderColor = colors.redColor.cgColor
+                   
                 }
             }
             else{
                self.alert.viewSimpleAlert(view: self,title:"Error",message:"E-mail no válido.")
+                 emailText.layer.borderColor = colors.redColor.cgColor
             }
             
         }
@@ -76,10 +80,11 @@ class AuthViewController: UIViewController {
            Auth.auth().signIn(withEmail: email, password: password){
                (result,error)in
                if let result = result, error == nil{
-                   
+                self.putColors(isTrue : true)
                    self.navigationController?.pushViewController(MainViewController(), animated: true)
                }else{
                 self.alert.viewSimpleAlert(view: self,title:"Error",message:"El usuario no puede acceder. Revise sus credenciales")
+                self.putColors(isTrue: false)
                }
            }
        }
@@ -99,6 +104,18 @@ class AuthViewController: UIViewController {
               return true
           }
       }
+    func putColors(isTrue: Bool){
+        if isTrue{
+            self.emailText.layer.borderColor = self.colors.brownColor.cgColor
+                       self.passText.layer.borderColor = self.colors.brownColor.cgColor
+        }
+        else{
+            self.emailText.layer.borderColor = self.colors.redColor.cgColor
+            self.passText.layer.borderColor = self.colors.redColor.cgColor
+        }
+        
+    }
+    
      
 }
 
