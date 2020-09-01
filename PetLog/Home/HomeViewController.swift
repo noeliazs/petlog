@@ -89,10 +89,6 @@ class HomeViewController: UIViewController {
              
              let timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(reload), userInfo: nil, repeats: false)
         }
-        
-
-       
-       
     }
     
     @objc func reload()

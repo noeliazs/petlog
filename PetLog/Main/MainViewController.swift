@@ -26,6 +26,7 @@ class MainViewController: UIViewController {
      }
     
     @IBAction func newButtonAction(_ sender: Any){
+        navigationController?.pushViewController(NewAnimalViewController(), animated: true)
         print("nuevo animal")
     }
     
@@ -53,7 +54,14 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func closeSesionButtonAction(_ sender: Any){
-           print("Cerrar sesion")
+        print("Cerrar sesion")
+        do {
+            try Auth.auth().signOut()
+            self.dismiss(animated: true, completion: nil)
+            print("cerrando sesion")
+            } catch let err {
+                print(err)
+        }
             navigationController?.popViewController(animated: true)
        }
     
