@@ -73,7 +73,7 @@
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Año de nacimiento" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TkR-s6-99Q">
                             <rect key="frame" x="0.0" y="357" width="382" height="45"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medicación" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVV-Pf-ccp">
                             <rect key="frame" x="0.0" y="408" width="382" height="45"/>
@@ -101,7 +101,7 @@
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="pbF-Fo-wJk"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alimentación especial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n0H-zs-wBb">
                             <rect key="frame" x="0.0" y="612" width="382" height="45"/>
@@ -127,6 +127,9 @@
                                     <state key="normal" title="Guardar">
                                         <color key="titleColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </state>
+                                    <connections>
+                                        <action selector="saveButtonAction:" destination="-1" eventType="touchUpInside" id="2jp-JP-hrA"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5V8-Da-Sul">
                                     <rect key="frame" x="197" y="0.0" width="185" height="45"/>
@@ -135,6 +138,9 @@
                                     <state key="normal" title="Borrar datos">
                                         <color key="titleColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </state>
+                                    <connections>
+                                        <action selector="cleanButtonAction:" destination="-1" eventType="touchUpInside" id="2nS-JU-nvN"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>
