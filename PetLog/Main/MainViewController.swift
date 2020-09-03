@@ -31,6 +31,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func petButtonAction(_ sender: Any){
+        navigationController?.pushViewController(PetsViewController(), animated: true)
         print("Mis mascotas")
     }
     
