@@ -1,9 +1,9 @@
 //
 //  PostData.swift
-//  H4X0R News
+//  PetLog
 //
-//  Created by Angela Yu on 08/09/2019.
-//  Copyright © 2019 Angela Yu. All rights reserved.
+//  Created by NOELIA ZARZOSO on 03/09/2020.
+//  Copyright © 2020 NOELIA ZARZOSO. All rights reserved.
 //
 
 import Foundation
