@@ -25,7 +25,8 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Autenticación"
-        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AuthViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         
         emailText.layer.cornerRadius=10
         emailText.layer.masksToBounds=true
@@ -41,6 +42,10 @@ class AuthViewController: UIViewController {
         
         passText.attributedPlaceholder = NSAttributedString(string: "Contraseña",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
     }
+    
+    @objc func dismissKeyboard() {
+              view.endEditing(true)
+          }
 
     
     @IBAction func signupButtonAction(_ sender: Any) {

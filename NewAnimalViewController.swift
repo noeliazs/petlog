@@ -35,13 +35,27 @@ class NewAnimalViewController: UIViewController {
         super.viewDidLoad()
         self.speciePicker.dataSource = self
         self.speciePicker.delegate = self
+        self.nameTextField.delegate = self
+        self.raceTextField.delegate = self
+        self.yearTextField.delegate = self
+        self.weightTextField.delegate = self
+        self.medTextField.delegate = self
+        self.foodTextField.delegate = self
+        
         title = "Registro nueva mascota"
         email = user!.email!
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewAnimalViewController.dismissKeyboard))
+         view.addGestureRecognizer(tap)
     }
+    
+    @objc func dismissKeyboard() {
+           view.endEditing(true)
+       }
     
     @IBAction func cleanButtonAction(_ sender: UIButton) {
         //quitar teclado
         view.endEditing(true)
+        clean()
         
         db.collection(COLECTIONANIMALS).whereField("propietario", isEqualTo: email).whereField("nombre", isEqualTo: "Misi")
             .getDocuments() { (querySnapshot, err) in
@@ -140,4 +154,13 @@ extension NewAnimalViewController: UIPickerViewDelegate, UIPickerViewDataSource{
         specie=SpeciesArray[row]
         print(specie)
     }
+}
+
+//MARK: TextFieldDelegate
+extension NewAnimalViewController: UITextFieldDelegate{
+     //cuando pulsamos la tecla return
+    private func textFieldShouldReturn(textField: UITextField) -> Bool {
+           textField.resignFirstResponder()
+           return true
+       }
 }

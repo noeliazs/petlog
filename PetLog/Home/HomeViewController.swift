@@ -27,6 +27,10 @@ class HomeViewController: UIViewController {
 
         title = "Perfil de Usuario"
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.dismissKeyboard))
+               view.addGestureRecognizer(tap)
+      
+         
         if let user = user{
             let email = user.email
             emailLabel.text = email
@@ -34,6 +38,10 @@ class HomeViewController: UIViewController {
         }
     
     }
+
+    @objc func dismissKeyboard() {
+                view.endEditing(true)
+            }
     
     @IBAction func saveChangesButtonAction(_ sender: Any) {
     
