@@ -15,6 +15,7 @@ class NewAnimalViewController: UIViewController {
     //acceso a la bd
     private let db = Firestore.firestore()
     private let alert = Alert()
+    private let colors = Colors()
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var speciePicker: UIPickerView!
     @IBOutlet weak var raceTextField: UITextField!
@@ -23,6 +24,7 @@ class NewAnimalViewController: UIViewController {
     @IBOutlet weak var medTextField: UITextField!
     @IBOutlet weak var foodTextField: UITextField!
     
+    //Nombre de la colección en la BD
     let COLECTIONANIMALS = "Animales"
     var SpeciesArray = ["","Canina","Felina","Ave","Roedor","Pez","Reptil","Otros"]
     let user = Auth.auth().currentUser
@@ -43,9 +45,44 @@ class NewAnimalViewController: UIViewController {
         self.foodTextField.delegate = self
         
         title = "Registro nueva mascota"
+        textFieldsConfigure()
         email = user!.email!
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewAnimalViewController.dismissKeyboard))
          view.addGestureRecognizer(tap)
+    }
+    
+    func textFieldsConfigure(){
+        nameTextField.layer.cornerRadius=10
+        nameTextField.layer.masksToBounds=true
+        nameTextField.layer.borderWidth = 2
+        nameTextField.layer.borderColor = colors.brownColor.cgColor
+        raceTextField.layer.cornerRadius=10
+        raceTextField.layer.masksToBounds=true
+        raceTextField.layer.borderWidth = 2
+        raceTextField.layer.borderColor = colors.brownColor.cgColor
+        yearTextField.layer.cornerRadius=10
+        yearTextField.layer.masksToBounds=true
+        yearTextField.layer.borderWidth = 2
+        yearTextField.layer.borderColor = colors.brownColor.cgColor
+        weightTextField.layer.cornerRadius=10
+        weightTextField.layer.masksToBounds=true
+        weightTextField.layer.borderWidth = 2
+        weightTextField.layer.borderColor = colors.brownColor.cgColor
+        medTextField.layer.cornerRadius=10
+        medTextField.layer.masksToBounds=true
+        medTextField.layer.borderWidth = 2
+        medTextField.layer.borderColor = colors.brownColor.cgColor
+        foodTextField.layer.cornerRadius=10
+        foodTextField.layer.masksToBounds=true
+        foodTextField.layer.borderWidth = 2
+        foodTextField.layer.borderColor = colors.brownColor.cgColor
+        
+        nameTextField.attributedPlaceholder = NSAttributedString(string: "Nombre",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
+        raceTextField.attributedPlaceholder = NSAttributedString(string: "Raza",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
+        yearTextField.attributedPlaceholder = NSAttributedString(string: "Año de nacimiento",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
+        medTextField.attributedPlaceholder = NSAttributedString(string: "No o la medicación que necesita",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
+        weightTextField.attributedPlaceholder = NSAttributedString(string: "Peso en kilos. Admite decimales",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
+        foodTextField.attributedPlaceholder = NSAttributedString(string: "No o el tipo de alimentación que necesita",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
     }
     
     @objc func dismissKeyboard() {
@@ -91,15 +128,25 @@ class NewAnimalViewController: UIViewController {
                             
                         ])
                          alert.viewSimpleAlert(view: self,title:"Mascota añadida",message:"Datos guardados")
+                        yearTextField.layer.borderColor = colors.brownColor.cgColor
                         clean()
                     }
+                    else{
+                        alert.viewSimpleAlert(view: self,title:"Error",message:"Comprueba el año de nacimiento.")
+                        yearTextField.layer.borderColor = colors.redColor.cgColor
+                    }
                     
-                   alert.viewSimpleAlert(view: self,title:"Error",message:"Comprueba el año de nacimiento.")
+                  
                 }
-                alert.viewSimpleAlert(view: self,title:"Error",message:"Rellena todos los campos.")
+                else{
+                     alert.viewSimpleAlert(view: self,title:"Error",message:"Rellena todos los campos.")
+                }
+               
                 
             }
-             alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa los campos por favor.")
+            else{
+                  alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa los campos por favor.")
+            }
               
         }
         

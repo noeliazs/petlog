@@ -72,10 +72,13 @@ extension PetsViewController: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! PetCell
  
         let nombre = petsArray[indexPath.row].name
-    
+        let specie = petsArray[indexPath.row].specie
+        
         cell.nameLabel.text = nombre
         cell.selectionStyle = .none
-       
+      
+        let image : UIImage = UIImage(named: specie)!
+        cell.icon.image = image
         return cell
     }
 

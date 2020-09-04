@@ -28,6 +28,11 @@ class AuthViewController: UIViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AuthViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
+        textFieldsConfigure()
+       
+    }
+    
+    func textFieldsConfigure(){
         emailText.layer.cornerRadius=10
         emailText.layer.masksToBounds=true
         emailText.layer.borderWidth = 2
@@ -35,11 +40,9 @@ class AuthViewController: UIViewController {
         passText.layer.masksToBounds=true
         passText.layer.borderWidth = 2
         putColors(isTrue: true)
-        
-        
             
         emailText.attributedPlaceholder = NSAttributedString(string: "E-mail",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
-        
+               
         passText.attributedPlaceholder = NSAttributedString(string: "Contraseña",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
     }
     

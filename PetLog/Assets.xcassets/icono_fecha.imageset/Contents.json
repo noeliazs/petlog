@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "3643785-calendar-date-month-time-year_113437.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "3643785-calendar-date-month-time-year_113437-1.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "3643785-calendar-date-month-time-year_113437-2.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

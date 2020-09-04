@@ -19,13 +19,16 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var passTextField: UITextField!
     //recupera el usuario que está registrado
     let user = Auth.auth().currentUser
-    let alert=Alert()
+    let alert = Alert()
+    let colors = Colors()
  
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "Perfil de Usuario"
+        
+        textFieldsConfigure()
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.dismissKeyboard))
                view.addGestureRecognizer(tap)
@@ -98,6 +101,28 @@ class HomeViewController: UIViewController {
              let timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(reload), userInfo: nil, repeats: false)
         }
     }
+    func textFieldsConfigure(){
+        emailTextField.layer.cornerRadius=10
+        emailTextField.layer.masksToBounds=true
+        emailTextField.layer.borderWidth = 2
+        emailTextField.layer.borderColor = colors.brownColor.cgColor
+        nameTextField.layer.cornerRadius=10
+        nameTextField.layer.masksToBounds=true
+        nameTextField.layer.borderWidth = 2
+        nameTextField.layer.borderColor = colors.brownColor.cgColor
+        passTextField.layer.cornerRadius=10
+        passTextField.layer.masksToBounds=true
+        passTextField.layer.borderWidth = 2
+        passTextField.layer.borderColor = colors.brownColor.cgColor
+        
+        
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "E-mail",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
+        
+        passTextField.attributedPlaceholder = NSAttributedString(string: "Contraseña",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
+        
+        nameTextField.attributedPlaceholder = NSAttributedString(string: "Nombre",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
+    }
+    
     
     @objc func reload()
     {
@@ -124,8 +149,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-
-   
 
 }
 
