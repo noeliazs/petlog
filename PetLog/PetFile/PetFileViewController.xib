@@ -115,7 +115,7 @@
                                         <constraint firstAttribute="height" constant="45" id="bLd-0g-jKh"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="medicacion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ng1-J7-veG">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="medicacion" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ng1-J7-veG">
                                     <rect key="frame" x="65" y="0.0" width="329" height="45"/>
                                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                                     <color key="textColor" red="0.49019607840000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -151,7 +151,7 @@
                                         <constraint firstAttribute="height" constant="45" id="Udj-ab-BmD"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="alimentacion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKX-cX-o1X">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="alimentacion" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKX-cX-o1X">
                                     <rect key="frame" x="65" y="0.0" width="329" height="45"/>
                                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                                     <color key="textColor" red="0.49019607840000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -161,12 +161,80 @@
                         </stackView>
                     </subviews>
                 </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="zBV-ep-Opw">
+                    <rect key="frame" x="34" y="673" width="360" height="100"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5O-2e-tez">
+                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                            <color key="backgroundColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="Euw-2V-kkF"/>
+                                <constraint firstAttribute="width" constant="100" id="LMH-Jp-vW5"/>
+                            </constraints>
+                            <state key="normal" title="Paseo" image="icono_paseo"/>
+                            <connections>
+                                <action selector="walkButtonAction:" destination="-1" eventType="touchUpInside" id="RgA-xb-fRZ"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvZ-gL-CGG">
+                            <rect key="frame" x="130" y="0.0" width="100" height="100"/>
+                            <color key="backgroundColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="2vm-Ci-fAo"/>
+                                <constraint firstAttribute="width" constant="100" id="af6-80-MKx"/>
+                            </constraints>
+                            <state key="normal" title="Veterinario" image="icono_veterinario"/>
+                            <connections>
+                                <action selector="vetButtonAction:" destination="-1" eventType="touchUpInside" id="ZVY-L9-taS"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RGj-Y4-eRA">
+                            <rect key="frame" x="260" y="0.0" width="100" height="100"/>
+                            <color key="backgroundColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="eDA-kT-kGb"/>
+                                <constraint firstAttribute="height" constant="100" id="h6v-yE-1CE"/>
+                            </constraints>
+                            <state key="normal" title="Vacuna" image="icono_vacuna"/>
+                            <connections>
+                                <action selector="vacButtonAction:" destination="-1" eventType="touchUpInside" id="HB0-RR-CT6"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="Kdr-Mv-ovR">
+                    <rect key="frame" x="32" y="781" width="363" height="21"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paseo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nP0-VF-P2u">
+                            <rect key="frame" x="0.0" y="0.0" width="53.5" height="21"/>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Visita veterinario" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0w-XO-eZo">
+                            <rect key="frame" x="96.5" y="0.0" width="160" height="21"/>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vacuna" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0f2-On-OVP">
+                            <rect key="frame" x="299.5" y="0.0" width="63.5" height="21"/>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="LtM-Si-WfP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="676-hd-TbK"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LtM-Si-WfP" secondAttribute="trailing" constant="5" id="7F8-Wc-xWl"/>
+                <constraint firstItem="Kdr-Mv-ovR" firstAttribute="top" secondItem="zBV-ep-Opw" secondAttribute="bottom" constant="8" id="HCi-Kv-2VA"/>
+                <constraint firstItem="Kdr-Mv-ovR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="UJy-qW-c51"/>
                 <constraint firstItem="LtM-Si-WfP" firstAttribute="top" secondItem="OOR-MH-MEm" secondAttribute="bottom" constant="14" id="VBJ-e2-mkZ"/>
+                <constraint firstItem="zBV-ep-Opw" firstAttribute="top" secondItem="LtM-Si-WfP" secondAttribute="bottom" constant="40" id="rQp-3g-G6R"/>
+                <constraint firstItem="zBV-ep-Opw" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" id="xB2-Du-OjY"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="130.58035714285714"/>
@@ -178,7 +246,10 @@
         <image name="icono_fecha" width="256" height="256"/>
         <image name="icono_medicacion" width="256" height="256"/>
         <image name="icono_nombre" width="256" height="256"/>
+        <image name="icono_paseo" width="256" height="256"/>
         <image name="icono_peso" width="256" height="256"/>
         <image name="icono_raza" width="245" height="245"/>
+        <image name="icono_vacuna" width="256" height="256"/>
+        <image name="icono_veterinario" width="256" height="256"/>
     </resources>
 </document>

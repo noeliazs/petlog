@@ -25,18 +25,31 @@ class PetFileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Ficha"
-        nameLabel.text = myPet[0].name
-        specieLabel.text = myPet[0].specie
-        raceLabel.text = myPet[0].race
-        yearLabel.text = String(myPet[0].year)
-        medLabel.text = myPet[0].med
-        foodLabel.text = myPet[0].food
-        weightLabel.text = String(myPet[0].weight)
+        nameLabel.text = "Nombre: \(myPet[0].name)"
+        specieLabel.text = "Especie: \(myPet[0].specie)"
+        raceLabel.text = "Raza: \(myPet[0].race)"
+        yearLabel.text = "Año de nacimiento:  \(String(myPet[0].year))"
+        medLabel.text = "Medicación especial: \(myPet[0].med)"
+        foodLabel.text = "Alimentación especial: \(myPet[0].food)"
+        weightLabel.text = "Peso:  \(String(myPet[0].weight)) Kg"
         let image : UIImage = UIImage(named: myPet[0].specie)!
         specieImage.image = image
         imagePet.image = image
         
     }
 
-
+    @IBAction func walkButtonAction(_ sender: UIButton) {
+        print("Paseo")
+        //navigationController?.pushViewController(RegWalkViewController(), animated: true)
+    }
+    
+    @IBAction func vacButtonAction(_ sender: Any) {
+        print("vacuna")
+        //navigationController?.pushViewController(RegVacViewController(), animated: true)
+    }
+    
+    @IBAction func vetButtonAction(_ sender: Any) {
+        print("veterinario")
+        //navigationController?.pushViewController(RegVetViewController(), animated: true)
+    }
 }
