@@ -50,7 +50,7 @@ class WalkListViewController: UIViewController {
                                self.tableView.reloadData()
                              }
                      }
-        distanceLabel.text = "Toca una celda para descubrir la distancia total recorrida"
+        distanceLabel.text = "Toca un paseo para contar los kms totales"
                
            }
 
