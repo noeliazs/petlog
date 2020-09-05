@@ -40,7 +40,7 @@ class PetFileViewController: UIViewController {
 
     @IBAction func walkButtonAction(_ sender: UIButton) {
         print("Paseo")
-        //navigationController?.pushViewController(RegWalkViewController(), animated: true)
+        navigationController?.pushViewController(RegWalkViewController(), animated: true)
     }
     
     @IBAction func vacButtonAction(_ sender: Any) {
