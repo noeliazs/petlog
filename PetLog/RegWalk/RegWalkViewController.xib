@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -9,6 +9,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegWalkViewController" customModule="PetLog" customModuleProvider="target">
             <connections>
+                <outlet property="datePicker" destination="Kph-cM-2oY" id="DXO-RZ-BSV"/>
+                <outlet property="distanceTextField" destination="QcI-JQ-mfN" id="9Aq-5N-eJw"/>
+                <outlet property="hourPicker" destination="UEs-FQ-jl3" id="Mm5-I8-wsZ"/>
+                <outlet property="placeTextField" destination="GI1-80-pav" id="3kA-WY-oFu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -33,6 +37,12 @@
                         </label>
                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="Kph-cM-2oY">
                             <rect key="frame" x="0.0" y="154" width="382" height="49"/>
+                            <date key="minimumDate" timeIntervalSinceReferenceDate="599526000">
+                                <!--2019-12-31 23:00:00 +0000-->
+                            </date>
+                            <connections>
+                                <action selector="datePickerChangedWithSender:" destination="-1" eventType="valueChanged" id="g7r-xy-6OA"/>
+                            </connections>
                         </datePicker>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hora" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gp0-rb-4x3">
                             <rect key="frame" x="0.0" y="231" width="382" height="49"/>
@@ -42,6 +52,9 @@
                         </label>
                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="UEs-FQ-jl3">
                             <rect key="frame" x="0.0" y="308" width="382" height="49"/>
+                            <connections>
+                                <action selector="hourPickerChangedWithSender:" destination="-1" eventType="valueChanged" id="EYs-3S-mLk"/>
+                            </connections>
                         </datePicker>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distancia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zP-SQ-ydf">
                             <rect key="frame" x="0.0" y="385" width="382" height="49"/>
@@ -81,6 +94,9 @@
                                     <state key="normal" title="Guardar">
                                         <color key="titleColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </state>
+                                    <connections>
+                                        <action selector="saveButtonAction:" destination="-1" eventType="touchUpInside" id="G0O-ye-5hh"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ooA-zJ-T2w">
                                     <rect key="frame" x="131.5" y="0.0" width="119" height="49"/>
@@ -89,6 +105,9 @@
                                     <state key="normal" title="Borrar">
                                         <color key="titleColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </state>
+                                    <connections>
+                                        <action selector="deleteButtonAction:" destination="-1" eventType="touchUpInside" id="4tG-ob-p07"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfR-aH-TSE">
                                     <rect key="frame" x="262.5" y="0.0" width="119.5" height="49"/>
@@ -97,6 +116,9 @@
                                     <state key="normal" title="Listado">
                                         <color key="titleColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </state>
+                                    <connections>
+                                        <action selector="listButtonAction:" destination="-1" eventType="touchUpInside" id="cnd-x3-Niq"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>

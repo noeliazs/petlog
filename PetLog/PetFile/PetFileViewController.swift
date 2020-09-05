@@ -12,7 +12,7 @@ class PetFileViewController: UIViewController {
     
     @IBOutlet weak var specieImage: UIImageView!
     @IBOutlet weak var imagePet: UIImageView!
-     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var specieLabel: UILabel!
     @IBOutlet weak var raceLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
@@ -40,7 +40,11 @@ class PetFileViewController: UIViewController {
 
     @IBAction func walkButtonAction(_ sender: UIButton) {
         print("Paseo")
-        navigationController?.pushViewController(RegWalkViewController(), animated: true)
+        let regWalkViewController = RegWalkViewController()
+        navigationController?.pushViewController(regWalkViewController, animated: true)
+        regWalkViewController.petID = myPet[0].id
+        regWalkViewController.petName = myPet[0].name
+        
     }
     
     @IBAction func vacButtonAction(_ sender: Any) {
