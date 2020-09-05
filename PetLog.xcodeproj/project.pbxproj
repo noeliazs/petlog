@@ -44,6 +44,11 @@
 		7C534CFF250163610034CCA5 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C534CFE250163610034CCA5 /* PostData.swift */; };
 		7C66C4F32502BB85001F8D2E /* RegWalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66C4F12502BB85001F8D2E /* RegWalkViewController.swift */; };
 		7C66C4F42502BB85001F8D2E /* RegWalkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C66C4F22502BB85001F8D2E /* RegWalkViewController.xib */; };
+		7CA068182503F83E008B80CE /* WalkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA068162503F83E008B80CE /* WalkListViewController.swift */; };
+		7CA068192503F83E008B80CE /* WalkListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA068172503F83E008B80CE /* WalkListViewController.xib */; };
+		7CA0681C2503FB75008B80CE /* PetWalk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA0681B2503FB75008B80CE /* PetWalk.swift */; };
+		7CA0681F2503FBAE008B80CE /* PetWalkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA0681D2503FBAE008B80CE /* PetWalkCell.swift */; };
+		7CA068202503FBAE008B80CE /* PetWalkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA0681E2503FBAE008B80CE /* PetWalkCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +91,11 @@
 		7C534CFE250163610034CCA5 /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		7C66C4F12502BB85001F8D2E /* RegWalkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegWalkViewController.swift; sourceTree = "<group>"; };
 		7C66C4F22502BB85001F8D2E /* RegWalkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegWalkViewController.xib; sourceTree = "<group>"; };
+		7CA068162503F83E008B80CE /* WalkListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkListViewController.swift; sourceTree = "<group>"; };
+		7CA068172503F83E008B80CE /* WalkListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalkListViewController.xib; sourceTree = "<group>"; };
+		7CA0681B2503FB75008B80CE /* PetWalk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetWalk.swift; sourceTree = "<group>"; };
+		7CA0681D2503FBAE008B80CE /* PetWalkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetWalkCell.swift; sourceTree = "<group>"; };
+		7CA0681E2503FBAE008B80CE /* PetWalkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PetWalkCell.xib; sourceTree = "<group>"; };
 		92287AAEC3AF2411F9E6CFEB /* Pods-PetLog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetLog.release.xcconfig"; path = "Target Support Files/Pods-PetLog/Pods-PetLog.release.xcconfig"; sourceTree = "<group>"; };
 		EA47B4B7D7BA47E5EB998C1B /* Pods_PetLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -220,6 +230,7 @@
 				7C3446D724F3E18100F91F39 /* GoogleService-Info.plist */,
 				7C534CFB25015BF90034CCA5 /* PetFile */,
 				7C66C4F52502BB8C001F8D2E /* RegWalk */,
+				7CA0681A2503F843008B80CE /* WalkList */,
 			);
 			path = PetLog;
 			sourceTree = "<group>";
@@ -252,6 +263,18 @@
 				7C66C4F22502BB85001F8D2E /* RegWalkViewController.xib */,
 			);
 			path = RegWalk;
+			sourceTree = "<group>";
+		};
+		7CA0681A2503F843008B80CE /* WalkList */ = {
+			isa = PBXGroup;
+			children = (
+				7CA068162503F83E008B80CE /* WalkListViewController.swift */,
+				7CA068172503F83E008B80CE /* WalkListViewController.xib */,
+				7CA0681B2503FB75008B80CE /* PetWalk.swift */,
+				7CA0681D2503FBAE008B80CE /* PetWalkCell.swift */,
+				7CA0681E2503FBAE008B80CE /* PetWalkCell.xib */,
+			);
+			path = WalkList;
 			sourceTree = "<group>";
 		};
 		EFA7FD1FE68DFD541B362FF8 /* Frameworks */ = {
@@ -339,10 +362,12 @@
 				7C1BBAAC24F4038F002308A9 /* HomeViewController.xib in Resources */,
 				7C2CD05724F69B7A00BBD1E4 /* WebViewController.xib in Resources */,
 				7C534CEF250153370034CCA5 /* PetsViewController.xib in Resources */,
+				7CA068202503FBAE008B80CE /* PetWalkCell.xib in Resources */,
 				7C3446CD24F3D01000F91F39 /* Assets.xcassets in Resources */,
 				7C1BBAB524F52BDD002308A9 /* MainViewController.xib in Resources */,
 				7C3446C824F3D00F00F91F39 /* Main.storyboard in Resources */,
 				7C534CF4250153CD0034CCA5 /* PetCell.xib in Resources */,
+				7CA068192503F83E008B80CE /* WalkListViewController.xib in Resources */,
 				7C2CD05324F67F1600BBD1E4 /* NewsCell.xib in Resources */,
 				7C2CD03B24F6782100BBD1E4 /* NewsViewController.xib in Resources */,
 			);
@@ -397,6 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA0681C2503FB75008B80CE /* PetWalk.swift in Sources */,
 				7C534CF925015BF40034CCA5 /* PetFileViewController.swift in Sources */,
 				7C2CD07524FE8B2E00BBD1E4 /* NewAnimalViewController.swift in Sources */,
 				7C1BBAAA24F3FAB2002308A9 /* HomeViewController.swift in Sources */,
@@ -412,12 +438,14 @@
 				7C1BBAB224F51DD4002308A9 /* MainViewController.swift in Sources */,
 				7C534CFD250163440034CCA5 /* NetworkManager.swift in Sources */,
 				7C3446CB24F3D00F00F91F39 /* PetLog.xcdatamodeld in Sources */,
+				7CA0681F2503FBAE008B80CE /* PetWalkCell.swift in Sources */,
 				7C2CD03A24F6782100BBD1E4 /* NewsViewController.swift in Sources */,
 				7C1BBAB924F5695D002308A9 /* Alert.swift in Sources */,
 				7C2CD04324F67A2A00BBD1E4 /* PostData.swift in Sources */,
 				7C2CD05624F69B7A00BBD1E4 /* WebViewController.swift in Sources */,
 				7C534CEE250153370034CCA5 /* PetsViewController.swift in Sources */,
 				7C534CFF250163610034CCA5 /* PostData.swift in Sources */,
+				7CA068182503F83E008B80CE /* WalkListViewController.swift in Sources */,
 				7C3446C324F3D00F00F91F39 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -65,7 +65,7 @@ class RegWalkViewController: UIViewController {
         if let distance = Double(distanceTextField.text!), let place = placeTextField.text{
             if distance != 0.0 && place != "" && date != "" && hour != "" && petID != "" && petName != ""{
                 print("guardando")
-                db.collection(COLLECTIONWALKS).document(petID).setData([
+                db.collection(COLLECTIONWALKS).document(petName+"/"+date+"/"+hour).setData([
                     "id": petID,
                     "nombre": petName,
                     "fecha": date,
@@ -74,6 +74,7 @@ class RegWalkViewController: UIViewController {
                     "lugar": place
                 ])
                 clean()
+                alert.viewSimpleAlert(view: self,title:"Paseo añadido",message:"Datos guardados")
             }
             else{
                 alert.viewSimpleAlert(view: self,title:"Error",message:"Rellena todos los campos correctamente")
@@ -91,6 +92,9 @@ class RegWalkViewController: UIViewController {
     @IBAction func listButtonAction(_ sender: UIButton) {
         view.endEditing(true)
         print("cambio de vista")
+        let walkListViewController = WalkListViewController()
+        navigationController?.pushViewController(walkListViewController, animated: true)
+        walkListViewController.id = petID
      }
     
     func clean(){
