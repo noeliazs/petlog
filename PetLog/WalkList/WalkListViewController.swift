@@ -15,14 +15,17 @@ class WalkListViewController: UIViewController {
     var petWalksArray: [PetWalk] = []
     let COLECTIONWALKS = "Paseos"
     var totalDistance: Double = 0.0
+    var primeraVez = true
      
     private let db = Firestore.firestore()
+    @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var id: String = ""
+    var nombre: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Lista de paseos de tu mascota"
+        title = "Lista de paseos de \(nombre)"
         
         tableView.register(UINib(nibName: "PetWalkCell",bundle:nil), forCellReuseIdentifier: "ReusableCell")
               tableView.dataSource=self
@@ -47,6 +50,7 @@ class WalkListViewController: UIViewController {
                                self.tableView.reloadData()
                              }
                      }
+        distanceLabel.text = "Toca una celda para descubrir la distancia total recorrida"
                
            }
 
@@ -81,8 +85,6 @@ extension WalkListViewController: UITableViewDataSource{
         cell.hourLabel.text = hora
         cell.placeLabel.text = lugar
         cell.selectionStyle = .none
-        totalDistance+=distancia
-        print(totalDistance)
       
         return cell
     }
@@ -93,12 +95,14 @@ extension WalkListViewController: UITableViewDataSource{
 
 extension WalkListViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        /*let petFileViewController = PetFileViewController()
-        var array = [Pet]()
-        let pet = petWalksArray[indexPath.row]
-        array.append(pet)
-        navigationController?.pushViewController(petFileViewController, animated: true)
-            petFileViewController.myPet = array*/
+        if(primeraVez){
+            for indice in petWalksArray{
+                totalDistance+=indice.distance
+                primeraVez = false
+            }
+        }
+        
+         distanceLabel.text = "Has recorrido  \(totalDistance) km con \(nombre)"
 
        
     }

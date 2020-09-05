@@ -91,10 +91,10 @@ class RegWalkViewController: UIViewController {
     }
     @IBAction func listButtonAction(_ sender: UIButton) {
         view.endEditing(true)
-        print("cambio de vista")
         let walkListViewController = WalkListViewController()
         navigationController?.pushViewController(walkListViewController, animated: true)
         walkListViewController.id = petID
+        walkListViewController.nombre = petName
      }
     
     func clean(){

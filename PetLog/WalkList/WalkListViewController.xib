@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WalkListViewController" customModule="PetLog" customModuleProvider="target">
             <connections>
+                <outlet property="distanceLabel" destination="U4V-Rf-Cy8" id="Frz-2o-g5C"/>
                 <outlet property="tableView" destination="BjY-uP-qwZ" id="Nn9-17-bw4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -18,21 +19,44 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BjY-uP-qwZ">
-                    <rect key="frame" x="5" y="54" width="404" height="798"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BjY-uP-qwZ">
+                    <rect key="frame" x="5" y="214" width="404" height="548"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="separatorColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Has recorrido X km con tu mascota" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4V-Rf-Cy8">
+                    <rect key="frame" x="20" y="792" width="374" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paseo" translatesAutoresizingMaskIntoConstraints="NO" id="Op2-MX-iFS">
+                    <rect key="frame" x="132" y="95" width="150" height="100"/>
+                    <color key="tintColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="150" id="Xf4-rP-hKp"/>
+                        <constraint firstAttribute="height" constant="100" id="eZV-Gn-obQ"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BjY-uP-qwZ" secondAttribute="trailing" constant="5" id="1A8-HM-UEj"/>
-                <constraint firstItem="BjY-uP-qwZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="TB7-A8-8qQ"/>
-                <constraint firstItem="BjY-uP-qwZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="mNj-s2-KxC"/>
-                <constraint firstItem="BjY-uP-qwZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="skF-TS-U3c"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="BjY-uP-qwZ" secondAttribute="bottom" constant="10" id="zHp-8d-ytc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="U4V-Rf-Cy8" secondAttribute="trailing" constant="20" id="4D4-PP-wwC"/>
+                <constraint firstItem="Op2-MX-iFS" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="HUV-yB-EhG"/>
+                <constraint firstItem="BjY-uP-qwZ" firstAttribute="centerX" secondItem="U4V-Rf-Cy8" secondAttribute="centerX" id="Z32-VP-Voi"/>
+                <constraint firstItem="U4V-Rf-Cy8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ZBU-5f-1Lo"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="BjY-uP-qwZ" secondAttribute="bottom" constant="100" id="aV0-hK-PJy"/>
+                <constraint firstItem="U4V-Rf-Cy8" firstAttribute="top" secondItem="BjY-uP-qwZ" secondAttribute="bottom" constant="30" id="cGi-Dl-CvP"/>
+                <constraint firstItem="BjY-uP-qwZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="170" id="cIn-73-deG"/>
+                <constraint firstItem="BjY-uP-qwZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="ddd-iq-4dE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="Op2-MX-iFS" secondAttribute="top" constant="-51" id="jKX-uW-gI9"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="139" y="104"/>
+            <point key="canvasLocation" x="137.68115942028987" y="103.79464285714285"/>
         </view>
     </objects>
+    <resources>
+        <image name="paseo" width="1199.5" height="853"/>
+    </resources>
 </document>
