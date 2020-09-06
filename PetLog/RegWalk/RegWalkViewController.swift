@@ -65,7 +65,7 @@ class RegWalkViewController: UIViewController {
         if let distance = Double(distanceTextField.text!), let place = placeTextField.text{
             if distance != 0.0 && place != "" && date != "" && hour != "" && petID != "" && petName != ""{
                 print("guardando")
-                db.collection(COLLECTIONWALKS).document(petName+"/"+date+"/"+hour).setData([
+                db.collection(COLLECTIONWALKS).document(petName+"-"+date+"-"+hour).setData([
                     "id": petID,
                     "nombre": petName,
                     "fecha": date,
@@ -121,7 +121,11 @@ class RegWalkViewController: UIViewController {
     @IBAction func datePickerChanged(sender: UIDatePicker) {
 
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM, YYYY"
+        dateFormatter.dateFormat = "dd MMM, yyyy"
+        //Para convertir el mes en español
+        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+        dateFormatter.locale = Locale(identifier: "es")
+        dateFormatter.date(from: date)
         date = dateFormatter.string(from: sender.date)
 
         print(date)
@@ -130,7 +134,7 @@ class RegWalkViewController: UIViewController {
     @IBAction func hourPickerChanged(sender: UIDatePicker) {
 
            let hourFormatter = DateFormatter()
-           hourFormatter.dateFormat = "HH:mm a"
+           hourFormatter.dateFormat = "HH:mm"
            hour = hourFormatter.string(from: sender.date)
 
            print(hour)

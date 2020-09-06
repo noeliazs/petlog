@@ -112,7 +112,7 @@ class NewAnimalViewController: UIViewController {
             if let name = nameTextField.text, let race = raceTextField.text, let year = Int(yearTextField.text!),let med = medTextField.text, let weight = Double(weightTextField.text!), let food = foodTextField.text{
                 if specie != "" && name != "" && race != "" && year != 0 && med != "" && weight != 0.0 && food != ""{
                     if checkYear(year:year){
-                        id = email+"/"+name
+                        id = email+"-"+name
                         print("guardando")
                         print(email)
                         db.collection(COLECTIONANIMALS).document(id).setData([
@@ -125,8 +125,8 @@ class NewAnimalViewController: UIViewController {
                             "medicacion": med,
                             "peso": weight,
                             "alimentacion": food
-                            
                         ])
+                        
                          alert.viewSimpleAlert(view: self,title:"Mascota añadida",message:"Datos guardados")
                         yearTextField.layer.borderColor = colors.brownColor.cgColor
                         clean()

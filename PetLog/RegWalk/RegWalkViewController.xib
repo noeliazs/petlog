@@ -40,6 +40,7 @@
                             <date key="minimumDate" timeIntervalSinceReferenceDate="599526000">
                                 <!--2019-12-31 23:00:00 +0000-->
                             </date>
+                            <locale key="locale" localeIdentifier="es"/>
                             <connections>
                                 <action selector="datePickerChangedWithSender:" destination="-1" eventType="valueChanged" id="g7r-xy-6OA"/>
                             </connections>
