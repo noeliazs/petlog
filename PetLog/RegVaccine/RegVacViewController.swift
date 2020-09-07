@@ -89,6 +89,10 @@ class RegVacViewController: UIViewController {
 
     @IBAction func listButtonAction(_ sender: UIButton) {
         print("cambio de vista listado de todas las vacunas")
+        let vacListViewController = VacListViewController()
+         navigationController?.pushViewController(vacListViewController, animated: true)
+        vacListViewController.petName = petName
+         
     }
     
     func clean(){

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VacListViewController" customModule="PetLog" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="edy-4X-Y5b" id="lXX-wR-qv8"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="edy-4X-Y5b">
+                    <rect key="frame" x="0.0" y="204" width="414" height="643"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="separatorColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                </tableView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vacuna" translatesAutoresizingMaskIntoConstraints="NO" id="ZQA-Kg-yws">
+                    <rect key="frame" x="111" y="57" width="240" height="158"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="edy-4X-Y5b" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="7a6-YE-cBi"/>
+                <constraint firstItem="ZQA-Kg-yws" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="111" id="D1J-oO-CfA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="edy-4X-Y5b" secondAttribute="bottom" constant="15" id="DEZ-Wo-Nd4"/>
+                <constraint firstItem="ZQA-Kg-yws" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="13" id="HgS-1C-DUU"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="edy-4X-Y5b" secondAttribute="trailing" id="InL-kA-5Gn"/>
+                <constraint firstItem="edy-4X-Y5b" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="160" id="W1a-DZ-p37"/>
+                <constraint firstItem="ZQA-Kg-yws" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" constant="24" id="WbI-bM-BhW"/>
+                <constraint firstItem="edy-4X-Y5b" firstAttribute="top" secondItem="ZQA-Kg-yws" secondAttribute="bottom" constant="-11" id="a8K-Xj-7gl"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="137.68115942028987" y="99.776785714285708"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="vacuna" width="334" height="139.5"/>
+    </resources>
+</document>

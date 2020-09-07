@@ -37,10 +37,12 @@ class MainViewController: UIViewController {
     
     @IBAction func vetButtonAction(_ sender: Any){
         print("Veterinario")
+         //navigationController?.pushViewController(VetListViewController(), animated: true)
     }
     
     @IBAction func vacButtonAction(_ sender: Any){
         print("Vacunas")
+         navigationController?.pushViewController(VacListViewController(), animated: true)
     }
     
     @IBAction func newsButtonAction(_ sender: Any){
