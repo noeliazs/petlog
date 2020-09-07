@@ -59,7 +59,7 @@ class AuthViewController: UIViewController {
                     passText.layer.borderColor = colors.brownColor.cgColor
                     Auth.auth().createUser(withEmail: email, password: password){
                         (result,error)in
-                        if let result = result, error == nil{
+                        if let _ = result, error == nil{
                             
                             self.navigationController?.pushViewController(HomeViewController(), animated: true)
                         }else{
@@ -87,7 +87,7 @@ class AuthViewController: UIViewController {
        if let email = emailText.text,let password = passText.text{
            Auth.auth().signIn(withEmail: email, password: password){
                (result,error)in
-               if let result = result, error == nil{
+            if let _ = result, error == nil{
                 self.putColors(isTrue : true)
                    self.navigationController?.pushViewController(MainViewController(), animated: true)
                }else{

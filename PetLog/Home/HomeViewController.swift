@@ -98,7 +98,7 @@ class HomeViewController: UIViewController {
             
              alert.showAlert(viewController: self)
              
-             let timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(reload), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(reload), userInfo: nil, repeats: false)
         }
     }
     func textFieldsConfigure(){

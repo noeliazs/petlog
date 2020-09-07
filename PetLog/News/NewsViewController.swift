@@ -24,7 +24,7 @@ class NewsViewController: UIViewController {
             tableView.dataSource=self
             tableView.delegate=self
             tableView.rowHeight = 60
-            let timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(relanzar), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(relanzar), userInfo: nil, repeats: false)
              
     }
     @objc func relanzar()

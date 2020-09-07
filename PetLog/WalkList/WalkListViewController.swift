@@ -78,13 +78,16 @@ extension WalkListViewController: UITableViewDataSource{
         let hora = petWalksArray[indexPath.row].hour
         let fecha =  petWalksArray[indexPath.row].date
         let lugar = petWalksArray[indexPath.row].place
-        let distancia = petWalksArray[indexPath.row].distance
+        //let distancia = petWalksArray[indexPath.row].distance
         
         cell.dateLabel.text = fecha
         cell.hourLabel.text = hora
         cell.placeLabel.text = lugar
         cell.selectionStyle = .none
-      
+        cell.placeLabel.numberOfLines = 1
+        cell.placeLabel.minimumScaleFactor = 0.5
+        cell.placeLabel.adjustsFontSizeToFitWidth = true
+        cell.placeLabel.lineBreakMode = .byWordWrapping
         return cell
     }
 

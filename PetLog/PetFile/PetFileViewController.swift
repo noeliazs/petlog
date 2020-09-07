@@ -49,7 +49,9 @@ class PetFileViewController: UIViewController {
     
     @IBAction func vacButtonAction(_ sender: Any) {
         print("vacuna")
-        //navigationController?.pushViewController(RegVacViewController(), animated: true)
+        let regVacViewController = RegVacViewController()
+        navigationController?.pushViewController(regVacViewController, animated: true)
+        regVacViewController.petName = myPet[0].name
     }
     
     @IBAction func vetButtonAction(_ sender: Any) {
