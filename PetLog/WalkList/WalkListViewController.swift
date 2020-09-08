@@ -51,9 +51,13 @@ class WalkListViewController: UIViewController {
             }
         distanceLabel.text = "Toca un paseo para contar los kms totales"
                
-           }
-
-
+    }
+    
+    @IBAction func HomeButtonAction(_ sender: UIButton){
+           navigationController?.pushViewController(MainViewController(), animated: true)
+       }
+    
+    
 }
 
 

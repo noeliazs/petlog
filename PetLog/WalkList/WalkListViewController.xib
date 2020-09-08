@@ -39,6 +39,17 @@
                         <constraint firstAttribute="height" constant="100" id="eZV-Gn-obQ"/>
                     </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vuM-Ak-2ll">
+                    <rect key="frame" x="5" y="81" width="69" height="61"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Inicio" image="Logo">
+                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="HomeButtonAction:" destination="-1" eventType="touchUpInside" id="91V-h8-v6o"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
@@ -57,6 +68,7 @@
         </view>
     </objects>
     <resources>
+        <image name="Logo" width="206" height="151"/>
         <image name="paseo" width="1199.5" height="853"/>
     </resources>
 </document>

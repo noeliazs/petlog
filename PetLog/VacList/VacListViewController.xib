@@ -9,6 +9,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VacListViewController" customModule="PetLog" customModuleProvider="target">
             <connections>
+                <outlet property="HomeButton" destination="4Tz-ZD-Edg" id="PzA-iK-cdq"/>
+                <outlet property="printButton" destination="F8M-BM-HrR" id="Nqi-y0-agX"/>
                 <outlet property="tableView" destination="edy-4X-Y5b" id="lXX-wR-qv8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -19,31 +21,84 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="edy-4X-Y5b">
-                    <rect key="frame" x="0.0" y="204" width="414" height="643"/>
+                    <rect key="frame" x="0.0" y="204" width="414" height="558"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <color key="separatorColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                 </tableView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vacuna" translatesAutoresizingMaskIntoConstraints="NO" id="ZQA-Kg-yws">
-                    <rect key="frame" x="111" y="57" width="240" height="158"/>
+                    <rect key="frame" x="136" y="44" width="258" height="164"/>
                 </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" id="XIA-e7-vP3">
+                    <rect key="frame" x="12" y="786" width="382" height="57.5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mT0-md-5aO">
+                            <rect key="frame" x="0.0" y="0.0" width="119.5" height="57.5"/>
+                            <color key="backgroundColor" red="0.49019607840000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="22"/>
+                            <state key="normal" title="Filtrar">
+                                <color key="titleColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </state>
+                            <connections>
+                                <action selector="filterButtonAction:" destination="-1" eventType="touchUpInside" id="gcH-aD-sWq"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MX2-6I-4BI">
+                            <rect key="frame" x="131.5" y="0.0" width="119" height="57.5"/>
+                            <color key="backgroundColor" red="0.49019607840000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="22"/>
+                            <state key="normal" title="Todos">
+                                <color key="titleColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </state>
+                            <connections>
+                                <action selector="cleanFilterButtonAction:" destination="-1" eventType="touchUpInside" id="UxB-6D-BAC"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F8M-BM-HrR">
+                            <rect key="frame" x="262.5" y="0.0" width="119.5" height="57.5"/>
+                            <color key="backgroundColor" red="0.49019607840000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="22"/>
+                            <state key="normal" title="Imprimir">
+                                <color key="titleColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </state>
+                            <connections>
+                                <action selector="printButtonAction:" destination="-1" eventType="touchUpInside" id="vVo-dm-GwC"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="Zom-hk-YMH"/>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4Tz-ZD-Edg">
+                    <rect key="frame" x="0.0" y="80" width="69" height="61"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Inicio" image="Logo">
+                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="HomeButtonAction:" destination="-1" eventType="touchUpInside" id="Pmq-7o-0CG"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="edy-4X-Y5b" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="7a6-YE-cBi"/>
-                <constraint firstItem="ZQA-Kg-yws" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="111" id="D1J-oO-CfA"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="edy-4X-Y5b" secondAttribute="bottom" constant="15" id="DEZ-Wo-Nd4"/>
-                <constraint firstItem="ZQA-Kg-yws" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="13" id="HgS-1C-DUU"/>
+                <constraint firstItem="ZQA-Kg-yws" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="136" id="D1J-oO-CfA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="edy-4X-Y5b" secondAttribute="bottom" constant="100" id="DEZ-Wo-Nd4"/>
+                <constraint firstItem="ZQA-Kg-yws" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="HgS-1C-DUU"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="edy-4X-Y5b" secondAttribute="trailing" id="InL-kA-5Gn"/>
+                <constraint firstItem="edy-4X-Y5b" firstAttribute="top" secondItem="4Tz-ZD-Edg" secondAttribute="bottom" constant="60" id="M59-tG-AgY"/>
                 <constraint firstItem="edy-4X-Y5b" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="160" id="W1a-DZ-p37"/>
-                <constraint firstItem="ZQA-Kg-yws" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" constant="24" id="WbI-bM-BhW"/>
-                <constraint firstItem="edy-4X-Y5b" firstAttribute="top" secondItem="ZQA-Kg-yws" secondAttribute="bottom" constant="-11" id="a8K-Xj-7gl"/>
+                <constraint firstItem="ZQA-Kg-yws" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" constant="58" id="WbI-bM-BhW"/>
+                <constraint firstItem="edy-4X-Y5b" firstAttribute="top" secondItem="ZQA-Kg-yws" secondAttribute="bottom" constant="-4" id="a8K-Xj-7gl"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="99.776785714285708"/>
         </view>
     </objects>
     <resources>
+        <image name="Logo" width="206" height="151"/>
         <image name="vacuna" width="334" height="139.5"/>
     </resources>
 </document>

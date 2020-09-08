@@ -59,7 +59,7 @@ class HomeViewController: UIViewController {
                      let changeRequest = user.createProfileChangeRequest()
                      changeRequest.displayName = name
                      changeRequest.commitChanges { (error) in
-                         print(user.displayName)
+                         //print(user.displayName)
                      }
                  }
                  
@@ -70,7 +70,7 @@ class HomeViewController: UIViewController {
                 if email != ""{
                     if isValidEmail(string: email){
                         user.updateEmail(to: email) { (error) in
-                        print(user.email)
+                        //print(user.email)
                         }
                     }
                     else{

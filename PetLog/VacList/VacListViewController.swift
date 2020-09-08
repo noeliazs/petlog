@@ -11,17 +11,22 @@ import Firebase
 import FirebaseFirestore
 
 class VacListViewController: UIViewController {
-     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var printButton: UIButton!
+    @IBOutlet weak var HomeButton: UIButton!
     
+    private let alert = Alert()
     var petName: String = ""
     private var petVacArray: [PetVaccine] = []
     private let COLLECTIONVACCINES = "Vacunas"
     private let db = Firestore.firestore()
     private let user = Auth.auth().currentUser
+    var primeraVez = true
+    private var totalVacs:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //que con la flecha back volvamos al inicio
         title = "Lista de vacunas"
         tableView.register(UINib(nibName: "PetVacCell",bundle:nil), forCellReuseIdentifier: "ReusableCell")
         tableView.dataSource=self
@@ -60,6 +65,8 @@ class VacListViewController: UIViewController {
           }
          }
        }
+        //printButton.isEnabled = false
+       
     }
         
     func filterPet(){
@@ -82,8 +89,62 @@ class VacListViewController: UIViewController {
               }
             }
         }
-    
+       // printButton.isEnabled = true
+        
     }
+    
+    @IBAction func filterButtonAction(_ sender: UIButton){
+        let alertController = UIAlertController(title: "FILTRO", message: "Introduce el nombre de tu mascota", preferredStyle: UIAlertController.Style.alert)
+        let cancelAction = UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.default, handler: {
+               (action : UIAlertAction!) -> Void in })
+        alertController.addTextField { (textField : UITextField!) -> Void in
+               textField.placeholder = "Nombre"
+           }
+        
+        let saveAction = UIAlertAction(title: "Filtrar", style: UIAlertAction.Style.default, handler: { alert -> Void in
+               let firstTextField = alertController.textFields![0] as UITextField
+            self.petName = firstTextField.text ?? ""
+            self.changeView()
+           })
+        
+           alertController.addAction(saveAction)
+           alertController.addAction(cancelAction)
+           
+           self.present(alertController, animated: true, completion: nil)
+  
+    }
+    
+    @objc func changeView() {
+         let vacListViewController = VacListViewController()
+        navigationController?.pushViewController(vacListViewController, animated: false)
+        vacListViewController.petName = petName
+    }
+    
+    @IBAction func printButtonAction(_ sender: UIButton) {
+        if (petName != ""){
+            let pdfFilePath = self.tableView.exportAsPdfFromTable()
+            print(pdfFilePath)
+            alert.viewSimpleAlert(view: self,title:"Aviso",message:"Pdf disponible en: \(pdfFilePath)")
+        }
+        else{
+             alert.viewSimpleAlert(view: self,title:"Aviso",message:"Función de imprimir solo disponible para una mascota. Por favor filtre antes.")
+        }
+              
+    }
+    
+    @IBAction func cleanFilterButtonAction(_ sender: UIButton){
+        let vacListViewController = VacListViewController()
+         navigationController?.pushViewController(vacListViewController, animated: true)
+        vacListViewController.petName =
+         ""
+    }
+    
+    @IBAction func HomeButtonAction(_ sender: UIButton){
+        navigationController?.pushViewController(MainViewController(), animated: true)
+    }
+    
+   
+    
 }
 
 
@@ -123,8 +184,59 @@ extension VacListViewController: UITableViewDataSource{
 
 extension VacListViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //ver si al clicar en cada animal podemos saber cuantas vacunas tiene
+        
+        //al hacer click en la celda de nuestra mascota ya filtrados los resultados nos dice cuantas vacunas tiene
+        if petName != ""{
+            if primeraVez{
+                for _ in petVacArray{
+                    totalVacs+=1
+                    primeraVez = false
+                }
+           }
+            alert.viewSimpleAlert(view: self,title:"Aviso",message:"\(petName) tiene en total \(totalVacs) vacunas")
+       }
+       else{
+             alert.viewSimpleAlert(view: self,title:"Aviso",message:"Filtre por el nombre de su mascota para conocer una funcionalidad extra")
+        }
+        
        
+    }
+}
+
+
+//MARK: - UITableView PDF
+extension UITableView {
+    
+    // Export pdf from UITableView and save pdf in drectory and return pdf file path
+    func exportAsPdfFromTable() -> String {
+        
+        let originalBounds = self.bounds
+        self.bounds = CGRect(x:originalBounds.origin.x, y: originalBounds.origin.y, width: self.contentSize.width, height: self.contentSize.height)
+        let pdfPageFrame = CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.contentSize.height)
+        
+        let pdfData = NSMutableData()
+        UIGraphicsBeginPDFContextToData(pdfData, pdfPageFrame, nil)
+        UIGraphicsBeginPDFPageWithInfo(pdfPageFrame, nil)
+        guard let pdfContext = UIGraphicsGetCurrentContext() else { return "" }
+        self.layer.render(in: pdfContext)
+        UIGraphicsEndPDFContext()
+        self.bounds = originalBounds
+        // Save pdf data
+        return self.saveTablePdf(data: pdfData)
+        
+    }
+    
+    // Save pdf file in document directory
+    func saveTablePdf(data: NSMutableData) -> String {
+        
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let docDirectoryPath = paths[0]
+        let pdfPath = docDirectoryPath.appendingPathComponent("tablePdf.pdf")
+        if data.write(to: pdfPath, atomically: true) {
+            return pdfPath.path
+        } else {
+            return ""
+        }
     }
 }
  
