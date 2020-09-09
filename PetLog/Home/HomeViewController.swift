@@ -27,7 +27,9 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         title = "Perfil de Usuario"
-        
+        nameTextField.delegate = self
+        emailTextField.delegate = self
+        passTextField.delegate = self
         textFieldsConfigure()
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.dismissKeyboard))
@@ -152,5 +154,14 @@ class HomeViewController: UIViewController {
 
 }
 
+
+//MARK: TextFieldDelegate
+extension HomeViewController: UITextFieldDelegate{
+       func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+              self.view.endEditing(true)
+              return false
+        }
+    
+}
 
 

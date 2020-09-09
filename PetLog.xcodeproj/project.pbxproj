@@ -56,6 +56,8 @@
 		7CA0682C250699FA008B80CE /* PetVaccine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA0682B250699FA008B80CE /* PetVaccine.swift */; };
 		7CA0682F25069A69008B80CE /* PetVacCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA0682D25069A69008B80CE /* PetVacCell.swift */; };
 		7CA0683025069A69008B80CE /* PetVacCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA0682E25069A69008B80CE /* PetVacCell.xib */; };
+		7CA068332508E2F1008B80CE /* RegVetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA068312508E2F1008B80CE /* RegVetViewController.swift */; };
+		7CA068342508E2F1008B80CE /* RegVetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA068322508E2F1008B80CE /* RegVetViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +112,8 @@
 		7CA0682B250699FA008B80CE /* PetVaccine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetVaccine.swift; sourceTree = "<group>"; };
 		7CA0682D25069A69008B80CE /* PetVacCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetVacCell.swift; sourceTree = "<group>"; };
 		7CA0682E25069A69008B80CE /* PetVacCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PetVacCell.xib; sourceTree = "<group>"; };
+		7CA068312508E2F1008B80CE /* RegVetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegVetViewController.swift; sourceTree = "<group>"; };
+		7CA068322508E2F1008B80CE /* RegVetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegVetViewController.xib; sourceTree = "<group>"; };
 		92287AAEC3AF2411F9E6CFEB /* Pods-PetLog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetLog.release.xcconfig"; path = "Target Support Files/Pods-PetLog/Pods-PetLog.release.xcconfig"; sourceTree = "<group>"; };
 		EA47B4B7D7BA47E5EB998C1B /* Pods_PetLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -226,6 +230,7 @@
 		7C3446BF24F3D00F00F91F39 /* PetLog */ = {
 			isa = PBXGroup;
 			children = (
+				7CA068352508E2F7008B80CE /* RegVet */,
 				7C534CF0250153490034CCA5 /* Pets */,
 				7C2CD07724FE8B3300BBD1E4 /* newAnimal */,
 				7C2CD05B24FD3F0000BBD1E4 /* Utils */,
@@ -314,6 +319,15 @@
 			path = VacList;
 			sourceTree = "<group>";
 		};
+		7CA068352508E2F7008B80CE /* RegVet */ = {
+			isa = PBXGroup;
+			children = (
+				7CA068312508E2F1008B80CE /* RegVetViewController.swift */,
+				7CA068322508E2F1008B80CE /* RegVetViewController.xib */,
+			);
+			path = RegVet;
+			sourceTree = "<group>";
+		};
 		EFA7FD1FE68DFD541B362FF8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,6 +410,7 @@
 				7CA06824250689CF008B80CE /* RegVacViewController.xib in Resources */,
 				7C66C4F42502BB85001F8D2E /* RegWalkViewController.xib in Resources */,
 				7C3446D824F3E18100F91F39 /* GoogleService-Info.plist in Resources */,
+				7CA068342508E2F1008B80CE /* RegVetViewController.xib in Resources */,
 				7CA06829250696D8008B80CE /* VacListViewController.xib in Resources */,
 				7C534CFA25015BF40034CCA5 /* PetFileViewController.xib in Resources */,
 				7C1BBAAC24F4038F002308A9 /* HomeViewController.xib in Resources */,
@@ -483,6 +498,7 @@
 				7C3446CB24F3D00F00F91F39 /* PetLog.xcdatamodeld in Sources */,
 				7CA0681F2503FBAE008B80CE /* PetWalkCell.swift in Sources */,
 				7C2CD03A24F6782100BBD1E4 /* NewsViewController.swift in Sources */,
+				7CA068332508E2F1008B80CE /* RegVetViewController.swift in Sources */,
 				7C1BBAB924F5695D002308A9 /* Alert.swift in Sources */,
 				7C2CD04324F67A2A00BBD1E4 /* PostData.swift in Sources */,
 				7C2CD05624F69B7A00BBD1E4 /* WebViewController.swift in Sources */,

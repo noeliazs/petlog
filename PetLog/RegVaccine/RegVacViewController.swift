@@ -14,6 +14,7 @@ import FirebaseFirestore
 class RegVacViewController: UIViewController {
 
     private let db = Firestore.firestore()
+    let user = Auth.auth().currentUser
     private let alert = Alert()
     private let colors = Colors()
     var petName: String = ""
@@ -23,11 +24,13 @@ class RegVacViewController: UIViewController {
     @IBOutlet weak var vacTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var vetTextField: UITextField!
-    let user = Auth.auth().currentUser
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Registro de Vacunas"
+        vacTextField.delegate = self
+        vetTextField.delegate = self
         textFieldsConfigure()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewAnimalViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -81,7 +84,6 @@ class RegVacViewController: UIViewController {
     
     
     @IBAction func deleteButtonAction(_ sender: UIButton) {
-        print("borrando")
         view.endEditing(true)
         clean()
     }
@@ -125,4 +127,14 @@ class RegVacViewController: UIViewController {
 
            print(date)
        }
+}
+
+
+//MARK: TextFieldDelegate
+extension RegVacViewController: UITextFieldDelegate{
+       func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+              self.view.endEditing(true)
+              return false
+        }
+    
 }

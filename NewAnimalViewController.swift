@@ -37,12 +37,12 @@ class NewAnimalViewController: UIViewController {
         super.viewDidLoad()
         self.speciePicker.dataSource = self
         self.speciePicker.delegate = self
-        self.nameTextField.delegate = self
-        self.raceTextField.delegate = self
-        self.yearTextField.delegate = self
-        self.weightTextField.delegate = self
-        self.medTextField.delegate = self
-        self.foodTextField.delegate = self
+        nameTextField.delegate = self
+        raceTextField.delegate = self
+        yearTextField.delegate = self
+        weightTextField.delegate = self
+        medTextField.delegate = self
+        foodTextField.delegate = self
         
         title = "Registro nueva mascota"
         textFieldsConfigure()
@@ -205,9 +205,10 @@ extension NewAnimalViewController: UIPickerViewDelegate, UIPickerViewDataSource{
 
 //MARK: TextFieldDelegate
 extension NewAnimalViewController: UITextFieldDelegate{
-     //cuando pulsamos la tecla return
-    private func textFieldShouldReturn(textField: UITextField) -> Bool {
-           textField.resignFirstResponder()
-           return true
-       }
+    //cuando pulsamos la tecla return el teclado desaparece
+       func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+              self.view.endEditing(true)
+              return false
+        }
+    
 }

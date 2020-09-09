@@ -10,6 +10,7 @@ import UIKit
 
 class PetFileViewController: UIViewController {
     
+    @IBOutlet weak var walkButton: UIButton!
     @IBOutlet weak var specieImage: UIImageView!
     @IBOutlet weak var imagePet: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -35,7 +36,7 @@ class PetFileViewController: UIViewController {
         let image : UIImage = UIImage(named: myPet[0].specie)!
         specieImage.image = image
         imagePet.image = image
-        
+        checkWalkButton()
     }
 
     @IBAction func walkButtonAction(_ sender: UIButton) {
@@ -56,6 +57,13 @@ class PetFileViewController: UIViewController {
     
     @IBAction func vetButtonAction(_ sender: Any) {
         print("veterinario")
-        //navigationController?.pushViewController(RegVetViewController(), animated: true)
+        navigationController?.pushViewController(RegVetViewController(), animated: true)
+    }
+    
+    func checkWalkButton(){
+        let specie = myPet[0].specie
+        if specie != "Canina"  {
+            walkButton.isEnabled = false
+        }
     }
 }

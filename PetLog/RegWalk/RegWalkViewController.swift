@@ -29,11 +29,13 @@ class RegWalkViewController: UIViewController {
         super.viewDidLoad()
 
        title = "Registro paseo"
+       distanceTextField.delegate = self
+       placeTextField.delegate = self
+        
        textFieldsConfigure()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewAnimalViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        print(petID)
-        print(petName)
+
         //solo se permite seleccionar hasta la fecha actual
         datePicker.maximumDate = Calendar.current.date(byAdding: .year, value: 0, to: Date())
     }
@@ -139,4 +141,14 @@ class RegWalkViewController: UIViewController {
 
            print(hour)
        }
+}
+
+
+//MARK: TextFieldDelegate
+extension RegWalkViewController: UITextFieldDelegate{
+       func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+              self.view.endEditing(true)
+              return false
+        }
+    
 }

@@ -7,11 +7,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegVacViewController" customModule="PetLog" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegVetViewController" customModule="PetLog" customModuleProvider="target">
             <connections>
-                <outlet property="datePicker" destination="KXG-Ea-0TY" id="V3a-Kk-lNT"/>
-                <outlet property="vacTextField" destination="nrU-Vb-M3G" id="Fbh-J7-msf"/>
-                <outlet property="vetTextField" destination="ARJ-wY-93T" id="MBm-qo-JfN"/>
+                <outlet property="datePicker" destination="8dQ-D4-N4W" id="pRI-Mb-9y1"/>
+                <outlet property="reasonTextField" destination="TjD-Kt-RuX" id="Nzx-HD-Pd8"/>
+                <outlet property="vetTextField" destination="WY4-P9-V2f" id="dDw-WL-AKH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,62 +20,62 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="35" id="yZF-sa-0dM">
-                    <rect key="frame" x="16" y="123" width="382" height="706"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="35" id="Gde-fo-Gzz">
+                    <rect key="frame" x="16" y="95" width="382" height="706"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icono_vacuna" id="MlV-b8-eF5">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icono_veterinario" id="n6V-Fs-p1P">
                             <rect key="frame" x="0.0" y="0.0" width="382" height="57.5"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vacuna" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bck-M0-TiB">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veterinario" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKx-FJ-ipf">
                             <rect key="frame" x="0.0" y="92.5" width="382" height="57.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Nombre de la vacuna" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nrU-Vb-M3G">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Nombre del veterinario o la clinica" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WY4-P9-V2f">
                             <rect key="frame" x="0.0" y="185" width="382" height="57.5"/>
                             <constraints>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="JPf-zB-xae"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="npU-vz-djj"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fecha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRT-7X-POk">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Motivo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBQ-4b-aZj">
                             <rect key="frame" x="0.0" y="277.5" width="382" height="57.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="KXG-Ea-0TY">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Motivo de la visita" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TjD-Kt-RuX">
                             <rect key="frame" x="0.0" y="370" width="382" height="57.5"/>
-                            <date key="minimumDate" timeIntervalSinceReferenceDate="599526000">
-                                <!--2019-12-31 23:00:00 +0000-->
-                            </date>
-                            <locale key="locale" localeIdentifier="es"/>
-                            <connections>
-                                <action selector="datePickerChangedWithSender:" destination="-1" eventType="valueChanged" id="sxe-p5-t3H"/>
-                            </connections>
-                        </datePicker>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veterinario" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOU-MX-jQd">
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="Lph-SI-9Fq"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fecha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbj-nb-7Pw">
                             <rect key="frame" x="0.0" y="462.5" width="382" height="57.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Nombre del veterinario o la clinica" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ARJ-wY-93T">
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="8dQ-D4-N4W">
                             <rect key="frame" x="0.0" y="555" width="382" height="57.5"/>
-                            <constraints>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="knO-zy-Nh8"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="z4j-aa-pmT">
+                            <date key="minimumDate" timeIntervalSinceReferenceDate="599526000">
+                                <!--2019-12-31 23:00:00 +0000-->
+                            </date>
+                            <locale key="locale" localeIdentifier="es"/>
+                            <connections>
+                                <action selector="datePickerChangedWithSender:" destination="-1" eventType="valueChanged" id="7Ic-BH-qrI"/>
+                            </connections>
+                        </datePicker>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="KuE-0b-ddA">
                             <rect key="frame" x="0.0" y="648.5" width="382" height="57.5"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EzI-4G-HtH">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4Q-Se-5sI">
                                     <rect key="frame" x="0.0" y="0.0" width="119.5" height="57.5"/>
                                     <color key="backgroundColor" red="0.49019607840000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="22"/>
@@ -83,10 +83,10 @@
                                         <color key="titleColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </state>
                                     <connections>
-                                        <action selector="saveButtonAction:" destination="-1" eventType="touchUpInside" id="d1O-GW-nko"/>
+                                        <action selector="saveButtonAction:" destination="-1" eventType="touchUpInside" id="qpl-Ms-8Lr"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDy-xM-Edy">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIF-dn-Vwh">
                                     <rect key="frame" x="131.5" y="0.0" width="119" height="57.5"/>
                                     <color key="backgroundColor" red="0.49019607840000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="22"/>
@@ -94,10 +94,10 @@
                                         <color key="titleColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </state>
                                     <connections>
-                                        <action selector="deleteButtonAction:" destination="-1" eventType="touchUpInside" id="D5z-eR-xYy"/>
+                                        <action selector="deleteButtonAction:" destination="-1" eventType="touchUpInside" id="hAT-ZD-Uw1"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cV1-AL-hqa">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSS-H2-Dje">
                                     <rect key="frame" x="262.5" y="0.0" width="119.5" height="57.5"/>
                                     <color key="backgroundColor" red="0.49019607840000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="22"/>
@@ -105,21 +105,21 @@
                                         <color key="titleColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </state>
                                     <connections>
-                                        <action selector="listButtonAction:" destination="-1" eventType="touchUpInside" id="Kuf-ko-Gie"/>
+                                        <action selector="listButtonAction:" destination="-1" eventType="touchUpInside" id="EXh-C4-dR4"/>
                                     </connections>
                                 </button>
                             </subviews>
                         </stackView>
                     </subviews>
-                    <viewLayoutGuide key="safeArea" id="bHn-4W-mHg"/>
+                    <viewLayoutGuide key="safeArea" id="2eB-Ng-Wb6"/>
                 </stackView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="137.68115942028987" y="99.776785714285708"/>
+            <point key="canvasLocation" x="139" y="100"/>
         </view>
     </objects>
     <resources>
-        <image name="icono_vacuna" width="256" height="256"/>
+        <image name="icono_veterinario" width="256" height="256"/>
     </resources>
 </document>
