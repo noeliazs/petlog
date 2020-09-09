@@ -50,20 +50,42 @@ class RegVetViewController: UIViewController {
            
        }
        
-       @objc func dismissKeyboard() {
+    @objc func dismissKeyboard() {
              view.endEditing(true)
-        }
+    }
 
 
     @IBAction func saveButtonAction(_ sender: UIButton) {
+        view.endEditing(true)
+        if let user = user, let email = user.email, let reason = reasonTextField.text, let vet = vetTextField.text{
+            if reason != "" && vet != "" && date != ""{
+                db.collection(COLLECTIONVETS).document(petName+"-"+vet+"-"+date).setData([
+                    "propietario": email,
+                    "nombre": petName,
+                    "razon": reason,
+                    "veterinario": vet,
+                    "fecha": date
+                ])
+                print("guardando visita veterinaria")
+                clean()
+                alert.viewSimpleAlert(view: self,title:"Visita al veterinario añadida",message:"Datos guardados")
+            }
+            else{
+                alert.viewSimpleAlert(view: self,title:"Error",message:"Rellena todos los campos correctamente")
+            }
+        }
+        else{
+             alert.viewSimpleAlert(view: self,title:"Error",message:"Rellena todos los campos correctamente")
+        }
+        
     }
     
     
     @IBAction func listButtonAction(_ sender: UIButton) {
         print("cambio de vista listado de todas las vacunas")
-        //let vetListViewController = VetListViewController()
-        //navigationController?.pushViewController(vetListViewController, animated: true)
-        //vetListViewController.petName = petName
+        let vetListViewController = VetListViewController()
+        navigationController?.pushViewController(vetListViewController, animated: true)
+        vetListViewController.petName = petName
     }
     
     @IBAction func deleteButtonAction(_ sender: UIButton) {

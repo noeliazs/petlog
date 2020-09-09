@@ -26,7 +26,6 @@ class VacListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //que con la flecha back volvamos al inicio
         title = "Lista de vacunas"
         tableView.register(UINib(nibName: "PetVacCell",bundle:nil), forCellReuseIdentifier: "ReusableCell")
         tableView.dataSource=self
