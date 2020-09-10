@@ -29,7 +29,7 @@ class VetListViewController: UIViewController {
         tableView.register(UINib(nibName: "PetVetCell",bundle:nil), forCellReuseIdentifier: "ReusableCell")
         tableView.dataSource=self
         tableView.delegate=self
-        tableView.rowHeight = 90
+        tableView.rowHeight = 120
         if petName == ""{
             AllVetsVisits()
         }

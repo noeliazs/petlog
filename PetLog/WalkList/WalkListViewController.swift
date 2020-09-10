@@ -18,6 +18,7 @@ class WalkListViewController: UIViewController {
     var primeraVez = true
      
     private let db = Firestore.firestore()
+    private let fonts = Fonts()
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var id: String = ""
@@ -30,7 +31,6 @@ class WalkListViewController: UIViewController {
         tableView.register(UINib(nibName: "PetWalkCell",bundle:nil), forCellReuseIdentifier: "ReusableCell")
         tableView.dataSource=self
         tableView.delegate=self
-        tableView.rowHeight = 60
          db.collection(COLECTIONWALKS).whereField("id", isEqualTo: id).getDocuments() { (querySnapshot, err) in
                  if let err = err {
                     print("Error extrayendo los documentos \(err)")
@@ -88,11 +88,15 @@ extension WalkListViewController: UITableViewDataSource{
         cell.hourLabel.text = hora
         cell.placeLabel.text = lugar
         cell.selectionStyle = .none
-        cell.placeLabel.numberOfLines = 1
-        cell.placeLabel.minimumScaleFactor = 0.5
-        cell.placeLabel.adjustsFontSizeToFitWidth = true
-        cell.placeLabel.lineBreakMode = .byWordWrapping
+        cell.placeLabel.numberOfLines = 0
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+       
+        let lugar = petWalksArray[indexPath.row].place
+     
+        return CGFloat(25) + lugar.heightWithConstrainedWidth(width: tableView.frame.width, font: fonts.cellsTablesFont)
     }
 
     
@@ -114,5 +118,16 @@ extension WalkListViewController: UITableViewDelegate{
     }
 }
  
+
+extension String {
+     func heightWithConstrainedWidth(width: CGFloat, font: UIFont) -> CGFloat {
+     let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+     let boundingBox = self.boundingRect(with: constraintRect, options: [.usesFontLeading, .usesLineFragmentOrigin], attributes: [NSAttributedString.Key.font: font], context: nil)
+     
+     return boundingBox.height + 30
+     }
+}
+
+
 
 

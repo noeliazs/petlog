@@ -30,7 +30,7 @@ class VacListViewController: UIViewController {
         tableView.register(UINib(nibName: "PetVacCell",bundle:nil), forCellReuseIdentifier: "ReusableCell")
         tableView.dataSource=self
         tableView.delegate=self
-        tableView.rowHeight = 90
+        tableView.rowHeight = 100
         //Si no tenemos un filtro recuperaremos todas las vacunas
         if petName == ""{
             AllVaccines()

@@ -53,6 +53,7 @@
                         </label>
                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="UEs-FQ-jl3">
                             <rect key="frame" x="0.0" y="308" width="382" height="49"/>
+                            <locale key="locale" localeIdentifier="es"/>
                             <connections>
                                 <action selector="hourPickerChangedWithSender:" destination="-1" eventType="valueChanged" id="EYs-3S-mLk"/>
                             </connections>

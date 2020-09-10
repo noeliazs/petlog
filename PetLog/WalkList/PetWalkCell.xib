@@ -9,35 +9,50 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="PetWalkCell" customModule="PetLog" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="406" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="KGk-i7-Jjw" customClass="PetWalkCell" customModule="PetLog" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="406" height="74"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="406" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="406" height="74"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fecha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDU-cx-6vH">
-                        <rect key="frame" x="16" y="12" width="115" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fecha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDU-cx-6vH">
+                        <rect key="frame" x="20" y="-20" width="115" height="109"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="115" id="9Bl-4D-Zrl"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
+                        <color key="textColor" red="0.49019607840000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hora" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHu-6J-7Lj">
+                        <rect key="frame" x="143" y="-20" width="49" height="109"/>
+                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hora" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHu-6J-7Lj">
-                        <rect key="frame" x="145" y="12" width="49" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lugar" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Br-ru-piI">
-                        <rect key="frame" x="214" y="12" width="192" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lugar" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Br-ru-piI">
+                        <rect key="frame" x="214" y="-39" width="172" height="146"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="172" id="oXN-GX-6iC"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="0Br-ru-piI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-50" id="1gE-ix-OzK"/>
+                    <constraint firstItem="mHu-6J-7Lj" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-2.5" id="Cu8-oD-rcr"/>
+                    <constraint firstItem="BDU-cx-6vH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-31" id="Hui-Eu-sbG"/>
+                    <constraint firstItem="BDU-cx-6vH" firstAttribute="baseline" secondItem="mHu-6J-7Lj" secondAttribute="baseline" id="MHf-Fo-BAA"/>
+                    <constraint firstItem="BDU-cx-6vH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="MTb-2l-KHK"/>
+                    <constraint firstItem="mHu-6J-7Lj" firstAttribute="leading" secondItem="BDU-cx-6vH" secondAttribute="trailing" constant="8" id="g2e-0V-CDB"/>
+                    <constraint firstItem="0Br-ru-piI" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-3" id="g5u-YL-Wzl"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="0Br-ru-piI" secondAttribute="trailing" id="m6J-0l-vgy"/>
+                    <constraint firstItem="0Br-ru-piI" firstAttribute="leading" secondItem="mHu-6J-7Lj" secondAttribute="trailing" constant="22" id="pQU-cW-hXM"/>
+                    <constraint firstItem="BDU-cx-6vH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-2.5" id="rDG-Fo-2Ku"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
@@ -45,7 +60,7 @@
                 <outlet property="hourLabel" destination="mHu-6J-7Lj" id="Dna-DI-Eu8"/>
                 <outlet property="placeLabel" destination="0Br-ru-piI" id="FEx-Oq-1Tb"/>
             </connections>
-            <point key="canvasLocation" x="200.00000000000003" y="103.79464285714285"/>
+            <point key="canvasLocation" x="200.00000000000003" y="113.83928571428571"/>
         </tableViewCell>
     </objects>
 </document>
