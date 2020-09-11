@@ -14,7 +14,7 @@ class VacListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var printButton: UIButton!
     @IBOutlet weak var HomeButton: UIButton!
-    
+    private let fonts = Fonts()
     private let alert = Alert()
     var petName: String = ""
     private var petVacArray: [PetVaccine] = []
@@ -97,7 +97,7 @@ class VacListViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.default, handler: {
                (action : UIAlertAction!) -> Void in })
         alertController.addTextField { (textField : UITextField!) -> Void in
-               textField.placeholder = "Nombre"
+               textField.placeholder = "Nombre, comience con mayúsculas"
            }
         
         let saveAction = UIAlertAction(title: "Filtrar", style: UIAlertAction.Style.default, handler: { alert -> Void in
@@ -199,6 +199,13 @@ extension VacListViewController: UITableViewDelegate{
         }
         
        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+       
+        let vacuna = petVacArray[indexPath.row].vaccine
+     
+        return CGFloat(50) + vacuna.heightWithConstrainedWidth(width: tableView.frame.width, font: fonts.cellsTablesFont) 
     }
 }
 

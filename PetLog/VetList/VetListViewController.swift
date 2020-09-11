@@ -13,6 +13,7 @@ import FirebaseFirestore
 class VetListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    private let fonts = Fonts()
     private let alert = Alert()
     var petName: String = ""
     private var petVetArray: [PetVetVisit] = []
@@ -90,7 +91,7 @@ class VetListViewController: UIViewController {
           let cancelAction = UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.default, handler: {
                  (action : UIAlertAction!) -> Void in })
           alertController.addTextField { (textField : UITextField!) -> Void in
-                 textField.placeholder = "Nombre"
+                 textField.placeholder = "Nombre, comience con mayúsculas"
              }
           
           let saveAction = UIAlertAction(title: "Filtrar", style: UIAlertAction.Style.default, handler: { alert -> Void in
@@ -165,6 +166,14 @@ extension VetListViewController: UITableViewDataSource{
 
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+       
+        let razon = petVetArray[indexPath.row].reason
+
+     
+        return CGFloat(60) + razon.heightWithConstrainedWidth(width: tableView.frame.width, font: fonts.cellsTablesFont)
     }
 
     
