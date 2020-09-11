@@ -8,7 +8,7 @@
 
 import Foundation
 
-class NetworkManager: ObservableObject {
+class NetworkManager {
     
     var posts = [Post]()
     

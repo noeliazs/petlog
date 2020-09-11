@@ -14,6 +14,7 @@ class VacListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var printButton: UIButton!
     @IBOutlet weak var HomeButton: UIButton!
+    
     private let fonts = Fonts()
     private let alert = Alert()
     var petName: String = ""
@@ -237,7 +238,7 @@ extension UITableView {
         
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let docDirectoryPath = paths[0]
-        let pdfPath = docDirectoryPath.appendingPathComponent("tablePdf.pdf")
+        let pdfPath = docDirectoryPath.appendingPathComponent("Listado.pdf")
         if data.write(to: pdfPath, atomically: true) {
             return pdfPath.path
         } else {
