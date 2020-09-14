@@ -11,4 +11,7 @@ import UIKit
 
 class Fonts{
      let cellsTablesFont = UIFont(name: "Helvetica", size: 18)!
+     let cellTablesBoldFont = UIFont(name: "Helvetica-Bold",size: 18)!
+     let cellsTablesPetsFont = UIFont(name: "Helvetica-Bold", size: 20)!
+  
 }

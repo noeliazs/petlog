@@ -9,6 +9,8 @@
 import UIKit
 import FirebaseFirestore
 import Firebase
+import SwipeCellKit
+import CoreGraphics
 
 class PetsViewController: UIViewController{
     
@@ -17,11 +19,15 @@ class PetsViewController: UIViewController{
     var petsArray: [Pet] = []
     private let db = Firestore.firestore()
     let COLECTIONANIMALS = "Animales"
+    let colors = Colors()
+    let fonts = Fonts()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         title = "Mis mascotas"
+        //navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: colors.brownColor]
+        
+        
         let user = Auth.auth().currentUser
         let email = user!.email!
         tableView.register(UINib(nibName: "PetCell",bundle:nil), forCellReuseIdentifier: "ReusableCell")
@@ -44,7 +50,8 @@ class PetsViewController: UIViewController{
                             let medicacion = datos ["medicacion"] as? String ?? "Medicación"
                             let peso = datos ["peso"] as? Double ?? 0.0
                             let alimentacion = datos["alimentacion"] as? String ?? "Alimentacion"
-                            let mascota = Pet(id: id,name: nombre, specie: especie, race: raza, year: nacimiento, weight: peso, med: medicacion, food: alimentacion)
+                            let propietario = datos["propietario"] as? String ?? "Propietario"
+                            let mascota = Pet(id: id,name: nombre, specie: especie, race: raza, year: nacimiento, weight: peso, med: medicacion, food: alimentacion,owner:propietario)
                             self.petsArray.append(mascota)
                           }
                         self.tableView.reloadData()
@@ -58,7 +65,7 @@ class PetsViewController: UIViewController{
 
 
 //MARK: - TableViewDataSource
-extension PetsViewController: UITableViewDataSource{
+extension PetsViewController: UITableViewDataSource, SwipeTableViewCellDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return petsArray.count
@@ -69,21 +76,95 @@ extension PetsViewController: UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! PetCell
+       let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath)as! SwipeTableViewCell
+        cell.delegate = self
  
         let nombre = petsArray[indexPath.row].name
         let specie = petsArray[indexPath.row].specie
         
-        cell.nameLabel.text = nombre
+        cell.textLabel!.text = nombre
+        cell.textLabel!.font = fonts.cellsTablesPetsFont
         cell.selectionStyle = .none
       
-        let image : UIImage = UIImage(named: specie)!
-        cell.icon.image = image
+        let image : UIImage = imageWithImage(image: UIImage(named: specie)!, scaledToSize: CGSize(width: 40, height: 40))
+        cell.imageView!.image = image
+      
+        if indexPath.row % 2 != 0{
+            cell.backgroundColor = colors.lightPinkColor
+            cell.imageView?.tintColor = colors.lightBrownColor
+            cell.textLabel!.textColor = colors.lightBrownColor
+        }
+        else{
+            cell.backgroundColor = colors.lightBrownColor
+            cell.imageView?.tintColor = colors.lightPinkColor
+            cell.textLabel!.textColor = colors.lightPinkColor
+        }
+       
+        
         return cell
     }
-
     
+    //cuando deslizamos una celda
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            
+            self.updateModel(at: indexPath)
+             
+            
+        }
+       
+
+        deleteAction.image = UIImage(named: "delete")
+
+        return [deleteAction]
+    }
+    
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        var options = SwipeOptions()
+        options.expansionStyle = .destructive
+        return options
+    }
+    
+    func updateModel(at indexPath: IndexPath) {
+         let mascota = petsArray[indexPath.row]
+         let id = mascota.id
+       
+        db.collection(COLECTIONANIMALS).document(id).delete() { err in
+            if let err = err {
+                print("Error de borrado \(err)")
+            } else {
+                print("Animal eliminado")
+                self.tableView.reloadData()
+            }
+        }
+        petsArray.remove(at: indexPath.row)
+        
+        //self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        
+        
+        
+    }
+    
+      
+    
+    
+    func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
+        return CGRect(x: x, y: y, width: width, height: height)
+    }
+    
+    func imageWithImage(image:UIImage,scaledToSize newSize:CGSize)->UIImage{
+
+      UIGraphicsBeginImageContext( newSize )
+        image.draw(in: CGRect(x: 0,y: 0,width: newSize.width,height: newSize.height))
+      let newImage = UIGraphicsGetImageFromCurrentImageContext()
+      UIGraphicsEndImageContext()
+        return newImage!.withRenderingMode(.alwaysTemplate)
+    }
 }
+
 //MARK: - UITableViewDelegate
 
 extension PetsViewController: UITableViewDelegate{
@@ -99,4 +180,5 @@ extension PetsViewController: UITableViewDelegate{
     }
 }
  
+
 

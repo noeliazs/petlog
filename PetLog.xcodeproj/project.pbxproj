@@ -189,10 +189,10 @@
 		7C2CD05B24FD3F0000BBD1E4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				7C1BBAB724F5695D002308A9 /* Alert.swift */,
-				7C1BBAB624F5695D002308A9 /* UIImage + Gif.swift */,
 				7C2CD06024FD4C4800BBD1E4 /* Colors.swift */,
 				7C0F13C7250A503700371C06 /* Fonts.swift */,
+				7C1BBAB724F5695D002308A9 /* Alert.swift */,
+				7C1BBAB624F5695D002308A9 /* UIImage + Gif.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";

@@ -37,6 +37,11 @@ class PetFileViewController: UIViewController {
         specieImage.image = image
         imagePet.image = image
         checkWalkButton()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Editar", style: .done, target: self, action: #selector(edit))
+    }
+    
+    @objc func edit(){
+        print("editar")
     }
 
     @IBAction func walkButtonAction(_ sender: UIButton) {

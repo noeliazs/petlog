@@ -17,4 +17,5 @@ struct Pet{
     var weight: Double
     var med: String
     var food: String
+    var owner: String
 }

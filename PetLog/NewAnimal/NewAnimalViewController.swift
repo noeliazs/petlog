@@ -93,17 +93,7 @@ class NewAnimalViewController: UIViewController {
         //quitar teclado
         view.endEditing(true)
         clean()
-        
-        db.collection(COLECTIONANIMALS).whereField("propietario", isEqualTo: email).whereField("nombre", isEqualTo: "Misi")
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error extrayendo los documentos \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        print("\(document.documentID) => \(document.data())")
-                    }
-                }
-        }
+    
 
     }
     @IBAction func saveButtonAction(_ sender: UIButton) {
