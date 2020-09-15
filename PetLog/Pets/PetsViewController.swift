@@ -25,9 +25,7 @@ class PetsViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Mis mascotas"
-        //navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: colors.brownColor]
-        
-        
+
         let user = Auth.auth().currentUser
         let email = user!.email!
         tableView.register(UINib(nibName: "PetCell",bundle:nil), forCellReuseIdentifier: "ReusableCell")
@@ -69,11 +67,9 @@ extension PetsViewController: UITableViewDataSource, SwipeTableViewCellDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return petsArray.count
-      
     }
     
     
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
        let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath)as! SwipeTableViewCell
@@ -109,15 +105,9 @@ extension PetsViewController: UITableViewDataSource, SwipeTableViewCellDelegate{
         guard orientation == .right else { return nil }
 
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
-            
             self.updateModel(at: indexPath)
-             
-            
         }
-       
-
         deleteAction.image = UIImage(named: "delete")
-
         return [deleteAction]
     }
     
@@ -141,14 +131,8 @@ extension PetsViewController: UITableViewDataSource, SwipeTableViewCellDelegate{
             }
         }
         petsArray.remove(at: indexPath.row)
-        
-        //self.tableView.deleteRows(at: [indexPath], with: .automatic)
-        
-        
-        
     }
     
-      
     
     
     func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {

@@ -42,6 +42,9 @@ class PetFileViewController: UIViewController {
     
     @objc func edit(){
         print("editar")
+        let updateAnimalViewController = UpdateAnimalViewController()
+        navigationController?.pushViewController(updateAnimalViewController, animated: true)
+        updateAnimalViewController.id = myPet[0].id
     }
 
     @IBAction func walkButtonAction(_ sender: UIButton) {
