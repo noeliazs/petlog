@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import Firebase
 
-class PetFileViewController: UIViewController {
+class PetFileViewController: UIViewController{
     
     @IBOutlet weak var walkButton: UIButton!
     @IBOutlet weak var specieImage: UIImageView!
@@ -21,22 +23,19 @@ class PetFileViewController: UIViewController {
     @IBOutlet weak var foodLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
     
-    var id: String = ""
-    var myPet: [Pet] = []
+    var petManager = PetManager()
+    var arrayPet=[Pet]()
+    var petID: String = ""
+    let COLECTIONANIMALS = "Animales"
+    private let db = Firestore.firestore()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Ficha"
-        nameLabel.text = "Nombre: \(myPet[0].name)"
-        specieLabel.text = "Especie: \(myPet[0].specie)"
-        raceLabel.text = "Raza: \(myPet[0].race)"
-        yearLabel.text = "Año de nacimiento:  \(String(myPet[0].year))"
-        medLabel.text = "Medicación especial: \(myPet[0].med)"
-        foodLabel.text = "Alimentación especial: \(myPet[0].food)"
-        weightLabel.text = "Peso:  \(String(myPet[0].weight)) Kg"
-        let image : UIImage = UIImage(named: myPet[0].specie)!
-        specieImage.image = image
-        imagePet.image = image
-        checkWalkButton()
+        petManager.delegate = self
+        petManager.petID = petID
+        petManager.loadPet()
+        //Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(completeLabels), userInfo: nil, repeats: false)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Editar", style: .done, target: self, action: #selector(edit))
     }
     
@@ -44,36 +43,76 @@ class PetFileViewController: UIViewController {
         print("editar")
         let updateAnimalViewController = UpdateAnimalViewController()
         navigationController?.pushViewController(updateAnimalViewController, animated: true)
-        updateAnimalViewController.id = myPet[0].id
+        updateAnimalViewController.id = petID
     }
+    
+    
+    
+    func completeLabels(){
+        let mascota = arrayPet[0]
+        nameLabel.text = "Nombre: \(mascota.name)"
+        specieLabel.text = "Especie: \(mascota.specie)"
+        raceLabel.text = "Raza: \(mascota.race)"
+        yearLabel.text = "Año de nacimiento:  \(String(mascota.year))"
+        medLabel.text = "Medicación especial: \(mascota.med)"
+        foodLabel.text = "Alimentación especial: \(mascota.food)"
+        weightLabel.text = "Peso:  \(String(mascota.weight)) Kg"
+        let image : UIImage = UIImage(named: mascota.specie)!
+        specieImage.image = image
+        imagePet.image = image
+    }
+    
+    
 
     @IBAction func walkButtonAction(_ sender: UIButton) {
         print("Paseo")
+        let mascota = arrayPet[0]
         let regWalkViewController = RegWalkViewController()
         navigationController?.pushViewController(regWalkViewController, animated: true)
-        regWalkViewController.petID = myPet[0].id
-        regWalkViewController.petName = myPet[0].name
+        regWalkViewController.petID = mascota.id
+        regWalkViewController.petName = mascota.name
         
     }
     
     @IBAction func vacButtonAction(_ sender: Any) {
         print("vacuna")
+        let mascota = arrayPet[0]
         let regVacViewController = RegVacViewController()
         navigationController?.pushViewController(regVacViewController, animated: true)
-        regVacViewController.petName = myPet[0].name
+        regVacViewController.petName = mascota.name
     }
     
     @IBAction func vetButtonAction(_ sender: Any) {
         print("veterinario")
+        let mascota = arrayPet[0]
         let regVetViewController = RegVetViewController()
         navigationController?.pushViewController(regVetViewController, animated: true)
-        regVetViewController.petName = myPet[0].name
+        regVetViewController.petName = mascota.name
     }
     
     func checkWalkButton(){
-        let specie = myPet[0].specie
+        let mascota = arrayPet[0]
+        let specie = mascota.specie
         if specie != "Canina"  {
             walkButton.isEnabled = false
         }
     }
+}
+
+
+//MARK: - PetFileDelegate
+extension PetFileViewController:PetFileDelegate{
+
+    func updatePets(_ petManager: PetManager, pets: [Pet]){
+        DispatchQueue.main.async{
+            self.arrayPet =  pets
+            self.completeLabels()
+            self.checkWalkButton()
+        }
+       
+    }
+    
+    func didFailWithError(error: Error) {
+         print(error)
+     }
 }

@@ -158,11 +158,13 @@ extension PetsViewController: UITableViewDelegate{
         let pet = petsArray[indexPath.row]
         array.append(pet)
         navigationController?.pushViewController(petFileViewController, animated: true)
-            petFileViewController.myPet = array
+        petFileViewController.petID = array[0].id
 
        
     }
 }
  
+
+
 
 

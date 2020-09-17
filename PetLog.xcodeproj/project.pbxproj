@@ -64,6 +64,8 @@
 		7CA0683C2508EB3E008B80CE /* PetVetVisit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA0683B2508EB3E008B80CE /* PetVetVisit.swift */; };
 		7CA0683F2508F12C008B80CE /* PetVetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA0683D2508F12C008B80CE /* PetVetCell.swift */; };
 		7CA068402508F12C008B80CE /* PetVetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA0683E2508F12C008B80CE /* PetVetCell.xib */; };
+		7CDB5E28251382A7006334F7 /* PetFileDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB5E27251382A7006334F7 /* PetFileDelegate.swift */; };
+		7CDB5E2A2513844D006334F7 /* PetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB5E292513844D006334F7 /* PetManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +128,8 @@
 		7CA0683B2508EB3E008B80CE /* PetVetVisit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetVetVisit.swift; sourceTree = "<group>"; };
 		7CA0683D2508F12C008B80CE /* PetVetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetVetCell.swift; sourceTree = "<group>"; };
 		7CA0683E2508F12C008B80CE /* PetVetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PetVetCell.xib; sourceTree = "<group>"; };
+		7CDB5E27251382A7006334F7 /* PetFileDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetFileDelegate.swift; sourceTree = "<group>"; };
+		7CDB5E292513844D006334F7 /* PetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetManager.swift; sourceTree = "<group>"; };
 		92287AAEC3AF2411F9E6CFEB /* Pods-PetLog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetLog.release.xcconfig"; path = "Target Support Files/Pods-PetLog/Pods-PetLog.release.xcconfig"; sourceTree = "<group>"; };
 		EA47B4B7D7BA47E5EB998C1B /* Pods_PetLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -284,6 +288,8 @@
 			isa = PBXGroup;
 			children = (
 				7C534CF725015BF40034CCA5 /* PetFileViewController.swift */,
+				7CDB5E292513844D006334F7 /* PetManager.swift */,
+				7CDB5E27251382A7006334F7 /* PetFileDelegate.swift */,
 				7C534CF825015BF40034CCA5 /* PetFileViewController.xib */,
 			);
 			path = PetFile;
@@ -553,6 +559,7 @@
 				7C3446C524F3D00F00F91F39 /* AuthViewController.swift in Sources */,
 				7C534CF62501559B0034CCA5 /* Pet.swift in Sources */,
 				7C2CD06124FD4C4800BBD1E4 /* Colors.swift in Sources */,
+				7CDB5E28251382A7006334F7 /* PetFileDelegate.swift in Sources */,
 				7C2CD04E24F67EA400BBD1E4 /* NewsCell.swift in Sources */,
 				7CA0682F25069A69008B80CE /* PetVacCell.swift in Sources */,
 				7CA068382508EA3D008B80CE /* VetListViewController.swift in Sources */,
@@ -564,6 +571,7 @@
 				7C0F13C8250A503700371C06 /* Fonts.swift in Sources */,
 				7CA0683F2508F12C008B80CE /* PetVetCell.swift in Sources */,
 				7C7035C7250A276F005C27A2 /* NetworkManager.swift in Sources */,
+				7CDB5E2A2513844D006334F7 /* PetManager.swift in Sources */,
 				7C7035D1250A2C68005C27A2 /* NewAnimalViewController.swift in Sources */,
 				7CA0683C2508EB3E008B80CE /* PetVetVisit.swift in Sources */,
 				7C3446CB24F3D00F00F91F39 /* PetLog.xcdatamodeld in Sources */,
@@ -725,6 +733,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q8MN9U88MH;
 				INFOPLIST_FILE = PetLog/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -744,6 +753,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q8MN9U88MH;
 				INFOPLIST_FILE = PetLog/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
