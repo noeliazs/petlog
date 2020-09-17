@@ -16,46 +16,22 @@ class PetsViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     
-    var petsArray: [Pet] = []
+    var petsArray = [Pet]()
     private let db = Firestore.firestore()
     let COLECTIONANIMALS = "Animales"
     let colors = Colors()
     let fonts = Fonts()
+    var petManager = PetManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Mis mascotas"
-
-        let user = Auth.auth().currentUser
-        let email = user!.email!
         tableView.register(UINib(nibName: "PetCell",bundle:nil), forCellReuseIdentifier: "ReusableCell")
         tableView.dataSource=self
         tableView.delegate=self
         tableView.rowHeight = 60
-        
-              db.collection(COLECTIONANIMALS).whereField("propietario", isEqualTo: email)
-                  .getDocuments() { (querySnapshot, err) in
-                      if let err = err {
-                          print("Error extrayendo los documentos \(err)")
-                      } else {
-                          for document in querySnapshot!.documents {
-                            let datos = document.data()
-                            let id = datos["id"] as? String ?? "ID"
-                            let nombre = datos["nombre"] as? String ?? "Nombre"
-                            let especie = datos["especie"] as? String ?? "Especie"
-                            let raza = datos ["raza"] as? String ?? "Raza"
-                            let nacimiento = datos["nacimiento"] as? Int ?? 0000
-                            let medicacion = datos ["medicacion"] as? String ?? "Medicación"
-                            let peso = datos ["peso"] as? Double ?? 0.0
-                            let alimentacion = datos["alimentacion"] as? String ?? "Alimentacion"
-                            let propietario = datos["propietario"] as? String ?? "Propietario"
-                            let mascota = Pet(id: id,name: nombre, specie: especie, race: raza, year: nacimiento, weight: peso, med: medicacion, food: alimentacion,owner:propietario)
-                            self.petsArray.append(mascota)
-                          }
-                        self.tableView.reloadData()
-                      }
-              }
-        
+        petManager.delegate = self
+        petManager.loadPets()
     }
 
 
@@ -165,6 +141,20 @@ extension PetsViewController: UITableViewDelegate{
 }
  
 
+//MARK: - PetFileDelegate
+extension PetsViewController:PetFileDelegate{
 
+    func updatePets(_ petManager: PetManager, pets: [Pet]){
+        DispatchQueue.main.async{
+            self.petsArray =  pets
+            self.tableView.reloadData()
+        }
+       
+    }
+    
+    func didFailWithError(error: Error) {
+         print(error)
+     }
+}
 
 

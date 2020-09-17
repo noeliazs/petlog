@@ -287,8 +287,8 @@
 		7C534CFB25015BF90034CCA5 /* PetFile */ = {
 			isa = PBXGroup;
 			children = (
+				7CDB5E2B2513A5AD006334F7 /* Model */,
 				7C534CF725015BF40034CCA5 /* PetFileViewController.swift */,
-				7CDB5E292513844D006334F7 /* PetManager.swift */,
 				7CDB5E27251382A7006334F7 /* PetFileDelegate.swift */,
 				7C534CF825015BF40034CCA5 /* PetFileViewController.xib */,
 			);
@@ -397,6 +397,14 @@
 				7CA0683E2508F12C008B80CE /* PetVetCell.xib */,
 			);
 			path = VetList;
+			sourceTree = "<group>";
+		};
+		7CDB5E2B2513A5AD006334F7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7CDB5E292513844D006334F7 /* PetManager.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		EFA7FD1FE68DFD541B362FF8 /* Frameworks */ = {

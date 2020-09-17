@@ -35,7 +35,6 @@ class PetFileViewController: UIViewController{
         petManager.delegate = self
         petManager.petID = petID
         petManager.loadPet()
-        //Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(completeLabels), userInfo: nil, repeats: false)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Editar", style: .done, target: self, action: #selector(edit))
     }
     
@@ -62,6 +61,9 @@ class PetFileViewController: UIViewController{
         imagePet.image = image
     }
     
+    public func reloadData(){
+        petManager.loadPet()
+    }
     
 
     @IBAction func walkButtonAction(_ sender: UIButton) {

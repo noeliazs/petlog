@@ -33,6 +33,8 @@ class UpdateAnimalViewController: UIViewController {
         textFieldsConfigure()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewAnimalViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        
+        //cuando le demos al back llamar a reloadData()
     }
     
     func textFieldsConfigure(){
@@ -83,20 +85,76 @@ class UpdateAnimalViewController: UIViewController {
                     clean()
                 }
                 else{
-                alert.viewSimpleAlert(view: self,title:"Error",message:"Rellena todos los campos.")
+                alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa el campo por favor.")
                 }
             }
             else{
-                alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa los campos por favor.")
+                alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa el campo por favor.")
             }
+    
     }
     
     
     @IBAction func saveWeightButtonAction(_ sender: UIButton) {
+        view.endEditing(true)
+        if let weight = Double(weightTextField.text!){
+            if  weight != 0.0{
+                db.collection(COLECTIONANIMALS)
+                .whereField("id", isEqualTo: id)
+                .getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error extrayendo los documentos \(err)")
+                    } else if querySnapshot!.documents.count != 1 {
+                        print("No se encuentra la mascota")
+                    } else {
+                        let document = querySnapshot!.documents.first
+                        document?.reference.updateData([
+                            "peso": weight
+                        ])
+                    }
+                }
+                alert.viewSimpleAlert(view: self,title:"Peso de la mascota modificado.",message:"Datos guardados")
+                clean()
+            }
+            else{
+            alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa el campo por favor.")
+            }
+        }
+        else{
+            alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa el campo por favor.")
+        }
     }
     
     @IBAction func saveMedButtonAction(_ sender: UIButton) {
+        view.endEditing(true)
+        if let med = medTextField.text{
+            if  med != ""{
+                db.collection(COLECTIONANIMALS)
+                .whereField("id", isEqualTo: id)
+                .getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error extrayendo los documentos \(err)")
+                    } else if querySnapshot!.documents.count != 1 {
+                        print("No se encuentra la mascota")
+                    } else {
+                        let document = querySnapshot!.documents.first
+                        document?.reference.updateData([
+                            "medicacion": med
+                        ])
+                    }
+                }
+                alert.viewSimpleAlert(view: self,title:"Medicación de la mascota modificada.",message:"Datos guardados")
+                clean()
+            }
+            else{
+            alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa el campo por favor.")
+            }
+        }
+        else{
+            alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa el campo por favor.")
+        }
     }
+    
     @IBAction func cleanButtonAction(_ sender: UIButton) {
         view.endEditing(true)
         clean()

@@ -110,7 +110,6 @@
                                     </state>
                                     <connections>
                                         <action selector="cleanButtonAction:" destination="-1" eventType="touchUpInside" id="p8K-BR-vGn"/>
-                                        <action selector="saveMedButtonAction:" destination="-1" eventType="touchUpInside" id="D56-mv-ZaT"/>
                                     </connections>
                                 </button>
                             </subviews>
