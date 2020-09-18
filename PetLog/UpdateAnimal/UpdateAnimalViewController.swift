@@ -79,6 +79,7 @@ class UpdateAnimalViewController: UIViewController {
                             document?.reference.updateData([
                                 "alimentacion": food
                             ])
+                            print("guardando")
                         }
                     }
                     alert.viewSimpleAlert(view: self,title:"Alimentación de la mascota modificada",message:"Datos guardados")
@@ -86,10 +87,12 @@ class UpdateAnimalViewController: UIViewController {
                 }
                 else{
                 alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa el campo por favor.")
+                clean()
                 }
             }
             else{
                 alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa el campo por favor.")
+                clean()
             }
     
     }
@@ -118,10 +121,12 @@ class UpdateAnimalViewController: UIViewController {
             }
             else{
             alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa el campo por favor.")
+            clean()
             }
         }
         else{
             alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa el campo por favor.")
+            clean()
         }
     }
     
@@ -148,10 +153,12 @@ class UpdateAnimalViewController: UIViewController {
             }
             else{
             alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa el campo por favor.")
+            clean()
             }
         }
         else{
             alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa el campo por favor.")
+            clean()
         }
     }
     

@@ -28,14 +28,26 @@ class PetFileViewController: UIViewController{
     var petID: String = ""
     let COLECTIONANIMALS = "Animales"
     private let db = Firestore.firestore()
+    let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+    private let colors = Colors()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Ficha"
+        //petManager.delegate = self
+        //petManager.petID = petID
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Editar", style: .done, target: self, action: #selector(edit))
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         petManager.delegate = self
         petManager.petID = petID
         petManager.loadPet()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Editar", style: .done, target: self, action: #selector(edit))
+        print("didappear")
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        
     }
     
     @objc func edit(){
@@ -61,9 +73,6 @@ class PetFileViewController: UIViewController{
         imagePet.image = image
     }
     
-    public func reloadData(){
-        petManager.loadPet()
-    }
     
 
     @IBAction func walkButtonAction(_ sender: UIButton) {
@@ -99,6 +108,26 @@ class PetFileViewController: UIViewController{
             walkButton.isEnabled = false
         }
     }
+    
+    func showActivityIndicatory(uiView: UIView) {
+        actInd.frame = CGRectMake(40.0, 40.0, 150.0, 150.0);
+        actInd.center = uiView.center
+        actInd.hidesWhenStopped = true
+        actInd.style = UIActivityIndicatorView.Style.large
+        actInd.color = .black
+        uiView.addSubview(actInd)
+        actInd.startAnimating()
+    }
+    
+    @objc func stopActivityIndicatory(){
+        actInd.stopAnimating()
+    }
+    
+   
+    
+    func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
+        return CGRect(x: x, y: y, width: width, height: height)
+    }
 }
 
 
@@ -107,7 +136,10 @@ extension PetFileViewController:PetFileDelegate{
 
     func updatePets(_ petManager: PetManager, pets: [Pet]){
         DispatchQueue.main.async{
+            self.showActivityIndicatory(uiView: self.view)
             self.arrayPet =  pets
+            print(self.arrayPet)
+            Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.stopActivityIndicatory), userInfo: nil, repeats: false)
             self.completeLabels()
             self.checkWalkButton()
         }

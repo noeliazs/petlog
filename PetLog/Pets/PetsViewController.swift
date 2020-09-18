@@ -22,6 +22,7 @@ class PetsViewController: UIViewController{
     let colors = Colors()
     let fonts = Fonts()
     var petManager = PetManager()
+    let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,20 @@ class PetsViewController: UIViewController{
         petManager.delegate = self
         petManager.loadPets()
     }
+    
+    func showActivityIndicatory(uiView: UIView) {
+           actInd.frame = CGRectMake(40.0, 40.0, 150.0, 150.0);
+           actInd.center = uiView.center
+           actInd.hidesWhenStopped = true
+           actInd.style = UIActivityIndicatorView.Style.large
+           actInd.color = .black
+           uiView.addSubview(actInd)
+           actInd.startAnimating()
+       }
+       
+       @objc func stopActivityIndicatory(){
+           actInd.stopAnimating()
+       }
 
 
 }
@@ -146,7 +161,10 @@ extension PetsViewController:PetFileDelegate{
 
     func updatePets(_ petManager: PetManager, pets: [Pet]){
         DispatchQueue.main.async{
+            self.showActivityIndicatory(uiView: self.view)
             self.petsArray =  pets
+            
+            Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.stopActivityIndicatory), userInfo: nil, repeats: false)
             self.tableView.reloadData()
         }
        

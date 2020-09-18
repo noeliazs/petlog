@@ -22,6 +22,8 @@ class PetManager {
     
     func loadPet(){
         print(petID)
+        //inicializamos el array para que no haya problemas
+        petArray = []
         db.collection(COLECTIONANIMALS).whereField("id", isEqualTo: petID)
         .getDocuments() { (querySnapshot, err) in
             if let err = err {
