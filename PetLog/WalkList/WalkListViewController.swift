@@ -19,6 +19,8 @@ class WalkListViewController: UIViewController {
      
     private let db = Firestore.firestore()
     private let fonts = Fonts()
+    let walkListManager = WalkListManager()
+    
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var id: String = ""
@@ -27,41 +29,27 @@ class WalkListViewController: UIViewController {
         super.viewDidLoad()
 
         title = "Lista de paseos de \(nombre)"
+        walkListManager.putController(walkListViewController: self)
         
         tableView.register(UINib(nibName: "PetWalkCell",bundle:nil), forCellReuseIdentifier: "ReusableCell")
         tableView.dataSource=self
         tableView.delegate=self
-         db.collection(COLECTIONWALKS).whereField("id", isEqualTo: id).getDocuments() { (querySnapshot, err) in
-                 if let err = err {
-                    print("Error extrayendo los documentos \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        let datos = document.data()
-                        let nombre = datos["nombre"] as? String ?? "Nombre"
-                        let id = datos["id"] as? String ?? "ID"
-                        let distancia = datos["distancia"] as? Double ?? 0.0
-                        let lugar = datos ["lugar"] as? String ?? "Lugar"
-                        let fecha = datos ["fecha"] as? String ?? "Fecha"
-                        let hora = datos["hora"] as? String ?? "Hora"
-                        let paseo = PetWalk(name: nombre,id: id, place: lugar, distance: distancia, date: fecha, hour: hora)
-                        self.petWalksArray.append(paseo)
-                    }
-                        self.tableView.reloadData()
-                }
-            }
+        walkListManager.loadWalks(id: id)
+        
         distanceLabel.text = "Toca un paseo para contar los kms totales"
                
     }
     
     @IBAction func HomeButtonAction(_ sender: UIButton){
            navigationController?.pushViewController(MainViewController(), animated: true)
-       }
+    }
     
+    func reloadTable(){
+          self.tableView.reloadData()
+    }
+  
     
 }
-
-
-    
 
 
 

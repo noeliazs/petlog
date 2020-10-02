@@ -20,6 +20,7 @@ class RegWalkViewController: UIViewController {
     private var date: String = ""
     private var hour: String = ""
     private let COLLECTIONWALKS = "Paseos"
+    let regWalkManager = RegWalkManager()
     
     @IBOutlet weak var placeTextField: UITextField!
     @IBOutlet weak var distanceTextField: UITextField!
@@ -33,6 +34,7 @@ class RegWalkViewController: UIViewController {
        placeTextField.delegate = self
         
        textFieldsConfigure()
+       regWalkManager.putController(regWalkViewController: self)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewAnimalViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
 
@@ -65,25 +67,11 @@ class RegWalkViewController: UIViewController {
     @IBAction func saveButtonAction(_ sender: UIButton) {
         view.endEditing(true)
         if let distance = Double(distanceTextField.text!), let place = placeTextField.text{
-            if distance != 0.0 && place != "" && date != "" && hour != "" && petID != "" && petName != ""{
-                print("guardando")
-                db.collection(COLLECTIONWALKS).document(petName+"-"+date+"-"+hour).setData([
-                    "id": petID,
-                    "nombre": petName,
-                    "fecha": date,
-                    "hora": hour,
-                    "distancia": distance,
-                    "lugar": place
-                ])
-                clean()
-                alert.viewSimpleAlert(view: self,title:"Paseo añadido",message:"Datos guardados")
-            }
-            else{
-                alert.viewSimpleAlert(view: self,title:"Error",message:"Rellena todos los campos correctamente")
-            }
+            let walk = PetWalk(name: petName, id: petID, place: place, distance: distance, date: date, hour: hour)
+            regWalkManager.saveWalk(walk: walk)
         }
         else{
-             alert.viewSimpleAlert(view: self,title:"Error",message:"Rellena todos los campos correctamente")
+             alertBad()
         }
     }
     
@@ -98,6 +86,15 @@ class RegWalkViewController: UIViewController {
         walkListViewController.id = petID
         walkListViewController.nombre = petName
      }
+    
+    func alertBad(){
+        alert.viewSimpleAlert(view: self,title:"Error",message:"Rellena todos los campos correctamente")
+    }
+    func alertGood(){
+        clean()
+        alert.viewSimpleAlert(view: self,title:"Paseo añadido",message:"Datos guardados")
+    }
+    
     
     func clean(){
            distanceTextField.text = ""
