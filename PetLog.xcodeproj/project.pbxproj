@@ -66,7 +66,7 @@
 		7CA068402508F12C008B80CE /* PetVetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA0683E2508F12C008B80CE /* PetVetCell.xib */; };
 		7CA41CDD25272E8D00820F1C /* HomeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA41CDC25272E8D00820F1C /* HomeManager.swift */; };
 		7CA41CE32527466900820F1C /* UpdateAnimalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA41CE22527466900820F1C /* UpdateAnimalManager.swift */; };
-		7CA41CE625274E0E00820F1C /* NewAnimalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA41CE525274E0E00820F1C /* NewAnimalManager.swift */; };
+		7CA41CED25274F2D00820F1C /* NewAnimalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA41CEC25274F2D00820F1C /* NewAnimalManager.swift */; };
 		7CDB5E28251382A7006334F7 /* PetFileDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB5E27251382A7006334F7 /* PetFileDelegate.swift */; };
 		7CDB5E2A2513844D006334F7 /* PetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB5E292513844D006334F7 /* PetManager.swift */; };
 /* End PBXBuildFile section */
@@ -133,7 +133,7 @@
 		7CA0683E2508F12C008B80CE /* PetVetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PetVetCell.xib; sourceTree = "<group>"; };
 		7CA41CDC25272E8D00820F1C /* HomeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeManager.swift; sourceTree = "<group>"; };
 		7CA41CE22527466900820F1C /* UpdateAnimalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAnimalManager.swift; sourceTree = "<group>"; };
-		7CA41CE525274E0E00820F1C /* NewAnimalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAnimalManager.swift; sourceTree = "<group>"; };
+		7CA41CEC25274F2D00820F1C /* NewAnimalManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewAnimalManager.swift; path = PetLog/NewAnimal/Model/NewAnimalManager.swift; sourceTree = SOURCE_ROOT; };
 		7CDB5E27251382A7006334F7 /* PetFileDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetFileDelegate.swift; sourceTree = "<group>"; };
 		7CDB5E292513844D006334F7 /* PetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetManager.swift; sourceTree = "<group>"; };
 		92287AAEC3AF2411F9E6CFEB /* Pods-PetLog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetLog.release.xcconfig"; path = "Target Support Files/Pods-PetLog/Pods-PetLog.release.xcconfig"; sourceTree = "<group>"; };
@@ -225,9 +225,9 @@
 		7C2CD07724FE8B3300BBD1E4 /* NewAnimal */ = {
 			isa = PBXGroup;
 			children = (
+				7CA41CEB25274F0B00820F1C /* Model */,
 				7C7035CF250A2C68005C27A2 /* NewAnimalViewController.swift */,
 				7C7035D0250A2C68005C27A2 /* NewAnimalViewController.xib */,
-				7CA41CE725274E1C00820F1C /* Model */,
 			);
 			name = NewAnimal;
 			path = ..;
@@ -424,10 +424,10 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		7CA41CE725274E1C00820F1C /* Model */ = {
+		7CA41CEB25274F0B00820F1C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7CA41CE525274E0E00820F1C /* NewAnimalManager.swift */,
+				7CA41CEC25274F2D00820F1C /* NewAnimalManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -618,7 +618,7 @@
 				7CA41CE32527466900820F1C /* UpdateAnimalManager.swift in Sources */,
 				7C534CEE250153370034CCA5 /* PetsViewController.swift in Sources */,
 				7CA06823250689CF008B80CE /* RegVacViewController.swift in Sources */,
-				7CA41CE625274E0E00820F1C /* NewAnimalManager.swift in Sources */,
+				7CA41CED25274F2D00820F1C /* NewAnimalManager.swift in Sources */,
 				7CA068182503F83E008B80CE /* WalkListViewController.swift in Sources */,
 				7C3446C324F3D00F00F91F39 /* SceneDelegate.swift in Sources */,
 				7C0F13CD2510E34600371C06 /* UpdateAnimalViewController.swift in Sources */,
