@@ -44,7 +44,6 @@ class PetFileViewController: UIViewController{
         petManager.delegate = self
         petManager.petID = petID
         petManager.loadPet()
-        print("didappear")
     }
     override func viewWillAppear(_ animated: Bool) {
         
@@ -138,7 +137,6 @@ extension PetFileViewController:PetFileDelegate{
         DispatchQueue.main.async{
             self.showActivityIndicatory(uiView: self.view)
             self.arrayPet =  pets
-            print(self.arrayPet)
             Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.stopActivityIndicatory), userInfo: nil, repeats: false)
             self.completeLabels()
             self.checkWalkButton()

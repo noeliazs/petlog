@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,7 +10,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="PetLog" customModuleProvider="target">
             <connections>
                 <outlet property="emailLabel" destination="Zoa-d2-c5X" id="9Oe-6O-uEO"/>
-                <outlet property="emailTextField" destination="PfI-AH-gKI" id="sHW-1s-YgT"/>
                 <outlet property="nameTextField" destination="GYf-Lf-IHC" id="DtB-Au-Hec"/>
                 <outlet property="passTextField" destination="c37-u3-ASA" id="yah-u4-u4f"/>
                 <outlet property="view" destination="jtr-4u-kUZ" id="1Ow-MJ-7dA"/>
@@ -23,46 +22,41 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="LEP-he-O0S">
-                    <rect key="frame" x="16" y="60" width="382" height="423"/>
+                    <rect key="frame" x="16" y="174" width="382" height="390"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bienvenido" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7E4-I9-u37">
-                            <rect key="frame" x="0.0" y="0.0" width="382" height="45"/>
+                            <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zoa-d2-c5X">
-                            <rect key="frame" x="0.0" y="63" width="382" height="45"/>
+                            <rect key="frame" x="0.0" y="68" width="382" height="50"/>
                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Escribe a continuación los datos que quieres modificar: " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPa-S0-X6e">
-                            <rect key="frame" x="0.0" y="126" width="382" height="45"/>
+                            <rect key="frame" x="0.0" y="136" width="382" height="50"/>
                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Nombre de usuario" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GYf-Lf-IHC">
-                            <rect key="frame" x="0.0" y="189" width="382" height="45"/>
+                            <rect key="frame" x="0.0" y="204" width="382" height="50"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PfI-AH-gKI">
-                            <rect key="frame" x="0.0" y="252" width="382" height="45"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                        </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Contraseña" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c37-u3-ASA">
-                            <rect key="frame" x="0.0" y="315" width="382" height="45"/>
+                            <rect key="frame" x="0.0" y="272" width="382" height="50"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7SK-vO-EqC">
-                            <rect key="frame" x="0.0" y="378" width="382" height="45"/>
+                            <rect key="frame" x="0.0" y="340" width="382" height="50"/>
                             <color key="backgroundColor" red="0.49019607840000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="45" id="sM0-Xq-h4H"/>
+                                <constraint firstAttribute="height" constant="50" id="sM0-Xq-h4H"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="22"/>
                             <state key="normal" title="Guardar cambios">
@@ -74,15 +68,24 @@
                         </button>
                     </subviews>
                 </stackView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="hAY-OZ-H97">
+                    <rect key="frame" x="88" y="60" width="238" height="302"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
+                <constraint firstItem="hAY-OZ-H97" firstAttribute="top" secondItem="jtr-4u-kUZ" secondAttribute="top" constant="60" id="A32-7x-lNY"/>
+                <constraint firstItem="hAY-OZ-H97" firstAttribute="leading" secondItem="b2z-1I-Qer" secondAttribute="leading" constant="88" id="lzy-A0-OwJ"/>
+                <constraint firstItem="hAY-OZ-H97" firstAttribute="centerX" secondItem="b2z-1I-Qer" secondAttribute="centerX" id="nUh-TR-2JJ"/>
                 <constraint firstItem="LEP-he-O0S" firstAttribute="leading" secondItem="jtr-4u-kUZ" secondAttribute="leading" constant="16" id="pAS-zx-n4e"/>
-                <constraint firstItem="LEP-he-O0S" firstAttribute="top" secondItem="b2z-1I-Qer" secondAttribute="top" constant="16" id="yeL-Cn-Lt8"/>
+                <constraint firstItem="LEP-he-O0S" firstAttribute="top" secondItem="b2z-1I-Qer" secondAttribute="top" constant="130" id="yeL-Cn-Lt8"/>
                 <constraint firstItem="b2z-1I-Qer" firstAttribute="trailing" secondItem="LEP-he-O0S" secondAttribute="trailing" constant="16" id="zo9-Ks-1vz"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="b2z-1I-Qer"/>
             <point key="canvasLocation" x="284" y="-252"/>
         </view>
     </objects>
+    <resources>
+        <image name="Logo" width="206" height="151"/>
+    </resources>
 </document>

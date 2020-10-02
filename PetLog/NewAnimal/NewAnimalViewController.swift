@@ -12,10 +12,7 @@ import FirebaseFirestore
 
 class NewAnimalViewController: UIViewController {
     
-    //acceso a la bd
-    private let db = Firestore.firestore()
-    private let alert = Alert()
-    private let colors = Colors()
+   
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var speciePicker: UIPickerView!
     @IBOutlet weak var raceTextField: UITextField!
@@ -24,14 +21,20 @@ class NewAnimalViewController: UIViewController {
     @IBOutlet weak var medTextField: UITextField!
     @IBOutlet weak var foodTextField: UITextField!
     
+    private let db = Firestore.firestore()
+    private let alert = Alert()
+    private let colors = Colors()
+    let newAnimalManager = NewAnimalManager()
+    let user = Auth.auth().currentUser
+    
     //Nombre de la colección en la BD
     let COLECTIONANIMALS = "Animales"
     var SpeciesArray = ["","Canina","Felina","Ave","Roedor","Pez","Reptil","Otros"]
-    let user = Auth.auth().currentUser
     var email : String = ""
     var specie: String = ""
     //se utilizará este id para recuperar los animales de una forma más sencilla
     var id: String = ""
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +49,7 @@ class NewAnimalViewController: UIViewController {
         
         title = "Registro nueva mascota"
         textFieldsConfigure()
+        newAnimalManager.putController(newAnimalViewController: self)
         email = user!.email!
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewAnimalViewController.dismissKeyboard))
          view.addGestureRecognizer(tap)
@@ -98,44 +102,15 @@ class NewAnimalViewController: UIViewController {
     }
     @IBAction func saveButtonAction(_ sender: UIButton) {
         view.endEditing(true)
+        yearTextField.layer.borderColor = colors.brownColor.cgColor
         if let user = user, let email = user.email{
             if let name = nameTextField.text, let race = raceTextField.text, let year = Int(yearTextField.text!),let med = medTextField.text, let weight = Double(weightTextField.text!), let food = foodTextField.text{
-                if specie != "" && name != "" && race != "" && year != 0 && med != "" && weight != 0.0 && food != ""{
-                    if checkYear(year:year){
-                        id = email+"-"+name
-                        print("guardando")
-                        print(email)
-                        db.collection(COLECTIONANIMALS).document(id).setData([
-                            "id": id,
-                            "propietario": email,
-                            "nombre": name,
-                            "especie": specie,
-                            "raza": race,
-                            "nacimiento": year,
-                            "medicacion": med,
-                            "peso": weight,
-                            "alimentacion": food
-                        ])
-                        
-                         alert.viewSimpleAlert(view: self,title:"Mascota añadida",message:"Datos guardados")
-                        yearTextField.layer.borderColor = colors.brownColor.cgColor
-                        clean()
-                    }
-                    else{
-                        alert.viewSimpleAlert(view: self,title:"Error",message:"Comprueba el año de nacimiento.")
-                        yearTextField.layer.borderColor = colors.redColor.cgColor
-                    }
-                    
-                  
-                }
-                else{
-                     alert.viewSimpleAlert(view: self,title:"Error",message:"Rellena todos los campos.")
-                }
-               
-                
+                id = email+"-"+name
+                let pet = Pet(id: id, name: name, specie: specie, race: race, year: year, weight: weight, med: med, food: food, owner: email)
+                newAnimalManager.saveAnimal(pet: pet)
             }
             else{
-                  alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa los campos por favor.")
+               viewAlertBad()
             }
               
         }
@@ -153,22 +128,24 @@ class NewAnimalViewController: UIViewController {
         medTextField.text = ""
         foodTextField.text = ""
     }
-   
-    // Controla si se introduce un año válido
-    func checkYear(year : Int)->Bool{
-        let date = Date()
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.year], from: date)
-        let now = components.year
-        
-        if(year > now!){
-            return false
-        }
-        return true
+    
+    func viewAlertSave(){
+        alert.viewSimpleAlert(view: self,title:"Mascota añadida",message:"Datos guardados")
+        yearTextField.layer.borderColor = colors.brownColor.cgColor
+        clean()
     }
+    
+    func viewAlertBadYear(){
+        alert.viewSimpleAlert(view: self,title:"Error",message:"Comprueba el año de nacimiento.")
+        yearTextField.layer.borderColor = colors.redColor.cgColor
+    }
+    
+    func viewAlertBad(){
+         alert.viewSimpleAlert(view: self,title:"Error",message:"Rellena todos los campos correctamente.")
+    }
+    
+   
 }
-
-
 
 
 //MARK: Picker Delegate

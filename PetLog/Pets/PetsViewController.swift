@@ -164,7 +164,7 @@ extension PetsViewController:PetFileDelegate{
             self.showActivityIndicatory(uiView: self.view)
             self.petsArray =  pets
             
-            Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.stopActivityIndicatory), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.stopActivityIndicatory), userInfo: nil, repeats: false)
             self.tableView.reloadData()
         }
        

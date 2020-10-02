@@ -22,6 +22,7 @@ class UpdateAnimalViewController: UIViewController {
     private let alert = Alert()
     private let colors = Colors()
     private let COLECTIONANIMALS = "Animales"
+    let updateAnimalManager = UpdateAnimalManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +32,9 @@ class UpdateAnimalViewController: UIViewController {
         weightTextField.delegate = self
         foodTextField.delegate = self
         textFieldsConfigure()
+        updateAnimalManager.putController(updateAnimalViewController: self)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewAnimalViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        
-        //cuando le demos al back llamar a reloadData()
     }
     
     func textFieldsConfigure(){
@@ -66,33 +66,10 @@ class UpdateAnimalViewController: UIViewController {
     @IBAction func saveFoodButtonAction(_ sender: UIButton) {
         view.endEditing(true)
             if let food = foodTextField.text{
-                if  food != ""{
-                    db.collection(COLECTIONANIMALS)
-                    .whereField("id", isEqualTo: id)
-                    .getDocuments() { (querySnapshot, err) in
-                        if let err = err {
-                            print("Error extrayendo los documentos \(err)")
-                        } else if querySnapshot!.documents.count != 1 {
-                            print("No se encuentra la mascota")
-                        } else {
-                            let document = querySnapshot!.documents.first
-                            document?.reference.updateData([
-                                "alimentacion": food
-                            ])
-                            print("guardando")
-                        }
-                    }
-                    alert.viewSimpleAlert(view: self,title:"Alimentación de la mascota modificada",message:"Datos guardados")
-                    clean()
-                }
-                else{
-                alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa el campo por favor.")
-                clean()
-                }
+                updateAnimalManager.updateFood(id:id,food:food)
             }
             else{
-                alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa el campo por favor.")
-                clean()
+                alertBad()
             }
     
     }
@@ -101,64 +78,20 @@ class UpdateAnimalViewController: UIViewController {
     @IBAction func saveWeightButtonAction(_ sender: UIButton) {
         view.endEditing(true)
         if let weight = Double(weightTextField.text!){
-            if  weight != 0.0{
-                db.collection(COLECTIONANIMALS)
-                .whereField("id", isEqualTo: id)
-                .getDocuments() { (querySnapshot, err) in
-                    if let err = err {
-                        print("Error extrayendo los documentos \(err)")
-                    } else if querySnapshot!.documents.count != 1 {
-                        print("No se encuentra la mascota")
-                    } else {
-                        let document = querySnapshot!.documents.first
-                        document?.reference.updateData([
-                            "peso": weight
-                        ])
-                    }
-                }
-                alert.viewSimpleAlert(view: self,title:"Peso de la mascota modificado.",message:"Datos guardados")
-                clean()
-            }
-            else{
-            alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa el campo por favor.")
-            clean()
-            }
+            updateAnimalManager.updateWeight(id: id, weight: weight)
         }
         else{
-            alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa el campo por favor.")
-            clean()
+            alertBad()
         }
     }
     
     @IBAction func saveMedButtonAction(_ sender: UIButton) {
         view.endEditing(true)
         if let med = medTextField.text{
-            if  med != ""{
-                db.collection(COLECTIONANIMALS)
-                .whereField("id", isEqualTo: id)
-                .getDocuments() { (querySnapshot, err) in
-                    if let err = err {
-                        print("Error extrayendo los documentos \(err)")
-                    } else if querySnapshot!.documents.count != 1 {
-                        print("No se encuentra la mascota")
-                    } else {
-                        let document = querySnapshot!.documents.first
-                        document?.reference.updateData([
-                            "medicacion": med
-                        ])
-                    }
-                }
-                alert.viewSimpleAlert(view: self,title:"Medicación de la mascota modificada.",message:"Datos guardados")
-                clean()
-            }
-            else{
-            alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa el campo por favor.")
-            clean()
-            }
+            updateAnimalManager.updateMed(id:id, med: med)
         }
         else{
-            alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa el campo por favor.")
-            clean()
+            alertBad()
         }
     }
     
@@ -171,6 +104,26 @@ class UpdateAnimalViewController: UIViewController {
         weightTextField.text = ""
         medTextField.text = ""
         foodTextField.text = ""
+    }
+    
+    func alertBad(){
+        alert.viewSimpleAlert(view: self,title:"Error",message:"Revisa el campo por favor.")
+        clean()
+    }
+    
+    func alertMedGood(){
+        alert.viewSimpleAlert(view: self,title:"Medicación de la mascota modificada.",message:"Datos guardados")
+        clean()
+    }
+    
+    func alertFoodGood(){
+        alert.viewSimpleAlert(view: self,title:"Alimentación de la mascota modificada",message:"Datos guardados")
+        clean()
+    }
+    
+    func alertWeightGood(){
+        alert.viewSimpleAlert(view: self,title:"Peso de la mascota modificado.",message:"Datos guardados")
+        clean()
     }
 }
 
