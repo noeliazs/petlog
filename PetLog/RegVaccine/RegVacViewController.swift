@@ -20,6 +20,7 @@ class RegVacViewController: UIViewController {
     var petName: String = ""
     private var date: String = ""
     private let COLLECTIONVACCINES = "Vacunas"
+    private let regVacManager = RegVacManager()
 
     @IBOutlet weak var vacTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -32,6 +33,8 @@ class RegVacViewController: UIViewController {
         vacTextField.delegate = self
         vetTextField.delegate = self
         textFieldsConfigure()
+        regVacManager.putController(regVacViewController: self)
+        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewAnimalViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
@@ -60,24 +63,11 @@ class RegVacViewController: UIViewController {
     @IBAction func saveButtonAction(_ sender: UIButton) {
         view.endEditing(true)
         if let user = user, let email = user.email, let vaccine = vacTextField.text, let vet = vetTextField.text{
-            if vaccine != "" && vet != "" && date != ""{
-                db.collection(COLLECTIONVACCINES).document(petName+"-"+vaccine+"-"+date).setData([
-                    "propietario": email,
-                    "nombre": petName,
-                    "vacuna": vaccine,
-                    "veterinario": vet,
-                    "fecha": date
-                ])
-                print("guardando")
-                clean()
-                alert.viewSimpleAlert(view: self,title:"Vacuna añadida añadido",message:"Datos guardados")
-            }
-            else{
-                alert.viewSimpleAlert(view: self,title:"Error",message:"Rellena todos los campos correctamente")
-            }
+            let vac = PetVaccine(name: petName, email: email, vaccine: vaccine, vet: vet, date: date)
+            regVacManager.saveVac(vac: vac)
         }
         else{
-             alert.viewSimpleAlert(view: self,title:"Error",message:"Rellena todos los campos correctamente")
+             alertBad()
         }
         
     }
@@ -110,9 +100,15 @@ class RegVacViewController: UIViewController {
         components.day = 1
         let defaultDate: NSDate = calendar.date(from: components as DateComponents)! as NSDate
         datePicker.date = defaultDate as Date
-        
-
-          
+    }
+    
+    func alertBad(){
+        alert.viewSimpleAlert(view: self,title:"Error",message:"Rellena todos los campos correctamente")
+    }
+    
+    func alertGood(){
+        clean()
+        alert.viewSimpleAlert(view: self,title:"Vacuna añadida añadido",message:"Datos guardados")
     }
     
     @IBAction func datePickerChanged(sender: UIDatePicker) {

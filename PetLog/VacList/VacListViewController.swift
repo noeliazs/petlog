@@ -18,12 +18,13 @@ class VacListViewController: UIViewController {
     private let fonts = Fonts()
     private let alert = Alert()
     var petName: String = ""
-    private var petVacArray: [PetVaccine] = []
+    var petVacArray: [PetVaccine] = []
     private let COLLECTIONVACCINES = "Vacunas"
     private let db = Firestore.firestore()
     private let user = Auth.auth().currentUser
     var primeraVez = true
     private var totalVacs:Int = 0
+    private var vacListManager = VacListManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,7 @@ class VacListViewController: UIViewController {
         tableView.dataSource=self
         tableView.delegate=self
         tableView.rowHeight = 100
+        vacListManager.putController(vacListViewController: self)
         //Si no tenemos un filtro recuperaremos todas las vacunas
         if petName == ""{
             AllVaccines()
@@ -39,58 +41,20 @@ class VacListViewController: UIViewController {
         else{
             filterPet()
         }
-        
          
     }
                
     
-
     func AllVaccines(){
         if let user = user, let email = user.email{
-          db.collection(COLLECTIONVACCINES).whereField("propietario", isEqualTo: email).getDocuments() { (querySnapshot, err) in
-           if let err = err {
-              print("Error extrayendo los documentos \(err)")
-          } else {
-              for document in querySnapshot!.documents {
-                  let datos = document.data()
-                  let propietario = datos["propietario"] as? String ?? "Propietario"
-                  let nombre = datos["nombre"] as? String ?? "Nombre"
-                  let fecha = datos["fecha"] as? String ?? "Fecha"
-                  let vacuna = datos ["vacuna"] as? String ?? "Vacuna"
-                  let veterinario = datos ["veterinario"] as? String ?? "Veterinario"
-                  let vacunacion = PetVaccine(name: nombre,email: propietario,vaccine:vacuna,vet:veterinario,date:fecha)
-                  self.petVacArray.append(vacunacion)
-              }
-                  self.tableView.reloadData()
-          }
-         }
-       }
-        //printButton.isEnabled = false
-       
+            vacListManager.loadVacs(email: email)
+        }
     }
         
     func filterPet(){
-            if let user = user, let email = user.email{
-                db.collection(COLLECTIONVACCINES).whereField("propietario", isEqualTo: email).whereField("nombre", isEqualTo: petName).getDocuments() { (querySnapshot, err) in
-               if let err = err {
-                  print("Error extrayendo los documentos \(err)")
-              } else {
-                  for document in querySnapshot!.documents {
-                      let datos = document.data()
-                      let propietario = datos["propietario"] as? String ?? "Propietario"
-                      let nombre = datos["nombre"] as? String ?? "Nombre"
-                      let fecha = datos["fecha"] as? String ?? "Fecha"
-                      let vacuna = datos ["vacuna"] as? String ?? "Vacuna"
-                      let veterinario = datos ["veterinario"] as? String ?? "Veterinario"
-                      let vacunacion = PetVaccine(name: nombre,email: propietario,vaccine:vacuna,vet:veterinario,date:fecha)
-                      self.petVacArray.append(vacunacion)
-                  }
-                      self.tableView.reloadData()
-              }
-            }
+        if let user = user, let email = user.email{
+            vacListManager.loadVacs(email: email,name: petName)
         }
-       // printButton.isEnabled = true
-        
     }
     
     @IBAction func filterButtonAction(_ sender: UIButton){
@@ -141,6 +105,10 @@ class VacListViewController: UIViewController {
     
     @IBAction func HomeButtonAction(_ sender: UIButton){
         navigationController?.pushViewController(MainViewController(), animated: true)
+    }
+    
+    func reloadTable(){
+        tableView.reloadData()
     }
     
    
@@ -211,42 +179,7 @@ extension VacListViewController: UITableViewDelegate{
 }
 
 
-//MARK: - UITableView PDF
-extension UITableView {
-    
-    // Export pdf from UITableView and save pdf in drectory and return pdf file path
-    func exportAsPdfFromTable() -> String {
-        
-        let originalBounds = self.bounds
-        self.bounds = CGRect(x:originalBounds.origin.x, y: originalBounds.origin.y, width: self.contentSize.width, height: self.contentSize.height)
-        let pdfPageFrame = CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.contentSize.height)
-        
-        let pdfData = NSMutableData()
-        UIGraphicsBeginPDFContextToData(pdfData, pdfPageFrame, nil)
-        UIGraphicsBeginPDFPageWithInfo(pdfPageFrame, nil)
-        guard let pdfContext = UIGraphicsGetCurrentContext() else { return "" }
-        self.layer.render(in: pdfContext)
-        UIGraphicsEndPDFContext()
-        self.bounds = originalBounds
-        // Save pdf data
-        return self.saveTablePdf(data: pdfData)
-        
-    }
-    
-    // Save pdf file in document directory
-    func saveTablePdf(data: NSMutableData) -> String {
-        
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let docDirectoryPath = paths[0]
-        let pdfPath = docDirectoryPath.appendingPathComponent("Listado.pdf")
-        if data.write(to: pdfPath, atomically: true) {
-            return pdfPath.path
-        } else {
-            return ""
-        }
-    }
-}
- 
+
 
 
 

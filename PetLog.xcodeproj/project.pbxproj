@@ -69,6 +69,10 @@
 		7CA41CED25274F2D00820F1C /* NewAnimalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA41CEC25274F2D00820F1C /* NewAnimalManager.swift */; };
 		7CA41CF02527506700820F1C /* RegWalkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA41CEF2527506700820F1C /* RegWalkManager.swift */; };
 		7CA41CF2252753DC00820F1C /* WalkListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA41CF1252753DC00820F1C /* WalkListManager.swift */; };
+		7CA41CF52528E10600820F1C /* RegVacManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA41CF42528E10600820F1C /* RegVacManager.swift */; };
+		7CA41CF82528E32C00820F1C /* RegVetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA41CF72528E32C00820F1C /* RegVetManager.swift */; };
+		7CA41CFB2528E4A800820F1C /* VetListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA41CFA2528E4A800820F1C /* VetListManager.swift */; };
+		7CA41CFD2528E76900820F1C /* VacListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA41CFC2528E76900820F1C /* VacListManager.swift */; };
 		7CDB5E28251382A7006334F7 /* PetFileDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB5E27251382A7006334F7 /* PetFileDelegate.swift */; };
 		7CDB5E2A2513844D006334F7 /* PetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB5E292513844D006334F7 /* PetManager.swift */; };
 /* End PBXBuildFile section */
@@ -138,6 +142,10 @@
 		7CA41CEC25274F2D00820F1C /* NewAnimalManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewAnimalManager.swift; path = PetLog/NewAnimal/Model/NewAnimalManager.swift; sourceTree = SOURCE_ROOT; };
 		7CA41CEF2527506700820F1C /* RegWalkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegWalkManager.swift; sourceTree = "<group>"; };
 		7CA41CF1252753DC00820F1C /* WalkListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkListManager.swift; sourceTree = "<group>"; };
+		7CA41CF42528E10600820F1C /* RegVacManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegVacManager.swift; sourceTree = "<group>"; };
+		7CA41CF72528E32C00820F1C /* RegVetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegVetManager.swift; sourceTree = "<group>"; };
+		7CA41CFA2528E4A800820F1C /* VetListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VetListManager.swift; sourceTree = "<group>"; };
+		7CA41CFC2528E76900820F1C /* VacListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacListManager.swift; sourceTree = "<group>"; };
 		7CDB5E27251382A7006334F7 /* PetFileDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetFileDelegate.swift; sourceTree = "<group>"; };
 		7CDB5E292513844D006334F7 /* PetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetManager.swift; sourceTree = "<group>"; };
 		92287AAEC3AF2411F9E6CFEB /* Pods-PetLog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetLog.release.xcconfig"; path = "Target Support Files/Pods-PetLog/Pods-PetLog.release.xcconfig"; sourceTree = "<group>"; };
@@ -339,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				7CA0682B250699FA008B80CE /* PetVaccine.swift */,
+				7CA41CFC2528E76900820F1C /* VacListManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -356,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				7CA0683B2508EB3E008B80CE /* PetVetVisit.swift */,
+				7CA41CFA2528E4A800820F1C /* VetListManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -377,6 +387,7 @@
 			children = (
 				7CA06821250689CF008B80CE /* RegVacViewController.swift */,
 				7CA06822250689CF008B80CE /* RegVacViewController.xib */,
+				7CA41CF62528E10A00820F1C /* Model */,
 			);
 			path = RegVaccine;
 			sourceTree = "<group>";
@@ -398,6 +409,7 @@
 			children = (
 				7CA068312508E2F1008B80CE /* RegVetViewController.swift */,
 				7CA068322508E2F1008B80CE /* RegVetViewController.xib */,
+				7CA41CF92528E33100820F1C /* Model */,
 			);
 			path = RegVet;
 			sourceTree = "<group>";
@@ -442,6 +454,22 @@
 			isa = PBXGroup;
 			children = (
 				7CA41CEF2527506700820F1C /* RegWalkManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7CA41CF62528E10A00820F1C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7CA41CF42528E10600820F1C /* RegVacManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7CA41CF92528E33100820F1C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7CA41CF72528E32C00820F1C /* RegVetManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -606,10 +634,12 @@
 				7CA0682C250699FA008B80CE /* PetVaccine.swift in Sources */,
 				7C3446C524F3D00F00F91F39 /* AuthViewController.swift in Sources */,
 				7C534CF62501559B0034CCA5 /* Pet.swift in Sources */,
+				7CA41CFB2528E4A800820F1C /* VetListManager.swift in Sources */,
 				7C2CD06124FD4C4800BBD1E4 /* Colors.swift in Sources */,
 				7CDB5E28251382A7006334F7 /* PetFileDelegate.swift in Sources */,
 				7C2CD04E24F67EA400BBD1E4 /* NewsCell.swift in Sources */,
 				7CA0682F25069A69008B80CE /* PetVacCell.swift in Sources */,
+				7CA41CF82528E32C00820F1C /* RegVetManager.swift in Sources */,
 				7CA068382508EA3D008B80CE /* VetListViewController.swift in Sources */,
 				7C3446C124F3D00F00F91F39 /* AppDelegate.swift in Sources */,
 				7CA41CF2252753DC00820F1C /* WalkListManager.swift in Sources */,
@@ -624,6 +654,7 @@
 				7C7035D1250A2C68005C27A2 /* NewAnimalViewController.swift in Sources */,
 				7CA0683C2508EB3E008B80CE /* PetVetVisit.swift in Sources */,
 				7C3446CB24F3D00F00F91F39 /* PetLog.xcdatamodeld in Sources */,
+				7CA41CFD2528E76900820F1C /* VacListManager.swift in Sources */,
 				7CA0681F2503FBAE008B80CE /* PetWalkCell.swift in Sources */,
 				7C2CD03A24F6782100BBD1E4 /* NewsViewController.swift in Sources */,
 				7CA068332508E2F1008B80CE /* RegVetViewController.swift in Sources */,
@@ -633,6 +664,7 @@
 				7C7035C5250A274E005C27A2 /* PostData.swift in Sources */,
 				7CA41CE32527466900820F1C /* UpdateAnimalManager.swift in Sources */,
 				7C534CEE250153370034CCA5 /* PetsViewController.swift in Sources */,
+				7CA41CF52528E10600820F1C /* RegVacManager.swift in Sources */,
 				7CA06823250689CF008B80CE /* RegVacViewController.swift in Sources */,
 				7CA41CED25274F2D00820F1C /* NewAnimalManager.swift in Sources */,
 				7CA068182503F83E008B80CE /* WalkListViewController.swift in Sources */,

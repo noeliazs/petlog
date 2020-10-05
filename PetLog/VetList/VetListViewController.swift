@@ -16,13 +16,14 @@ class VetListViewController: UIViewController {
     private let fonts = Fonts()
     private let alert = Alert()
     var petName: String = ""
-    private var petVetArray: [PetVetVisit] = []
+    var petVetArray: [PetVetVisit] = []
     private let COLLECTIONVETS = "Veterinario"
     private let db = Firestore.firestore()
     private let user = Auth.auth().currentUser
     var primeraVez = true
     private var totalVetsVisits:Int = 0
-
+    private var vetListManager = VetListManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,6 +32,7 @@ class VetListViewController: UIViewController {
         tableView.dataSource=self
         tableView.delegate=self
         tableView.rowHeight = 120
+        vetListManager.putController(vetListViewController: self)
         if petName == ""{
             AllVetsVisits()
         }
@@ -38,50 +40,17 @@ class VetListViewController: UIViewController {
             filterPet()
         }
     }
-    
 
       func AllVetsVisits(){
           if let user = user, let email = user.email{
-            db.collection(COLLECTIONVETS).whereField("propietario", isEqualTo: email).getDocuments() { (querySnapshot, err) in
-             if let err = err {
-                print("Error extrayendo los documentos \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    let datos = document.data()
-                    let propietario = datos["propietario"] as? String ?? "Propietario"
-                    let nombre = datos["nombre"] as? String ?? "Nombre"
-                    let fecha = datos["fecha"] as? String ?? "Fecha"
-                    let razon = datos ["razon"] as? String ?? "Razon"
-                    let veterinario = datos ["veterinario"] as? String ?? "Veterinario"
-                    let visit = PetVetVisit(name: nombre, email: propietario, reason: razon, vet: veterinario, date: fecha)
-                    self.petVetArray.append(visit)
-                }
-                    self.tableView.reloadData()
-            }
-           }
+            vetListManager.loadVisits(email: email)
          }
          
       }
           
       func filterPet(){
-              if let user = user, let email = user.email{
-                  db.collection(COLLECTIONVETS).whereField("propietario", isEqualTo: email).whereField("nombre", isEqualTo: petName).getDocuments() { (querySnapshot, err) in
-                 if let err = err {
-                    print("Error extrayendo los documentos \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        let datos = document.data()
-                        let propietario = datos["propietario"] as? String ?? "Propietario"
-                        let nombre = datos["nombre"] as? String ?? "Nombre"
-                        let fecha = datos["fecha"] as? String ?? "Fecha"
-                        let razon = datos ["razon"] as? String ?? "Razon"
-                        let veterinario = datos ["veterinario"] as? String ?? "Veterinario"
-                        let visit = PetVetVisit(name: nombre, email: propietario, reason: razon, vet: veterinario, date: fecha)
-                        self.petVetArray.append(visit)
-                    }
-                        self.tableView.reloadData()
-                }
-              }
+          if let user = user, let email = user.email{
+              vetListManager.loadVisits(email: email, name: petName)
           }
           
       }
@@ -108,7 +77,7 @@ class VetListViewController: UIViewController {
       }
       
       @objc func changeView() {
-           let vetListViewController = VetListViewController()
+         let vetListViewController = VetListViewController()
           navigationController?.pushViewController(vetListViewController, animated: false)
           vetListViewController.petName = petName
       }
@@ -134,6 +103,10 @@ class VetListViewController: UIViewController {
     }
     @IBAction func homeActionButton(_ sender: UIButton) {
          navigationController?.pushViewController(MainViewController(), animated: true)
+    }
+    
+    func reloadTable(){
+        tableView.reloadData()
     }
     
 }

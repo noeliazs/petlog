@@ -42,7 +42,7 @@ class HomeManager{
            return emailTest.evaluate(with: string)
        }
        
-       func isValidPassword(string: String) -> Bool{
+    func isValidPassword(string: String) -> Bool{
            if string.count<6{
                return false
            }

@@ -88,8 +88,7 @@ class HomeViewController: UIViewController {
     }
     
     
-    @objc func reload()
-    {
+    @objc func reload(){
         alert.stopAlert(viewController: self)
         viewDidLoad()
         nameTextField.text = ""

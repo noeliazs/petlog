@@ -57,7 +57,6 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func closeSesionButtonAction(_ sender: Any){
-        print("Cerrar sesion")
         do {
             try Auth.auth().signOut()
             self.dismiss(animated: true, completion: nil)
@@ -65,7 +64,9 @@ class MainViewController: UIViewController {
             } catch let err {
                 print(err)
         }
-            navigationController?.popViewController(animated: true)
+        let storyBoard = UIStoryboard(name: "Main", bundle:nil)
+        let viewController = storyBoard.instantiateViewController(withIdentifier: "AuthViewController") as! AuthViewController
+        self.navigationController?.pushViewController(viewController, animated:true)
        }
     
 }
