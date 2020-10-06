@@ -23,6 +23,7 @@ class MainViewController: UIViewController {
         
         super.viewDidLoad()
         title = "Inicio"
+        self.navigationItem.setHidesBackButton(true, animated: false)
      }
     
     @IBAction func newButtonAction(_ sender: Any){

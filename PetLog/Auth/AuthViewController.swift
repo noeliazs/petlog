@@ -27,7 +27,7 @@ class AuthViewController: UIViewController {
         title = "Autenticación"
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AuthViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        
+        self.navigationItem.setHidesBackButton(true, animated: false)
         textFieldsConfigure()
        
     }
