@@ -73,6 +73,8 @@
 		7CA41CF82528E32C00820F1C /* RegVetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA41CF72528E32C00820F1C /* RegVetManager.swift */; };
 		7CA41CFB2528E4A800820F1C /* VetListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA41CFA2528E4A800820F1C /* VetListManager.swift */; };
 		7CA41CFD2528E76900820F1C /* VacListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA41CFC2528E76900820F1C /* VacListManager.swift */; };
+		7CA41D01252F336D00820F1C /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA41CFF252F336D00820F1C /* KeychainConfiguration.swift */; };
+		7CA41D02252F336D00820F1C /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA41D00252F336D00820F1C /* KeychainPasswordItem.swift */; };
 		7CDB5E28251382A7006334F7 /* PetFileDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB5E27251382A7006334F7 /* PetFileDelegate.swift */; };
 		7CDB5E2A2513844D006334F7 /* PetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB5E292513844D006334F7 /* PetManager.swift */; };
 /* End PBXBuildFile section */
@@ -146,6 +148,8 @@
 		7CA41CF72528E32C00820F1C /* RegVetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegVetManager.swift; sourceTree = "<group>"; };
 		7CA41CFA2528E4A800820F1C /* VetListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VetListManager.swift; sourceTree = "<group>"; };
 		7CA41CFC2528E76900820F1C /* VacListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacListManager.swift; sourceTree = "<group>"; };
+		7CA41CFF252F336D00820F1C /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainConfiguration.swift; sourceTree = "<group>"; };
+		7CA41D00252F336D00820F1C /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		7CDB5E27251382A7006334F7 /* PetFileDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetFileDelegate.swift; sourceTree = "<group>"; };
 		7CDB5E292513844D006334F7 /* PetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetManager.swift; sourceTree = "<group>"; };
 		92287AAEC3AF2411F9E6CFEB /* Pods-PetLog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetLog.release.xcconfig"; path = "Target Support Files/Pods-PetLog/Pods-PetLog.release.xcconfig"; sourceTree = "<group>"; };
@@ -226,6 +230,7 @@
 		7C2CD05B24FD3F0000BBD1E4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7CA41CFE252F336D00820F1C /* Keychain */,
 				7C2CD06024FD4C4800BBD1E4 /* Colors.swift */,
 				7C0F13C7250A503700371C06 /* Fonts.swift */,
 				7C1BBAB724F5695D002308A9 /* Alert.swift */,
@@ -474,6 +479,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		7CA41CFE252F336D00820F1C /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				7CA41CFF252F336D00820F1C /* KeychainConfiguration.swift */,
+				7CA41D00252F336D00820F1C /* KeychainPasswordItem.swift */,
+			);
+			path = Keychain;
+			sourceTree = "<group>";
+		};
 		EFA7FD1FE68DFD541B362FF8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -650,6 +664,7 @@
 				7C0F13C8250A503700371C06 /* Fonts.swift in Sources */,
 				7CA0683F2508F12C008B80CE /* PetVetCell.swift in Sources */,
 				7C7035C7250A276F005C27A2 /* NetworkManager.swift in Sources */,
+				7CA41D01252F336D00820F1C /* KeychainConfiguration.swift in Sources */,
 				7CDB5E2A2513844D006334F7 /* PetManager.swift in Sources */,
 				7C7035D1250A2C68005C27A2 /* NewAnimalViewController.swift in Sources */,
 				7CA0683C2508EB3E008B80CE /* PetVetVisit.swift in Sources */,
@@ -668,6 +683,7 @@
 				7CA06823250689CF008B80CE /* RegVacViewController.swift in Sources */,
 				7CA41CED25274F2D00820F1C /* NewAnimalManager.swift in Sources */,
 				7CA068182503F83E008B80CE /* WalkListViewController.swift in Sources */,
+				7CA41D02252F336D00820F1C /* KeychainPasswordItem.swift in Sources */,
 				7C3446C324F3D00F00F91F39 /* SceneDelegate.swift in Sources */,
 				7C0F13CD2510E34600371C06 /* UpdateAnimalViewController.swift in Sources */,
 			);
