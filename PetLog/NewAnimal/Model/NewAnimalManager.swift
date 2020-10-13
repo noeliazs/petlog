@@ -15,6 +15,8 @@ class NewAnimalManager{
     var newAnimalViewController: NewAnimalViewController?
     private let db = Firestore.firestore()
     let COLECTIONANIMALS = "Animales"
+    private var strings = Strings()
+    var species: [String] = []
     
     func putController(newAnimalViewController: NewAnimalViewController) {
         self.newAnimalViewController = newAnimalViewController
@@ -59,6 +61,35 @@ class NewAnimalManager{
            }
            return true
        }
+    
+    func loadSpecies(){
+        var specie: String = ""
+        var n = 0
+        db.collection(strings.COLLECTIONSPECIES).order(by: "0")
+        .getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error extrayendo los documentos \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                  let datos = document.data()
+                    for _ in datos{
+                        specie = datos["\(n)"] as? String ?? "Animal"
+                        self.species.append(specie)
+                        n+=1
+            
+                    }
+                  
+                }
+            }
+        }
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(reload), userInfo: nil, repeats: false)
+        
+    }
+    
+    @objc func reload(){
+        newAnimalViewController?.reloadPicker()
+    }
+   
 }
     
        

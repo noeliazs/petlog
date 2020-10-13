@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import FirebaseAuth
 
 class NewAnimalViewController: UIViewController {
     
@@ -24,12 +25,13 @@ class NewAnimalViewController: UIViewController {
     private let db = Firestore.firestore()
     private let alert = Alert()
     private let colors = Colors()
+    private let strings = Strings()
     let newAnimalManager = NewAnimalManager()
     let user = Auth.auth().currentUser
     
+    
     //Nombre de la colección en la BD
     let COLECTIONANIMALS = "Animales"
-    var SpeciesArray = ["","Canina","Felina","Ave","Roedor","Pez","Reptil","Otros"]
     var email : String = ""
     var specie: String = ""
     //se utilizará este id para recuperar los animales de una forma más sencilla
@@ -53,6 +55,8 @@ class NewAnimalViewController: UIViewController {
         email = user!.email!
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewAnimalViewController.dismissKeyboard))
          view.addGestureRecognizer(tap)
+        newAnimalManager.loadSpecies()
+      
     }
     
     func textFieldsConfigure(){
@@ -91,7 +95,7 @@ class NewAnimalViewController: UIViewController {
     
     @objc func dismissKeyboard() {
            view.endEditing(true)
-       }
+    }
     
     @IBAction func cleanButtonAction(_ sender: UIButton) {
         //quitar teclado
@@ -105,9 +109,14 @@ class NewAnimalViewController: UIViewController {
         yearTextField.layer.borderColor = colors.brownColor.cgColor
         if let user = user, let email = user.email{
             if let name = nameTextField.text, let race = raceTextField.text, let year = Int(yearTextField.text!),let med = medTextField.text, let weight = Double(weightTextField.text!), let food = foodTextField.text{
-                id = email+"-"+name
-                let pet = Pet(id: id, name: name, specie: specie, race: race, year: year, weight: weight, med: med, food: food, owner: email)
-                newAnimalManager.saveAnimal(pet: pet)
+                if specie != strings.badSpecie{
+                    id = email+"-"+name
+                    let pet = Pet(id: id, name: name, specie: specie, race: race, year: year, weight: weight, med: med, food: food, owner: email)
+                    newAnimalManager.saveAnimal(pet: pet)
+                }else{
+                    viewAlertBadSpecie()
+                }
+               
             }
             else{
                viewAlertBad()
@@ -144,6 +153,16 @@ class NewAnimalViewController: UIViewController {
          alert.viewSimpleAlert(view: self,title:"Error",message:"Rellena todos los campos correctamente.")
     }
     
+    func viewAlertBadSpecie(){
+         alert.viewSimpleAlert(view: self,title:"Error",message:"Selecciona una especie")
+    }
+    
+    func reloadPicker(){
+          speciePicker.reloadAllComponents()
+    }
+    
+    
+    
    
 }
 
@@ -157,15 +176,15 @@ extension NewAnimalViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return SpeciesArray.count
+        return newAnimalManager.species.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return SpeciesArray[row]
+        return newAnimalManager.species[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        specie=SpeciesArray[row]
+        specie = newAnimalManager.species[row]
         print(specie)
     }
 }

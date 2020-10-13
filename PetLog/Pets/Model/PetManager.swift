@@ -47,7 +47,6 @@ class PetManager {
             }
         }
         
-        
     }
     func loadPets(){
         let user = Auth.auth().currentUser

@@ -68,21 +68,30 @@
                         </button>
                     </subviews>
                 </stackView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="hAY-OZ-H97">
-                    <rect key="frame" x="88" y="60" width="238" height="302"/>
-                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Wc-gv-VmE">
+                    <rect key="frame" x="120" y="44" width="171" height="122"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="171" id="I8m-kg-01y"/>
+                    </constraints>
+                    <state key="normal" image="Logo">
+                        <color key="titleColor" red="0.51294100279999999" green="0.34515017269999998" blue="0.34901684519999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </state>
+                    <connections>
+                        <action selector="goMainButton:" destination="-1" eventType="touchUpInside" id="CO8-Yu-pUX"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="hAY-OZ-H97" firstAttribute="top" secondItem="jtr-4u-kUZ" secondAttribute="top" constant="60" id="A32-7x-lNY"/>
-                <constraint firstItem="hAY-OZ-H97" firstAttribute="leading" secondItem="b2z-1I-Qer" secondAttribute="leading" constant="88" id="lzy-A0-OwJ"/>
-                <constraint firstItem="hAY-OZ-H97" firstAttribute="centerX" secondItem="b2z-1I-Qer" secondAttribute="centerX" id="nUh-TR-2JJ"/>
+                <constraint firstItem="0Wc-gv-VmE" firstAttribute="top" secondItem="b2z-1I-Qer" secondAttribute="top" id="5np-K8-7tn"/>
+                <constraint firstItem="LEP-he-O0S" firstAttribute="top" secondItem="0Wc-gv-VmE" secondAttribute="bottom" constant="8" id="a6l-Jr-tkv"/>
+                <constraint firstItem="0Wc-gv-VmE" firstAttribute="centerX" secondItem="LEP-he-O0S" secondAttribute="centerX" constant="-1.5" id="lX9-ry-1dS"/>
                 <constraint firstItem="LEP-he-O0S" firstAttribute="leading" secondItem="jtr-4u-kUZ" secondAttribute="leading" constant="16" id="pAS-zx-n4e"/>
                 <constraint firstItem="LEP-he-O0S" firstAttribute="top" secondItem="b2z-1I-Qer" secondAttribute="top" constant="130" id="yeL-Cn-Lt8"/>
                 <constraint firstItem="b2z-1I-Qer" firstAttribute="trailing" secondItem="LEP-he-O0S" secondAttribute="trailing" constant="16" id="zo9-Ks-1vz"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="b2z-1I-Qer"/>
-            <point key="canvasLocation" x="284" y="-252"/>
+            <point key="canvasLocation" x="282.60869565217394" y="-252.45535714285714"/>
         </view>
     </objects>
     <resources>

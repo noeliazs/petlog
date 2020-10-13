@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		76724867BBE95CBE09F07361 /* Pods_PetLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA47B4B7D7BA47E5EB998C1B /* Pods_PetLog.framework */; };
+		7C01D8A22535BA25008EE4EF /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C01D8A12535BA25008EE4EF /* Strings.swift */; };
 		7C0F13C8250A503700371C06 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0F13C7250A503700371C06 /* Fonts.swift */; };
 		7C0F13CD2510E34600371C06 /* UpdateAnimalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0F13CB2510E34600371C06 /* UpdateAnimalViewController.swift */; };
 		7C0F13CE2510E34600371C06 /* UpdateAnimalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C0F13CC2510E34600371C06 /* UpdateAnimalViewController.xib */; };
@@ -75,12 +76,14 @@
 		7CA41CFD2528E76900820F1C /* VacListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA41CFC2528E76900820F1C /* VacListManager.swift */; };
 		7CA41D01252F336D00820F1C /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA41CFF252F336D00820F1C /* KeychainConfiguration.swift */; };
 		7CA41D02252F336D00820F1C /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA41D00252F336D00820F1C /* KeychainPasswordItem.swift */; };
+		7CA41D04252F4B0B00820F1C /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA41D03252F4B0B00820F1C /* AuthManager.swift */; };
 		7CDB5E28251382A7006334F7 /* PetFileDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB5E27251382A7006334F7 /* PetFileDelegate.swift */; };
 		7CDB5E2A2513844D006334F7 /* PetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB5E292513844D006334F7 /* PetManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6AA424B3C0F6A52E8CECDA40 /* Pods-PetLog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetLog.debug.xcconfig"; path = "Target Support Files/Pods-PetLog/Pods-PetLog.debug.xcconfig"; sourceTree = "<group>"; };
+		7C01D8A12535BA25008EE4EF /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		7C0F13C7250A503700371C06 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		7C0F13CB2510E34600371C06 /* UpdateAnimalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAnimalViewController.swift; sourceTree = "<group>"; };
 		7C0F13CC2510E34600371C06 /* UpdateAnimalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateAnimalViewController.xib; sourceTree = "<group>"; };
@@ -150,6 +153,7 @@
 		7CA41CFC2528E76900820F1C /* VacListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacListManager.swift; sourceTree = "<group>"; };
 		7CA41CFF252F336D00820F1C /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainConfiguration.swift; sourceTree = "<group>"; };
 		7CA41D00252F336D00820F1C /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
+		7CA41D03252F4B0B00820F1C /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		7CDB5E27251382A7006334F7 /* PetFileDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetFileDelegate.swift; sourceTree = "<group>"; };
 		7CDB5E292513844D006334F7 /* PetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetManager.swift; sourceTree = "<group>"; };
 		92287AAEC3AF2411F9E6CFEB /* Pods-PetLog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetLog.release.xcconfig"; path = "Target Support Files/Pods-PetLog/Pods-PetLog.release.xcconfig"; sourceTree = "<group>"; };
@@ -183,6 +187,7 @@
 			children = (
 				7C3446C424F3D00F00F91F39 /* AuthViewController.swift */,
 				7C3446C624F3D00F00F91F39 /* Main.storyboard */,
+				7C65BCD6253381E0007132D3 /* Model */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 				7C0F13C7250A503700371C06 /* Fonts.swift */,
 				7C1BBAB724F5695D002308A9 /* Alert.swift */,
 				7C1BBAB624F5695D002308A9 /* UIImage + Gif.swift */,
+				7C01D8A12535BA25008EE4EF /* Strings.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -317,6 +323,14 @@
 				7C534CF825015BF40034CCA5 /* PetFileViewController.xib */,
 			);
 			path = PetFile;
+			sourceTree = "<group>";
+		};
+		7C65BCD6253381E0007132D3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7CA41D03252F4B0B00820F1C /* AuthManager.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		7C66C4F52502BB8C001F8D2E /* RegWalk */ = {
@@ -674,6 +688,7 @@
 				7C2CD03A24F6782100BBD1E4 /* NewsViewController.swift in Sources */,
 				7CA068332508E2F1008B80CE /* RegVetViewController.swift in Sources */,
 				7C1BBAB924F5695D002308A9 /* Alert.swift in Sources */,
+				7C01D8A22535BA25008EE4EF /* Strings.swift in Sources */,
 				7CA41CF02527506700820F1C /* RegWalkManager.swift in Sources */,
 				7C2CD05624F69B7A00BBD1E4 /* WebViewController.swift in Sources */,
 				7C7035C5250A274E005C27A2 /* PostData.swift in Sources */,
@@ -681,6 +696,7 @@
 				7C534CEE250153370034CCA5 /* PetsViewController.swift in Sources */,
 				7CA41CF52528E10600820F1C /* RegVacManager.swift in Sources */,
 				7CA06823250689CF008B80CE /* RegVacViewController.swift in Sources */,
+				7CA41D04252F4B0B00820F1C /* AuthManager.swift in Sources */,
 				7CA41CED25274F2D00820F1C /* NewAnimalManager.swift in Sources */,
 				7CA068182503F83E008B80CE /* WalkListViewController.swift in Sources */,
 				7CA41D02252F336D00820F1C /* KeychainPasswordItem.swift in Sources */,

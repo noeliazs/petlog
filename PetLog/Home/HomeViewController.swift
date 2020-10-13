@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 
 class HomeViewController: UIViewController {
@@ -30,7 +31,7 @@ class HomeViewController: UIViewController {
         passTextField.delegate = self
         textFieldsConfigure()
         homeManager.putController(homeViewController: self)
-        
+        self.navigationItem.setHidesBackButton(true, animated: false)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.dismissKeyboard))
                view.addGestureRecognizer(tap)
       
@@ -102,9 +103,11 @@ class HomeViewController: UIViewController {
     }
     
     
-
+  
+    @IBAction func goMainButton(_ sender: Any) {
+         navigationController?.pushViewController(MainViewController(), animated: true)
+    }
 }
-
 
 //MARK: TextFieldDelegate
 extension HomeViewController: UITextFieldDelegate{
