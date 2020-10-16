@@ -158,7 +158,11 @@ extension PetsViewController: UITableViewDelegate{
 
 //MARK: - PetFileDelegate
 extension PetsViewController:PetFileDelegate{
-
+    func updatePhoto(_ petManager: PetManager, photos: [PetPhoto]) {
+        //
+    }
+    
+    
     func updatePets(_ petManager: PetManager, pets: [Pet]){
         DispatchQueue.main.async{
             self.showActivityIndicatory(uiView: self.view)

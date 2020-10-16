@@ -25,6 +25,7 @@ class PetFileViewController: UIViewController{
     
     var petManager = PetManager()
     var arrayPet=[Pet]()
+    var photosArray = [PetPhoto]()
     var petID: String = ""
     let COLECTIONANIMALS = "Animales"
     private let db = Firestore.firestore()
@@ -34,20 +35,18 @@ class PetFileViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Ficha"
-        //petManager.delegate = self
-        //petManager.petID = petID
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Editar", style: .done, target: self, action: #selector(edit))
+       
     }
     
     override func viewDidAppear(_ animated: Bool) {
         petManager.delegate = self
         petManager.petID = petID
         petManager.loadPet()
+        petManager.loadPhoto(id: petID)
     }
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
+ 
     
     @objc func edit(){
         print("editar")
@@ -55,7 +54,6 @@ class PetFileViewController: UIViewController{
         navigationController?.pushViewController(updateAnimalViewController, animated: true)
         updateAnimalViewController.id = petID
     }
-    
     
     
     func completeLabels(){
@@ -70,6 +68,7 @@ class PetFileViewController: UIViewController{
         let image : UIImage = UIImage(named: mascota.specie)!
         specieImage.image = image
         imagePet.image = image
+   
     }
     
     
@@ -127,17 +126,50 @@ class PetFileViewController: UIViewController{
     func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
         return CGRect(x: x, y: y, width: width, height: height)
     }
+    
+    public func imageFromUrl(urlString: String) {
+       let imageURL = URL(string: photosArray[0].image)
+       var image: UIImage?
+       if let url = imageURL {
+           DispatchQueue.global(qos: .userInitiated).async {
+               let imageData = NSData(contentsOf: url)
+               DispatchQueue.main.async {
+                   if imageData != nil {
+                       image = UIImage(data: imageData! as Data)
+                       self.loadImage(image: image!)
+                      
+                   } else {
+                       image = nil
+                   }
+               }
+           }
+       }
+    }
+    
+    public func loadImage(image: UIImage){
+         imagePet.image = image
+    }
+
 }
 
 
 //MARK: - PetFileDelegate
 extension PetFileViewController:PetFileDelegate{
+    
+    func updatePhoto(_ petManager: PetManager, photos: [PetPhoto]) {
+        self.photosArray = photos
+        if(photosArray.count > 0){
+            imageFromUrl(urlString: photosArray[0].image)
+        }
+        
+    }
 
+    
     func updatePets(_ petManager: PetManager, pets: [Pet]){
         DispatchQueue.main.async{
             self.showActivityIndicatory(uiView: self.view)
             self.arrayPet =  pets
-            Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.stopActivityIndicatory), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.stopActivityIndicatory), userInfo: nil, repeats: false)
             self.completeLabels()
             self.checkWalkButton()
         }
@@ -148,3 +180,4 @@ extension PetFileViewController:PetFileDelegate{
          print(error)
      }
 }
+

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		76724867BBE95CBE09F07361 /* Pods_PetLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA47B4B7D7BA47E5EB998C1B /* Pods_PetLog.framework */; };
 		7C01D8A22535BA25008EE4EF /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C01D8A12535BA25008EE4EF /* Strings.swift */; };
+		7C01D8A725399F96008EE4EF /* PetPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C01D8A625399F96008EE4EF /* PetPhoto.swift */; };
 		7C0F13C8250A503700371C06 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0F13C7250A503700371C06 /* Fonts.swift */; };
 		7C0F13CD2510E34600371C06 /* UpdateAnimalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0F13CB2510E34600371C06 /* UpdateAnimalViewController.swift */; };
 		7C0F13CE2510E34600371C06 /* UpdateAnimalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C0F13CC2510E34600371C06 /* UpdateAnimalViewController.xib */; };
@@ -84,6 +85,7 @@
 /* Begin PBXFileReference section */
 		6AA424B3C0F6A52E8CECDA40 /* Pods-PetLog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetLog.debug.xcconfig"; path = "Target Support Files/Pods-PetLog/Pods-PetLog.debug.xcconfig"; sourceTree = "<group>"; };
 		7C01D8A12535BA25008EE4EF /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		7C01D8A625399F96008EE4EF /* PetPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetPhoto.swift; sourceTree = "<group>"; };
 		7C0F13C7250A503700371C06 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		7C0F13CB2510E34600371C06 /* UpdateAnimalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAnimalViewController.swift; sourceTree = "<group>"; };
 		7C0F13CC2510E34600371C06 /* UpdateAnimalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateAnimalViewController.xib; sourceTree = "<group>"; };
@@ -457,6 +459,7 @@
 			isa = PBXGroup;
 			children = (
 				7CA41CE22527466900820F1C /* UpdateAnimalManager.swift */,
+				7C01D8A625399F96008EE4EF /* PetPhoto.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -691,6 +694,7 @@
 				7C01D8A22535BA25008EE4EF /* Strings.swift in Sources */,
 				7CA41CF02527506700820F1C /* RegWalkManager.swift in Sources */,
 				7C2CD05624F69B7A00BBD1E4 /* WebViewController.swift in Sources */,
+				7C01D8A725399F96008EE4EF /* PetPhoto.swift in Sources */,
 				7C7035C5250A274E005C27A2 /* PostData.swift in Sources */,
 				7CA41CE32527466900820F1C /* UpdateAnimalManager.swift in Sources */,
 				7C534CEE250153370034CCA5 /* PetsViewController.swift in Sources */,

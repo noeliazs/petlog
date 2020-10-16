@@ -35,8 +35,17 @@ class UpdateAnimalViewController: UIViewController {
         updateAnimalManager.putController(updateAnimalViewController: self)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewAnimalViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Foto", style: .done, target: self, action: #selector(addPhoto))
     }
     
+    @objc func addPhoto(){
+          print("añadir foto")
+        let url = "https://metricool.com/wp-content/uploads/new-igbio-header-2020.png"
+        let photo = PetPhoto(id: id, image: url)
+        updateAnimalManager.savePhoto(photo: photo)
+          
+    }
+      
     func textFieldsConfigure(){
         medTextField.layer.cornerRadius=10
         medTextField.layer.masksToBounds=true
@@ -124,6 +133,10 @@ class UpdateAnimalViewController: UIViewController {
     func alertWeightGood(){
         alert.viewSimpleAlert(view: self,title:"Peso de la mascota modificado.",message:"Datos guardados")
         clean()
+    }
+    
+    func viewAlertSavePhoto(){
+        alert.viewSimpleAlert(view: self,title:"Foto guardada",message:"Datos guardados")
     }
 }
 

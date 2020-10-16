@@ -14,7 +14,7 @@ import Firebase
 class UpdateAnimalManager{
     var updateAnimalViewController: UpdateAnimalViewController?
     private let db = Firestore.firestore()
-    private let COLECTIONANIMALS = "Animales"
+    private let strings = Strings()
   
     func putController(updateAnimalViewController: UpdateAnimalViewController) {
         self.updateAnimalViewController = updateAnimalViewController
@@ -22,7 +22,7 @@ class UpdateAnimalManager{
     
     func updateFood(id: String, food: String){
         if  food != ""{
-            db.collection(COLECTIONANIMALS)
+            db.collection(strings.COLLECTIONANIMALS)
                 .whereField("id", isEqualTo: id)
                 .getDocuments() { (querySnapshot, err) in
                 if let err = err {
@@ -43,7 +43,7 @@ class UpdateAnimalManager{
     
     func updateMed(id: String,med: String){
         if  med != ""{
-            db.collection(COLECTIONANIMALS)
+            db.collection(strings.COLLECTIONANIMALS)
                 .whereField("id", isEqualTo: id)
                 .getDocuments() { (querySnapshot, err) in
                     if let err = err {
@@ -66,7 +66,7 @@ class UpdateAnimalManager{
     
     func updateWeight(id: String, weight: Double){
         if  weight != 0.0{
-            db.collection(COLECTIONANIMALS)
+            db.collection(strings.COLLECTIONANIMALS)
             .whereField("id", isEqualTo: id)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
@@ -85,6 +85,15 @@ class UpdateAnimalManager{
             updateAnimalViewController?.alertBad()
         }
     }
+    
+    func savePhoto(photo: PetPhoto){
+        db.collection(strings.COLLECTIONPHOTOS).document(photo.id).setData([
+                       "id": photo.id,
+                       "imagen": photo.image
+        ])
+        updateAnimalViewController?.viewAlertSavePhoto()
+    }
+       
 
 
 }

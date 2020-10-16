@@ -13,6 +13,8 @@ struct Strings{
       var species : [String] = []
       let COLLECTIONSPECIES = "Especies"
       let badSpecie = "Seleccione una especie"
+      let COLLECTIONANIMALS = "Animales"
+      let COLLECTIONPHOTOS = "Fotos"
 }
 
 

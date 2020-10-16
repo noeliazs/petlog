@@ -14,9 +14,10 @@ class PetManager {
 
     var petArray = [Pet]()
     var petsArray = [Pet]()
+    var photosArray = [PetPhoto]()
     var petID: String = ""
-    let COLECTIONANIMALS = "Animales"
     private let db = Firestore.firestore()
+    let strings = Strings()
 
     var delegate: PetFileDelegate?
     
@@ -24,7 +25,7 @@ class PetManager {
         print(petID)
         //inicializamos el array para que no haya problemas
         petArray = []
-        db.collection(COLECTIONANIMALS).whereField("id", isEqualTo: petID)
+        db.collection(strings.COLLECTIONANIMALS).whereField("id", isEqualTo: petID)
         .getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error extrayendo los documentos \(err)")
@@ -51,7 +52,7 @@ class PetManager {
     func loadPets(){
         let user = Auth.auth().currentUser
         let email = user!.email!
-        db.collection(COLECTIONANIMALS).whereField("propietario", isEqualTo: email)
+        db.collection(strings.COLLECTIONANIMALS).whereField("propietario", isEqualTo: email)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error extrayendo los documentos \(err)")
@@ -74,6 +75,25 @@ class PetManager {
                 }
         }
     }
+    
+    func loadPhoto(id: String){
+        db.collection(strings.COLLECTIONPHOTOS).whereField("id", isEqualTo: id)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error extrayendo los documentos \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                      let datos = document.data()
+                      let id = datos["id"] as? String ?? "ID"
+                      let imagen = datos["imagen"] as? String ?? "Imagen"
+                        let photo = PetPhoto(id: id,image: imagen)
+                      self.photosArray.append(photo)
+                    }
+                    self.delegate?.updatePhoto(self, photos: self.photosArray)
+                }
+        }
+    }
+    
     
     
 

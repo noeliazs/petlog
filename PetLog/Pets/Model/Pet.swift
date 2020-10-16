@@ -19,5 +19,4 @@ struct Pet{
     var food: String
     var owner: String
     
-   
 }

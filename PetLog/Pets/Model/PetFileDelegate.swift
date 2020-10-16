@@ -11,4 +11,5 @@ protocol PetFileDelegate {
     
     func updatePets(_ petManager: PetManager, pets: [Pet])
     func didFailWithError(error: Error)
+    func updatePhoto(_ petManager: PetManager, photos: [PetPhoto])
 }
