@@ -10,10 +10,12 @@
 import UIKit
 import FirebaseFirestore
 import Firebase
+import FirebaseStorage
 
 class UpdateAnimalManager{
     var updateAnimalViewController: UpdateAnimalViewController?
     private let db = Firestore.firestore()
+    private let storage = Storage.storage().reference()
     private let strings = Strings()
   
     func putController(updateAnimalViewController: UpdateAnimalViewController) {
@@ -94,6 +96,26 @@ class UpdateAnimalManager{
         updateAnimalViewController?.viewAlertSavePhoto()
     }
        
+    func savePhotoStorage(imageData: Data,id: String){
+        let title = "images/\(id).png"
+          self.updateAnimalViewController?.viewIndicator()
+       storage.child(title).putData(imageData, metadata: nil, completion: {_ ,error in
+            guard error == nil else{
+                print("fallo en la subida")
+                return
+            }
+        self.storage.child(title).downloadURL(completion: {url,error in
+          
+                guard let url = url, error == nil else{
+                    return
+                }
+                let urlString = url.absoluteString
+                self.updateAnimalViewController?.viewIndicator()
+                let photo = PetPhoto(id: id, image: urlString)
+                self.savePhoto(photo: photo)
+            })
+        })
+    }
 
 
 }

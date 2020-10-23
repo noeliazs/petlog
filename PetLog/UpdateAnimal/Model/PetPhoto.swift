@@ -9,5 +9,5 @@
 import Foundation
 struct PetPhoto{
     var id: String
-    var image:String
+    var image: String
 }

@@ -77,6 +77,7 @@ class PetManager {
     }
     
     func loadPhoto(id: String){
+        photosArray.removeAll()
         db.collection(strings.COLLECTIONPHOTOS).whereField("id", isEqualTo: id)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {

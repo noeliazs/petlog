@@ -11,6 +11,7 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
+
 class UpdateAnimalViewController: UIViewController {
     
     @IBOutlet weak var medTextField: UITextField!
@@ -23,6 +24,7 @@ class UpdateAnimalViewController: UIViewController {
     private let colors = Colors()
     private let COLECTIONANIMALS = "Animales"
     let updateAnimalManager = UpdateAnimalManager()
+    let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,9 +42,14 @@ class UpdateAnimalViewController: UIViewController {
     
     @objc func addPhoto(){
           print("añadir foto")
-        let url = "https://metricool.com/wp-content/uploads/new-igbio-header-2020.png"
-        let photo = PetPhoto(id: id, image: url)
-        updateAnimalManager.savePhoto(photo: photo)
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker,animated: true)
+        //let url = "https://metricool.com/wp-content/uploads/new-igbio-header-2020.png"
+        //let photo = PetPhoto(id: id, image: url)
+        //updateAnimalManager.savePhoto(photo: photo)
           
     }
       
@@ -135,9 +142,33 @@ class UpdateAnimalViewController: UIViewController {
         clean()
     }
     
+    func viewIndicator(){
+        showActivityIndicatory(uiView: self.view)
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.stopActivityIndicatory), userInfo: nil, repeats: false)
+    }
+   
     func viewAlertSavePhoto(){
         alert.viewSimpleAlert(view: self,title:"Foto guardada",message:"Datos guardados")
     }
+    
+    
+    func showActivityIndicatory(uiView: UIView) {
+        actInd.frame = CGRectMake(40.0, 40.0, 150.0, 150.0);
+        actInd.center = uiView.center
+        actInd.hidesWhenStopped = true
+        actInd.style = UIActivityIndicatorView.Style.large
+        actInd.color = .black
+        uiView.addSubview(actInd)
+        actInd.startAnimating()
+    }
+    
+    @objc func stopActivityIndicatory(){
+        actInd.stopAnimating()
+    }
+    
+    func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
+           return CGRect(x: x, y: y, width: width, height: height)
+       }
 }
 
 //MARK: TextFieldDelegate
@@ -146,5 +177,33 @@ extension UpdateAnimalViewController: UITextFieldDelegate{
               self.view.endEditing(true)
               return false
         }
+    
+}
+
+
+//MARK: ImagePickerDelegate
+extension UpdateAnimalViewController: UIImagePickerControllerDelegate{
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else{
+            return
+        }
+        guard let imageData = image.pngData() else{
+            return
+        }
+        updateAnimalManager.savePhotoStorage(imageData: imageData,id: id)
+
+    
+    
+    
+    }
+}
+
+
+//MARK: ImagePickerDelegate
+extension UpdateAnimalViewController: UINavigationControllerDelegate{
     
 }
