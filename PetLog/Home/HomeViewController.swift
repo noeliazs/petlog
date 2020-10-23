@@ -17,11 +17,12 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var passTextField: UITextField!
+    
     //recupera el usuario que está registrado
-    let user = Auth.auth().currentUser
-    let alert = Alert()
-    let colors = Colors()
-    let homeManager = HomeManager()
+    private let user = Auth.auth().currentUser
+    private let alert = Alert()
+    private let colors = Colors()
+    private let homeManager = HomeManager()
  
     
     override func viewDidLoad() {
@@ -45,8 +46,8 @@ class HomeViewController: UIViewController {
     }
 
     @objc func dismissKeyboard() {
-                view.endEditing(true)
-            }
+        view.endEditing(true)
+    }
     
     @IBAction func saveChangesButtonAction(_ sender: Any) {
     

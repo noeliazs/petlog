@@ -11,16 +11,16 @@ import FirebaseFirestore
 import Firebase
 
 class VetListManager{
-    var vetListViewController: VetListViewController?
+    private var vetListViewController: VetListViewController?
     private let db = Firestore.firestore()
-    private let COLLECTIONVETS = "Veterinario"
+    private var strings = Strings()
   
     func putController(vetListViewController: VetListViewController) {
         self.vetListViewController = vetListViewController
     }
     
     func loadVisits(email: String,name: String){
-        db.collection(COLLECTIONVETS).whereField("propietario", isEqualTo: email).whereField("nombre", isEqualTo: name).getDocuments() { (querySnapshot, err) in
+        db.collection(strings.COLLECTIONVETS).whereField("propietario", isEqualTo: email).whereField("nombre", isEqualTo: name).getDocuments() { (querySnapshot, err) in
            if let err = err {
               print("Error extrayendo los documentos \(err)")
           } else {
@@ -40,7 +40,7 @@ class VetListManager{
     }
     
     func loadVisits(email: String){
-        db.collection(COLLECTIONVETS).whereField("propietario", isEqualTo: email).getDocuments() { (querySnapshot, err) in
+        db.collection(strings.COLLECTIONVETS).whereField("propietario", isEqualTo: email).getDocuments() { (querySnapshot, err) in
           if let err = err {
              print("Error extrayendo los documentos \(err)")
          } else {

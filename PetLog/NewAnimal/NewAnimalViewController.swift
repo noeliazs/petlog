@@ -23,23 +23,18 @@ class NewAnimalViewController: UIViewController {
     @IBOutlet weak var foodTextField: UITextField!
     
     private let db = Firestore.firestore()
+    private let user = Auth.auth().currentUser
     private let alert = Alert()
     private let colors = Colors()
     private let strings = Strings()
-    let newAnimalManager = NewAnimalManager()
-    let user = Auth.auth().currentUser
-    
-    
-    //Nombre de la colección en la BD
-    let COLECTIONANIMALS = "Animales"
-    var email : String = ""
-    var specie: String = ""
-    //se utilizará este id para recuperar los animales de una forma más sencilla
-    var id: String = ""
+    private let newAnimalManager = NewAnimalManager()
+    private var email : String = ""
+    private var specie: String = ""
+    private var id: String = ""
    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Registro nueva mascota"
         self.speciePicker.dataSource = self
         self.speciePicker.delegate = self
         nameTextField.delegate = self
@@ -49,7 +44,6 @@ class NewAnimalViewController: UIViewController {
         medTextField.delegate = self
         foodTextField.delegate = self
         
-        title = "Registro nueva mascota"
         textFieldsConfigure()
         newAnimalManager.putController(newAnimalViewController: self)
         email = user!.email!
@@ -160,7 +154,6 @@ class NewAnimalViewController: UIViewController {
     func reloadPicker(){
           speciePicker.reloadAllComponents()
     }
-    
     
     
    

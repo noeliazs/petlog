@@ -15,16 +15,16 @@ class VacListViewController: UIViewController {
     @IBOutlet weak var printButton: UIButton!
     @IBOutlet weak var HomeButton: UIButton!
     
-    private let fonts = Fonts()
-    private let alert = Alert()
-    var petName: String = ""
-    var petVacArray: [PetVaccine] = []
-    private let COLLECTIONVACCINES = "Vacunas"
     private let db = Firestore.firestore()
     private let user = Auth.auth().currentUser
-    var primeraVez = true
-    private var totalVacs:Int = 0
+    private let fonts = Fonts()
+    private let alert = Alert()
     private var vacListManager = VacListManager()
+    var petName: String = ""
+    var petVacArray: [PetVaccine] = []
+    private var primeraVez = true
+    private var totalVacs:Int = 0
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +41,8 @@ class VacListViewController: UIViewController {
         else{
             filterPet()
         }
-         
     }
                
-    
     func AllVaccines(){
         if let user = user, let email = user.email{
             vacListManager.loadVacs(email: email)
@@ -111,7 +109,6 @@ class VacListViewController: UIViewController {
         tableView.reloadData()
     }
     
-   
     
 }
 
@@ -124,12 +121,10 @@ extension VacListViewController: UITableViewDataSource{
       
     }
     
-    
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! PetVacCell
-        
         
         let fecha = petVacArray[indexPath.row].date
         let nombre =  petVacArray[indexPath.row].name
@@ -141,8 +136,6 @@ extension VacListViewController: UITableViewDataSource{
         cell.vacLabel.text = "Vacuna \(vacuna)"
         cell.vetLabel.text = veterinario
         cell.selectionStyle = .none
-
-        
         return cell
     }
 
@@ -173,7 +166,6 @@ extension VacListViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        
         let vacuna = petVacArray[indexPath.row].vaccine
-     
         return CGFloat(50) + vacuna.heightWithConstrainedWidth(width: tableView.frame.width, font: fonts.cellsTablesFont) 
     }
 }

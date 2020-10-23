@@ -11,9 +11,9 @@ import FirebaseFirestore
 import Firebase
 
 class RegVetManager{
-    var regVetViewController: RegVetViewController?
+    private var regVetViewController: RegVetViewController?
     private let db = Firestore.firestore()
-    private let COLLECTIONVETS = "Veterinario"
+    private let strings = Strings()
   
     func putController(regVetViewController: RegVetViewController) {
         self.regVetViewController = regVetViewController
@@ -21,7 +21,7 @@ class RegVetManager{
     
     func saveVac(visit: PetVetVisit){
         if visit.reason != "" && visit.vet != "" && visit.date != ""{
-        db.collection(COLLECTIONVETS).document(visit.name+"-"+visit.vet+"-"+visit.date).setData([
+            db.collection(strings.COLLECTIONVETS).document(visit.name+"-"+visit.vet+"-"+visit.date).setData([
                         "propietario": visit.email,
                         "nombre": visit.name,
                         "razon": visit.reason,

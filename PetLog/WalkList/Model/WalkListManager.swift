@@ -11,16 +11,17 @@ import FirebaseFirestore
 import Firebase
 
 class WalkListManager{
-    var walkListViewController: WalkListViewController?
+    private var walkListViewController: WalkListViewController?
     private let db = Firestore.firestore()
-    let COLECTIONWALKS = "Paseos"
+    private let strings = Strings()
+   
   
     func putController(walkListViewController: WalkListViewController) {
         self.walkListViewController = walkListViewController
     }
     
     func loadWalks(id: String){
-        db.collection(COLECTIONWALKS).whereField("id", isEqualTo: id).getDocuments() { (querySnapshot, err) in
+        db.collection(strings.COLLECTIONWALKS).whereField("id", isEqualTo: id).getDocuments() { (querySnapshot, err) in
              if let err = err {
                 print("Error extrayendo los documentos \(err)")
             } else {

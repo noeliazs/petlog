@@ -13,7 +13,7 @@ import Firebase
 import FirebaseStorage
 
 class UpdateAnimalManager{
-    var updateAnimalViewController: UpdateAnimalViewController?
+    private var updateAnimalViewController: UpdateAnimalViewController?
     private let db = Firestore.firestore()
     private let storage = Storage.storage().reference()
     private let strings = Strings()
@@ -89,7 +89,7 @@ class UpdateAnimalManager{
     }
     
     func savePhoto(photo: PetPhoto){
-        db.collection(strings.COLLECTIONPHOTOS).document(photo.id).setData([
+    db.collection(strings.COLLECTIONPHOTOS).document(photo.id).setData([
                        "id": photo.id,
                        "imagen": photo.image
         ])

@@ -16,13 +16,14 @@ class PetsViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     
-    var petsArray = [Pet]()
     private let db = Firestore.firestore()
-    let COLECTIONANIMALS = "Animales"
-    let colors = Colors()
-    let fonts = Fonts()
-    var petManager = PetManager()
-    let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+    private let colors = Colors()
+    private let fonts = Fonts()
+    private var petManager = PetManager()
+    private let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+    private let strings = Strings()
+    private var petsArray = [Pet]()
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,7 +114,7 @@ extension PetsViewController: UITableViewDataSource, SwipeTableViewCellDelegate{
          let mascota = petsArray[indexPath.row]
          let id = mascota.id
        
-        db.collection(COLECTIONANIMALS).document(id).delete() { err in
+        db.collection(strings.COLLECTIONANIMALS).document(id).delete() { err in
             if let err = err {
                 print("Error de borrado \(err)")
             } else {
@@ -151,7 +152,6 @@ extension PetsViewController: UITableViewDelegate{
         navigationController?.pushViewController(petFileViewController, animated: true)
         petFileViewController.petID = array[0].id
 
-       
     }
 }
  

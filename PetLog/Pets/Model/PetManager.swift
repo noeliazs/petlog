@@ -11,14 +11,13 @@ import FirebaseFirestore
 import Firebase
 
 class PetManager {
-
-    var petArray = [Pet]()
-    var petsArray = [Pet]()
-    var photosArray = [PetPhoto]()
-    var petID: String = ""
+    
     private let db = Firestore.firestore()
-    let strings = Strings()
-
+    private let strings = Strings()
+    private var petArray = [Pet]()
+    private var petsArray = [Pet]()
+    private var photosArray = [PetPhoto]()
+    var petID: String = ""
     var delegate: PetFileDelegate?
     
     func loadPet(){
@@ -94,8 +93,7 @@ class PetManager {
                 }
         }
     }
-    
-    
+ 
     
 
 }

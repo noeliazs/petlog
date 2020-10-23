@@ -11,18 +11,16 @@ import WebKit
 
 class WebViewController: UIViewController,WKNavigationDelegate {
     
-   var webView: WKWebView!
+   private var webView: WKWebView!
+   var url: String = ""
     
-    var url: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         print(url)
-        
         webView = WKWebView()
         view = webView
         webView.navigationDelegate = self
         load(url: url)
-
     }
     
     

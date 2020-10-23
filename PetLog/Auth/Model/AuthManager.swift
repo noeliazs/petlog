@@ -12,13 +12,13 @@ import Firebase
 import FirebaseAuth
 
 class AuthManager{
-    var authViewController: AuthViewController?
+    private var authViewController: AuthViewController?
     private let db = Firestore.firestore()
+    private var strings = Strings()
     private var remember : Bool = false
     private var keyPassword : String =  "keyPassword"
     private var keyEmail : String = "keyEmail"
     private let defaults = UserDefaults.standard
-    private var strings = Strings()
     
     func putController(authViewController: AuthViewController) {
             self.authViewController = authViewController
@@ -94,7 +94,7 @@ class AuthManager{
     }
     
     func isValidPassword(string: String) -> Bool{
-        if string.count<6{
+        if string.count<strings.NUMCHAR{
             return false
         }
         else{

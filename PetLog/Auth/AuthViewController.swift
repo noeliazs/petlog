@@ -14,17 +14,15 @@ class AuthViewController: UIViewController {
     
     @IBOutlet weak var passText: UITextField!
     @IBOutlet weak var emailText: UITextField!
-    
     @IBOutlet weak var loginButton: UIButton!
-    
     @IBOutlet weak var signupButton: UIButton!
-    
     @IBOutlet weak var SwitchRemember: UISwitch!
+    
     private let alert=Alert()
     private let colors=Colors()
+    private let authManager =  AuthManager()
     private var remember: Bool = false
    
-    private let authManager =  AuthManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,8 +96,6 @@ class AuthViewController: UIViewController {
         }
         
     }
-    
-    
     
     
     @IBAction func switchOn(_ sender: Any) {

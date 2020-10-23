@@ -11,9 +11,9 @@ import FirebaseFirestore
 import Firebase
 
 class RegWalkManager{
-    var regWalkViewController: RegWalkViewController?
+    private var regWalkViewController: RegWalkViewController?
     private let db = Firestore.firestore()
-    private let COLLECTIONWALKS = "Paseos"
+    private let strings = Strings()
   
     func putController(regWalkViewController: RegWalkViewController) {
         self.regWalkViewController = regWalkViewController
@@ -21,8 +21,7 @@ class RegWalkManager{
 
     func saveWalk(walk: PetWalk){
         if walk.distance != 0.0 && walk.place != "" && walk.date != "" && walk.hour != "" && walk.id != "" && walk.name != ""{
-            print("guardando")
-        db.collection(COLLECTIONWALKS).document(walk.name+"-"+walk.date+"-"+walk.hour).setData([
+            db.collection(strings.COLLECTIONWALKS).document(walk.name+"-"+walk.date+"-"+walk.hour).setData([
                 "id": walk.id,
                 "nombre": walk.name,
                 "fecha": walk.date,

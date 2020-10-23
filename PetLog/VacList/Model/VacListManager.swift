@@ -13,14 +13,14 @@ import Firebase
 class VacListManager{
     var vacListViewController: VacListViewController?
     private let db = Firestore.firestore()
-    private let COLLECTIONVACCINES = "Vacunas"
+    private let strings = Strings()
   
     func putController(vacListViewController: VacListViewController) {
         self.vacListViewController = vacListViewController
     }
     
     func loadVacs(email: String){
-        db.collection(COLLECTIONVACCINES).whereField("propietario", isEqualTo: email).getDocuments() { (querySnapshot, err) in
+        db.collection(strings.COLLECTIONVACCINES).whereField("propietario", isEqualTo: email).getDocuments() { (querySnapshot, err) in
                   if let err = err {
                      print("Error extrayendo los documentos \(err)")
                  } else {
@@ -40,7 +40,7 @@ class VacListManager{
    }
     
     func loadVacs(email: String,name: String){
-        db.collection(COLLECTIONVACCINES).whereField("propietario", isEqualTo: email).whereField("nombre", isEqualTo: name).getDocuments() { (querySnapshot, err) in
+        db.collection(strings.COLLECTIONVACCINES).whereField("propietario", isEqualTo: email).whereField("nombre", isEqualTo: name).getDocuments() { (querySnapshot, err) in
            if let err = err {
               print("Error extrayendo los documentos \(err)")
           } else {

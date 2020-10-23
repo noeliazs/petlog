@@ -10,7 +10,6 @@ import UIKit
 
 class PetVetCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
-    
     @IBOutlet weak var vetLabel: UILabel!
     @IBOutlet weak var reasonLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!

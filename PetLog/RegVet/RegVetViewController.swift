@@ -13,18 +13,18 @@ import FirebaseFirestore
 
 class RegVetViewController: UIViewController {
 
-    private let db = Firestore.firestore()
-    let user = Auth.auth().currentUser
-    private let alert = Alert()
-    private let colors = Colors()
-    var petName: String = ""
-    private var date: String = ""
-    private let COLLECTIONVETS = "Veterinario"
-    private let regVetManager = RegVetManager()
-    
     @IBOutlet weak var vetTextField: UITextField!
     @IBOutlet weak var reasonTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
+    
+    private let db = Firestore.firestore()
+    private let user = Auth.auth().currentUser
+    private let alert = Alert()
+    private let colors = Colors()
+    private let regVetManager = RegVetManager()
+    var petName: String = ""
+    private var date: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Registro de visitas veterinarias"
@@ -45,7 +45,6 @@ class RegVetViewController: UIViewController {
            vetTextField.layer.masksToBounds=true
            vetTextField.layer.borderWidth = 2
            vetTextField.layer.borderColor = colors.brownColor.cgColor
-           
            
            reasonTextField.attributedPlaceholder = NSAttributedString(string: "Nombre de la vacuna",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
            vetTextField.attributedPlaceholder = NSAttributedString(string: "Nombre del veterinario o clínica",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
@@ -113,7 +112,6 @@ class RegVetViewController: UIViewController {
         dateFormatter.locale = Locale(identifier: "es")
         dateFormatter.date(from: date)
         date = dateFormatter.string(from: sender.date)
-
         print(date)
     }
     

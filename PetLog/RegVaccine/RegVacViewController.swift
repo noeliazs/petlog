@@ -13,20 +13,18 @@ import FirebaseFirestore
 
 class RegVacViewController: UIViewController {
 
-    private let db = Firestore.firestore()
-    let user = Auth.auth().currentUser
-    private let alert = Alert()
-    private let colors = Colors()
-    var petName: String = ""
-    private var date: String = ""
-    private let COLLECTIONVACCINES = "Vacunas"
-    private let regVacManager = RegVacManager()
-
     @IBOutlet weak var vacTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var vetTextField: UITextField!
-   
     
+    private let db = Firestore.firestore()
+    private let user = Auth.auth().currentUser
+    private let alert = Alert()
+    private let colors = Colors()
+    private let regVacManager = RegVacManager()
+    var petName: String = ""
+    private var date: String = ""
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Registro de Vacunas"
@@ -49,15 +47,13 @@ class RegVacViewController: UIViewController {
         vetTextField.layer.borderWidth = 2
         vetTextField.layer.borderColor = colors.brownColor.cgColor
         
-        
         vacTextField.attributedPlaceholder = NSAttributedString(string: "Nombre de la vacuna",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
         vetTextField.attributedPlaceholder = NSAttributedString(string: "Nombre del veterinario o clínica",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
-        
     }
     
     @objc func dismissKeyboard() {
            view.endEditing(true)
-       }
+    }
 
     
     @IBAction func saveButtonAction(_ sender: UIButton) {
@@ -84,7 +80,6 @@ class RegVacViewController: UIViewController {
         let vacListViewController = VacListViewController()
          navigationController?.pushViewController(vacListViewController, animated: true)
         vacListViewController.petName = petName
-         
     }
     
     func clean(){
@@ -94,7 +89,6 @@ class RegVacViewController: UIViewController {
         let calendar: NSCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier(rawValue: NSCalendar.Identifier.gregorian.rawValue))!
         calendar.timeZone = NSTimeZone(name: "UTC")! as TimeZone
         let components: NSDateComponents = NSDateComponents()
-        
         components.year = 2020
         components.month = 1
         components.day = 1
@@ -112,7 +106,6 @@ class RegVacViewController: UIViewController {
     }
     
     @IBAction func datePickerChanged(sender: UIDatePicker) {
-
            let dateFormatter = DateFormatter()
            dateFormatter.dateFormat = "dd MMM, yyyy"
            //Para convertir el mes en español
@@ -120,7 +113,6 @@ class RegVacViewController: UIViewController {
            dateFormatter.locale = Locale(identifier: "es")
            dateFormatter.date(from: date)
            date = dateFormatter.string(from: sender.date)
-
            print(date)
        }
 }

@@ -23,19 +23,17 @@ class PetFileViewController: UIViewController{
     @IBOutlet weak var foodLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
     
-    var petManager = PetManager()
-    var arrayPet=[Pet]()
-    var photosArray = [PetPhoto]()
-    var petID: String = ""
-    let COLECTIONANIMALS = "Animales"
+    private var petManager = PetManager()
     private let db = Firestore.firestore()
-    let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+    private let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
     private let colors = Colors()
+    private var arrayPet=[Pet]()
+    private var photosArray = [PetPhoto]()
+    var petID: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Ficha"
-        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Editar", style: .done, target: self, action: #selector(edit))
     }
     
@@ -45,10 +43,8 @@ class PetFileViewController: UIViewController{
         petManager.loadPet()
         petManager.loadPhoto(id: petID)
         imagePet.layer.cornerRadius = imagePet.bounds.size.width / 2.0
-
     }
  
-    
     @objc func edit(){
         print("editar")
         let updateAnimalViewController = UpdateAnimalViewController()
@@ -69,10 +65,7 @@ class PetFileViewController: UIViewController{
         let image : UIImage = UIImage(named: mascota.specie)!
         specieImage.image = image
         imagePet.image = image
-        imagePet.contentMode = .scaleAspectFit
-   
     }
-    
     
 
     @IBAction func walkButtonAction(_ sender: UIButton) {
@@ -124,7 +117,6 @@ class PetFileViewController: UIViewController{
     }
     
    
-    
     func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
         return CGRect(x: x, y: y, width: width, height: height)
     }

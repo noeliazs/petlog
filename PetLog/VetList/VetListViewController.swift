@@ -13,20 +13,19 @@ import FirebaseFirestore
 class VetListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    private let fonts = Fonts()
-    private let alert = Alert()
-    var petName: String = ""
-    var petVetArray: [PetVetVisit] = []
-    private let COLLECTIONVETS = "Veterinario"
+    
     private let db = Firestore.firestore()
     private let user = Auth.auth().currentUser
-    var primeraVez = true
-    private var totalVetsVisits:Int = 0
+    private let fonts = Fonts()
+    private let alert = Alert()
     private var vetListManager = VetListManager()
-    
+    var petName: String = ""
+    var petVetArray: [PetVetVisit] = []
+    private var primeraVez = true
+    private var totalVetsVisits:Int = 0
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-
         title = "Listado de visitas veterinarias"
         tableView.register(UINib(nibName: "PetVetCell",bundle:nil), forCellReuseIdentifier: "ReusableCell")
         tableView.dataSource=self
@@ -41,21 +40,21 @@ class VetListViewController: UIViewController {
         }
     }
 
-      func AllVetsVisits(){
+    func AllVetsVisits(){
           if let user = user, let email = user.email{
             vetListManager.loadVisits(email: email)
          }
          
-      }
+    }
           
-      func filterPet(){
+    func filterPet(){
           if let user = user, let email = user.email{
               vetListManager.loadVisits(email: email, name: petName)
           }
           
-      }
+    }
       
-      @IBAction func filterButtonAction(_ sender: UIButton){
+    @IBAction func filterButtonAction(_ sender: UIButton){
           let alertController = UIAlertController(title: "FILTRO", message: "Introduce el nombre de tu mascota", preferredStyle: UIAlertController.Style.alert)
           let cancelAction = UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.default, handler: {
                  (action : UIAlertAction!) -> Void in })
@@ -76,11 +75,11 @@ class VetListViewController: UIViewController {
     
       }
       
-      @objc func changeView() {
+    @objc func changeView() {
          let vetListViewController = VetListViewController()
           navigationController?.pushViewController(vetListViewController, animated: false)
           vetListViewController.petName = petName
-      }
+    }
     
     
     @IBAction func allActionButton(_ sender: UIButton) {
@@ -101,6 +100,7 @@ class VetListViewController: UIViewController {
                     alert.viewSimpleAlert(view: self,title:"Aviso",message:"Función de imprimir solo disponible para una mascota. Por favor filtre antes.")
                }
     }
+    
     @IBAction func homeActionButton(_ sender: UIButton) {
          navigationController?.pushViewController(MainViewController(), animated: true)
     }
@@ -116,15 +116,10 @@ extension VetListViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return petVetArray.count
-      
     }
     
-    
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! PetVetCell
-        
         
         let fecha = petVetArray[indexPath.row].date
         let nombre =  petVetArray[indexPath.row].name
@@ -136,16 +131,11 @@ extension VetListViewController: UITableViewDataSource{
         cell.reasonLabel.text = razon
         cell.vetLabel.text = veterinario
         cell.selectionStyle = .none
-
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       
         let razon = petVetArray[indexPath.row].reason
-
-     
         return CGFloat(60) + razon.heightWithConstrainedWidth(width: tableView.frame.width, font: fonts.cellsTablesFont)
     }
 
@@ -156,7 +146,7 @@ extension VetListViewController: UITableViewDataSource{
 extension VetListViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //al hacer click en la celda de nuestra mascota ya filtrados los resultados nos dice cuantas vacunas tiene
+        //al hacer click en la celda de nuestra mascota ya filtrados los resultados nos dice cuantas visitas al veterinario a realizado
         if petName != ""{
             if primeraVez{
                 for _ in petVetArray{
@@ -169,7 +159,6 @@ extension VetListViewController: UITableViewDelegate{
        else{
              alert.viewSimpleAlert(view: self,title:"Aviso",message:"Filtre por el nombre de su mascota para conocer una funcionalidad extra")
         }
-        
        
     }
 }

@@ -11,7 +11,8 @@ import FirebaseFirestore
 import Firebase
 
 class HomeManager{
-    var homeViewController: HomeViewController?
+    private var homeViewController: HomeViewController?
+    private let strings = Strings()
     
     func putController(homeViewController: HomeViewController) {
         self.homeViewController = homeViewController
@@ -43,7 +44,7 @@ class HomeManager{
        }
        
     func isValidPassword(string: String) -> Bool{
-           if string.count<6{
+        if string.count<strings.NUMCHAR{
                return false
            }
            else{

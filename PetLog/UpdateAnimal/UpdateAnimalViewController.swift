@@ -17,18 +17,17 @@ class UpdateAnimalViewController: UIViewController {
     @IBOutlet weak var medTextField: UITextField!
     @IBOutlet weak var weightTextField: UITextField!
     @IBOutlet weak var foodTextField: UITextField!
+    
     var id: String = ""
     private let db = Firestore.firestore()
-    let user = Auth.auth().currentUser
+    private let user = Auth.auth().currentUser
     private let alert = Alert()
     private let colors = Colors()
-    private let COLECTIONANIMALS = "Animales"
-    let updateAnimalManager = UpdateAnimalManager()
-    let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+    private let updateAnimalManager = UpdateAnimalManager()
+    private let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         title = "Editar mascota"
         medTextField.delegate = self
         weightTextField.delegate = self
@@ -41,16 +40,12 @@ class UpdateAnimalViewController: UIViewController {
     }
     
     @objc func addPhoto(){
-          print("añadir foto")
+        print("añadir foto")
         let picker = UIImagePickerController()
         picker.sourceType = .photoLibrary
         picker.delegate = self
         picker.allowsEditing = true
         present(picker,animated: true)
-        //let url = "https://metricool.com/wp-content/uploads/new-igbio-header-2020.png"
-        //let photo = PetPhoto(id: id, image: url)
-        //updateAnimalManager.savePhoto(photo: photo)
-          
     }
       
     func textFieldsConfigure(){
@@ -67,7 +62,6 @@ class UpdateAnimalViewController: UIViewController {
         foodTextField.layer.borderWidth = 2
         foodTextField.layer.borderColor = colors.brownColor.cgColor
         
-        
         medTextField.attributedPlaceholder = NSAttributedString(string: "No o la medicación que necesita",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
         weightTextField.attributedPlaceholder = NSAttributedString(string: "Peso en kilos. Admite decimales",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
         foodTextField.attributedPlaceholder = NSAttributedString(string: "No o el tipo de alimentación que necesita",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
@@ -76,7 +70,7 @@ class UpdateAnimalViewController: UIViewController {
     
     @objc func dismissKeyboard() {
            view.endEditing(true)
-       }
+    }
 
 
     @IBAction func saveFoodButtonAction(_ sender: UIButton) {
@@ -194,11 +188,7 @@ extension UpdateAnimalViewController: UIImagePickerControllerDelegate{
         guard let imageData = image.pngData() else{
             return
         }
-        updateAnimalManager.savePhotoStorage(imageData: imageData,id: id)
-
-    
-    
-    
+        updateAnimalManager.savePhotoStorage(imageData: imageData,id: id)    
     }
 }
 

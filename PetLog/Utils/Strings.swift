@@ -15,6 +15,11 @@ struct Strings{
       let badSpecie = "Seleccione una especie"
       let COLLECTIONANIMALS = "Animales"
       let COLLECTIONPHOTOS = "Fotos"
+      let COLLECTIONVACCINES = "Vacunas"
+      let COLLECTIONVETS = "Veterinario"
+      let COLLECTIONWALKS = "Paseos"
+     //Número de caracteres minimos para la contraseña
+      let NUMCHAR = 6
 }
 
 

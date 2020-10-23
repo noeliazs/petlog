@@ -11,26 +11,25 @@ import UIKit
 class NewsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    var networkManager = NetworkManager()
-    var arrayNews : [Results] = []
+    
+    private var networkManager = NetworkManager()
+    private var arrayNews : [Results] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Noticias"
         tableView.register(UINib(nibName: "NewsCell",bundle:nil), forCellReuseIdentifier: "ReusableCell")
-       
-               
             networkManager.fetchData()
             tableView.dataSource=self
             tableView.delegate=self
             tableView.rowHeight = 60
-            Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(relanzar), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(reload), userInfo: nil, repeats: false)
              
     }
-    @objc func relanzar()
-       {
+    
+    @objc func reload(){
         tableView.reloadData()
-       }
+    }
 
 }
 
@@ -40,17 +39,13 @@ extension NewsViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return networkManager.posts.count
-      
     }
-    
     
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! NewsCell
- 
         let nombre = networkManager.posts[indexPath.row].title
-    
         cell.nombreLabel.text = nombre
         cell.selectionStyle = .none
        
@@ -69,8 +64,6 @@ extension NewsViewController: UITableViewDelegate{
             webViewController.url = url
            
         }
-
-       
     }
 }
 

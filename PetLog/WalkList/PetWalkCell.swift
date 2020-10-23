@@ -10,7 +10,6 @@ import UIKit
 
 class PetWalkCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
-    
     @IBOutlet weak var placeLabel: UILabel!
     @IBOutlet weak var hourLabel: UILabel!
     override func awakeFromNib() {

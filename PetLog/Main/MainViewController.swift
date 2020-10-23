@@ -20,7 +20,6 @@ class MainViewController: UIViewController {
      @IBOutlet weak var profileButton: UIButton!
     
      override func viewDidLoad() {
-        
         super.viewDidLoad()
         title = "Inicio"
         self.navigationItem.setHidesBackButton(true, animated: false)

@@ -12,9 +12,9 @@ import FirebaseFirestore
 import Firebase
 
 class NewAnimalManager{
-    var newAnimalViewController: NewAnimalViewController?
+    
+    private var newAnimalViewController: NewAnimalViewController?
     private let db = Firestore.firestore()
-    let COLECTIONANIMALS = "Animales"
     private var strings = Strings()
     var species: [String] = []
     
@@ -27,7 +27,7 @@ class NewAnimalManager{
             if checkYear(year: pet.year){
                 print("guardando")
                 print(pet.owner)
-                db.collection(COLECTIONANIMALS).document(pet.id).setData([
+                db.collection(strings.COLLECTIONANIMALS).document(pet.id).setData([
                     "id": pet.id,
                            "propietario": pet.owner,
                            "nombre": pet.name,
