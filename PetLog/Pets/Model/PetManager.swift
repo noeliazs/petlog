@@ -94,6 +94,46 @@ class PetManager {
         }
     }
  
+    func deleteData(petName: String){
+        deleteWalks(name: petName)
+        deleteVacs(name: petName)
+        deleteVets(name: petName)
     
+    }
+    func deleteWalks(name: String){
+        db.collection(strings.COLLECTIONWALKS).whereField("nombre", isEqualTo: name).getDocuments() { (querySnapshot, err) in
+                 if let err = err {
+                   print("Error getting documents: \(err)")
+                 } else {
+                   for document in querySnapshot!.documents {
+                     document.reference.delete()
+                   }
+                 }
+               }
+    }
+    
+    func deleteVets(name: String){
+        db.collection(strings.COLLECTIONVETS).whereField("nombre", isEqualTo: name).getDocuments() { (querySnapshot, err) in
+          if let err = err {
+            print("Error getting documents: \(err)")
+          } else {
+            for document in querySnapshot!.documents {
+              document.reference.delete()
+            }
+          }
+        }
+    }
+    
+    func deleteVacs(name: String){
+        db.collection(strings.COLLECTIONVACCINES).whereField("nombre", isEqualTo: name).getDocuments() { (querySnapshot, err) in
+          if let err = err {
+            print("Error getting documents: \(err)")
+          } else {
+            for document in querySnapshot!.documents {
+              document.reference.delete()
+            }
+          }
+        }
+    }
 
 }

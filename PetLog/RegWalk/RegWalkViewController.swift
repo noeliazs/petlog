@@ -36,7 +36,7 @@ class RegWalkViewController: UIViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewAnimalViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         //solo se permite seleccionar hasta la fecha actual
-        datePicker.maximumDate = Calendar.current.date(byAdding: .year, value: 0, to: Date())
+        datePicker.maximumDate = Calendar.current.date(byAdding: .hour, value: 1, to: Date())
     }
     
     func textFieldsConfigure(){

@@ -119,6 +119,7 @@ extension PetsViewController: UITableViewDataSource, SwipeTableViewCellDelegate{
                 print("Error de borrado \(err)")
             } else {
                 print("Animal eliminado")
+                self.petManager.deleteData(petName: mascota.name)
                 self.tableView.reloadData()
             }
         }

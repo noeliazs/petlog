@@ -46,7 +46,7 @@ class RegVetViewController: UIViewController {
            vetTextField.layer.borderWidth = 2
            vetTextField.layer.borderColor = colors.brownColor.cgColor
            
-           reasonTextField.attributedPlaceholder = NSAttributedString(string: "Nombre de la vacuna",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
+           reasonTextField.attributedPlaceholder = NSAttributedString(string: "Motivo de la visita",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
            vetTextField.attributedPlaceholder = NSAttributedString(string: "Nombre del veterinario o clínica",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
            
        }
