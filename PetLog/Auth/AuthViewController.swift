@@ -14,91 +14,149 @@ class AuthViewController: UIViewController {
     
     @IBOutlet weak var passText: UITextField!
     @IBOutlet weak var emailText: UITextField!
-    
     @IBOutlet weak var loginButton: UIButton!
-    
     @IBOutlet weak var signupButton: UIButton!
+    @IBOutlet weak var SwitchRemember: UISwitch!
     
-    let alert=Alert()
+    private let alert=Alert()
+    private let colors=Colors()
+    private let authManager =  AuthManager()
+    private var remember: Bool = false
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Autenticación"
-        let brownColor = UIColor(red: 125/255, green: 90/255, blue: 90/255, alpha: 1)
-        
-        let DarkpinkColor = UIColor(red: 241/255, green: 209/255, blue: 209/255, alpha: 1)
-        
+        textFieldsConfigure()
+        authManager.putController(authViewController: self)
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AuthViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        self.navigationItem.setHidesBackButton(true, animated: false)
+    }
+    
+    @objc func dismissKeyboard() {
+            view.endEditing(true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        authManager.retrieveCredentials()
+    }
+    
+    func loadEmail(email: String){
+        emailText.text = email
+    }
+    
+    func loadPass(password: String){
+        passText.text = password
+    }
+    
+    func textFieldsConfigure(){
         emailText.layer.cornerRadius=10
         emailText.layer.masksToBounds=true
         emailText.layer.borderWidth = 2
-        emailText.layer.borderColor = brownColor.cgColor
         passText.layer.cornerRadius=10
         passText.layer.masksToBounds=true
         passText.layer.borderWidth = 2
-        passText.layer.borderColor = brownColor.cgColor
+        putColors(isTrue: true)
         
+        emailText.attributedPlaceholder = NSAttributedString(string: "E-mail",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
         
-            
-        emailText.attributedPlaceholder = NSAttributedString(string: "E-mail",attributes: [NSAttributedString.Key.foregroundColor:DarkpinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
-        
-        passText.attributedPlaceholder = NSAttributedString(string: "Contraseña",attributes: [NSAttributedString.Key.foregroundColor:DarkpinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
+        passText.attributedPlaceholder = NSAttributedString(string: "Contraseña",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
     }
-
+    
     
     @IBAction func signupButtonAction(_ sender: Any) {
         if let email = emailText.text,let password = passText.text{
-            if isValidEmail(string: email){
-                if isValidPassword(string: password){
-                    Auth.auth().createUser(withEmail: email, password: password){
-                        (result,error)in
-                        if let result = result, error == nil{
-                            
-                            self.navigationController?.pushViewController(HomeViewController(), animated: true)
-                        }else{
-                            self.alert.viewSimpleAlert(view: self,title:"Error",message:"No se ha podido registrar el usuario")
-                        }
-                    }
-                }
-                else{
-                     self.alert.viewSimpleAlert(view: self,title:"Error",message:"Contraseña no válida. Introduzca al menos 6 caracteres.")
-                }
-            }
-            else{
-               self.alert.viewSimpleAlert(view: self,title:"Error",message:"E-mail no válido.")
-            }
-            
+            authManager.register(email: email, password: password)
         }
     }
     
     @IBAction func loginButtonAction(_ sender: Any) {
-      
-       if let email = emailText.text,let password = passText.text{
-           Auth.auth().signIn(withEmail: email, password: password){
-               (result,error)in
-               if let result = result, error == nil{
-                   
-                   self.navigationController?.pushViewController(MainViewController(), animated: true)
-               }else{
-                self.alert.viewSimpleAlert(view: self,title:"Error",message:"El usuario no puede acceder. Revise sus credenciales")
-               }
-           }
-       }
+        
+        if let email = emailText.text,let password = passText.text{
+            authManager.login(email: email, password:password)
+        }
     }
     
-    func isValidEmail(string: String) -> Bool {
-          let emailReg = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-          let emailTest = NSPredicate(format:"SELF MATCHES %@", emailReg)
-          return emailTest.evaluate(with: string)
-      }
-      
-      func isValidPassword(string: String) -> Bool{
-          if string.count<6{
-              return false
-          }
-          else{
-              return true
-          }
-      }
-     
+    @IBAction func resetPassButtonAction(_ sender: Any) {
+        
+        if let email = emailText.text{
+            authManager.resetPassword(email:email)
+        }
+    }
+    
+    func putColors(isTrue: Bool){
+        if isTrue{
+            self.emailText.layer.borderColor = self.colors.brownColor.cgColor
+            self.passText.layer.borderColor = self.colors.brownColor.cgColor
+        }
+        else{
+            self.emailText.layer.borderColor = self.colors.redColor.cgColor
+            self.passText.layer.borderColor = self.colors.redColor.cgColor
+        }
+        
+    }
+    
+    
+    @IBAction func switchOn(_ sender: Any) {
+        if ((sender as AnyObject).isOn == true) {
+            print("encendido")
+            authManager.changeRemember(encendido: true)
+        }
+        else {
+            print("apagado")
+            authManager.changeRemember(encendido: true)
+        }
+    }
+    
+    func changeView(vista: String){
+        if vista == "HOME"{
+            navigationController?.pushViewController(HomeViewController(), animated: true)
+        }
+        if vista == "MAIN"{
+            navigationController?.pushViewController(MainViewController(), animated: true)
+        }
+    }
+    func putColorEmail(isTrue: Bool){
+        if isTrue{
+            emailText.layer.borderColor = colors.brownColor.cgColor
+        }
+        else{
+             self.emailText.layer.borderColor = self.colors.redColor.cgColor
+        }
+    }
+    
+    func putColorPass(isTrue: Bool){
+           if isTrue{
+               passText.layer.borderColor = colors.brownColor.cgColor
+           }
+           else{
+                passText.layer.borderColor = self.colors.redColor.cgColor
+           }
+       }
+    
+    func showAlertRegisterBad(){
+         alert.viewSimpleAlert(view: self,title:"Error",message:"No se ha podido registrar el usuario")
+    }
+    func showAlertBadEmail(){
+        alert.viewSimpleAlert(view: self,title:"Error",message:"E-mail no válido.")
+    }
+    
+    func showAlertBadPass(){
+        alert.viewSimpleAlert(view: self,title:"Error",message:"Contraseña no válida. Introduzca al menos 6 caracteres.")
+    }
+    
+    func showAlertLoginBad(){
+        alert.viewSimpleAlert(view: self,title:"Error",message:"El usuario no puede acceder. Revise sus credenciales")
+    }
+    
+    func showAlertChangePassGood(){
+        alert.viewSimpleAlert(view: self,title:"Petición enviada",message:"Revisa la bandeja de entrada de tu correo (mira también en spam).")
+    }
+    
+    func showAlertChangePassBad(){
+        alert.viewSimpleAlert(view: self,title:"Error",message:"Escribe un correo válido.")
+    }
 }
+
 

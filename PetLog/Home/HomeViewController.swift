@@ -8,122 +8,115 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var welcomeLabel: UILabel!
-    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var passTextField: UITextField!
+    
     //recupera el usuario que está registrado
-    let user = Auth.auth().currentUser
-    let alert=Alert()
+    private let user = Auth.auth().currentUser
+    private let alert = Alert()
+    private let colors = Colors()
+    private let homeManager = HomeManager()
  
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         title = "Perfil de Usuario"
-        
+        nameTextField.delegate = self
+        passTextField.delegate = self
+        textFieldsConfigure()
+        homeManager.putController(homeViewController: self)
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.dismissKeyboard))
+               view.addGestureRecognizer(tap)
+      
+         
         if let user = user{
             let email = user.email
-            emailLabel.text = email
+            emailLabel.text = "Correo: \(email ?? "correo")"
             welcomeLabel.text = "Bienvenid@ \(user.displayName ?? "usuario")"
         }
     
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     @IBAction func saveChangesButtonAction(_ sender: Any) {
     
         //comprobar si los tres estan vacios
-        if nameTextField.text?.count==0 && passTextField.text?.count==0 && emailTextField.text?.count==0 {
+        if nameTextField.text?.count==0 && passTextField.text?.count==0 {
             alert.viewSimpleAlert(view: self,title:"Error",message:"No se ha introducido ningún campo para modificar")
-        }
-        else{
+        }else{
             if let user = user, let name = nameTextField.text{
-                 
                  if name != ""{
-                     let changeRequest = user.createProfileChangeRequest()
-                     changeRequest.displayName = name
-                     changeRequest.commitChanges { (error) in
-                         print(user.displayName)
-                     }
+                    homeManager.changeName(user:user, name: name)
                  }
-                 
-             
              }
              
-             if let user = user , let email = emailTextField.text{
-                if email != ""{
-                    if isValidEmail(string: email){
-                        user.updateEmail(to: email) { (error) in
-                        print(user.email)
-                        }
-                    }
-                    else{
-                        alert.viewSimpleAlert(view: self,title:"Error",message:"E-mail no válido. No se cambiará ese campo")
-                    }
-                }
-               
-             }
              
              if let user = user, let password = passTextField.text{
                 if password != ""{
-                    if isValidPassword(string: password){
-                        user.updatePassword(to: password) { (error) in
-                            print(password)
-                        }
-                    }
-                    else{
-                        alert.viewSimpleAlert(view: self,title:"Error",message:"Contraseña no válida. No se cambiará ese campo")
-                    }
-                    
+                    homeManager.changePassword(user: user, password:password)
                 }
-                
              }
              
             
              alert.showAlert(viewController: self)
              
-             let timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(reload), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(reload), userInfo: nil, repeats: false)
         }
+    }
+    func textFieldsConfigure(){
+        nameTextField.layer.cornerRadius=10
+        nameTextField.layer.masksToBounds=true
+        nameTextField.layer.borderWidth = 2
+        nameTextField.layer.borderColor = colors.brownColor.cgColor
+        passTextField.layer.cornerRadius=10
+        passTextField.layer.masksToBounds=true
+        passTextField.layer.borderWidth = 2
+        passTextField.layer.borderColor = colors.brownColor.cgColor
         
-
-       
-       
+        passTextField.attributedPlaceholder = NSAttributedString(string: "Contraseña",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
+        
+        nameTextField.attributedPlaceholder = NSAttributedString(string: "Nombre",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
     }
     
-    @objc func reload()
-    {
+    
+    @objc func reload(){
         alert.stopAlert(viewController: self)
         viewDidLoad()
-        emailTextField.text = ""
         nameTextField.text = ""
         passTextField.text = ""
         
     }
     
-    func isValidEmail(string: String) -> Bool {
-        let emailReg = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailReg)
-        return emailTest.evaluate(with: string)
+    
+    func viewAlertPassword(){
+         alert.viewSimpleAlert(view: self,title:"Error",message:"Contraseña no válida. No se cambiará ese campo")
     }
     
-    func isValidPassword(string: String) -> Bool{
-        if string.count<6{
-            return false
-        }
-        else{
-            return true
-        }
-    }
     
-
-   
-
+  
+    @IBAction func goMainButton(_ sender: Any) {
+         navigationController?.pushViewController(MainViewController(), animated: true)
+    }
 }
 
+//MARK: TextFieldDelegate
+extension HomeViewController: UITextFieldDelegate{
+       func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+              self.view.endEditing(true)
+              return false
+        }
+    
+}
 
 

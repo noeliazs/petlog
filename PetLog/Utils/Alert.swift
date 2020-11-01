@@ -3,8 +3,7 @@ import Foundation
 import UIKit
 
 class Alert {
-    
-    let alerta = UIAlertController(title: "Guardando",message:"",
+        let alerta = UIAlertController(title: "Guardando",message:"",
                                        preferredStyle: UIAlertController.Style.alert)
     
  

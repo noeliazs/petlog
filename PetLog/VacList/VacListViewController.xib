@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VacListViewController" customModule="PetLog" customModuleProvider="target">
+            <connections>
+                <outlet property="HomeButton" destination="4Tz-ZD-Edg" id="PzA-iK-cdq"/>
+                <outlet property="printButton" destination="F8M-BM-HrR" id="Nqi-y0-agX"/>
+                <outlet property="tableView" destination="edy-4X-Y5b" id="lXX-wR-qv8"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="edy-4X-Y5b">
+                    <rect key="frame" x="0.0" y="204" width="375" height="504"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="separatorColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                </tableView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vacuna" translatesAutoresizingMaskIntoConstraints="NO" id="ZQA-Kg-yws">
+                    <rect key="frame" x="136" y="44" width="219" height="164"/>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="WCe-zp-t7B">
+                    <rect key="frame" x="12" y="728" width="358" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mT0-md-5aO">
+                            <rect key="frame" x="0.0" y="0.0" width="109.33333333333333" height="50"/>
+                            <color key="backgroundColor" red="0.49019607840000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="110" id="INm-UU-j46"/>
+                                <constraint firstAttribute="height" constant="50" id="TlN-ro-l9q"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="22"/>
+                            <state key="normal" title="Filtrar">
+                                <color key="titleColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </state>
+                            <connections>
+                                <action selector="filterButtonAction:" destination="-1" eventType="touchUpInside" id="gcH-aD-sWq"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MX2-6I-4BI">
+                            <rect key="frame" x="124.33333333333334" y="0.0" width="109.33333333333334" height="50"/>
+                            <color key="backgroundColor" red="0.49019607840000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="22"/>
+                            <state key="normal" title="Todos">
+                                <color key="titleColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </state>
+                            <connections>
+                                <action selector="cleanFilterButtonAction:" destination="-1" eventType="touchUpInside" id="UxB-6D-BAC"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F8M-BM-HrR">
+                            <rect key="frame" x="248.66666666666671" y="0.0" width="109.33333333333334" height="50"/>
+                            <color key="backgroundColor" red="0.49019607840000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="22"/>
+                            <state key="normal" title="Imprimir">
+                                <color key="titleColor" red="0.94509803920000002" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </state>
+                            <connections>
+                                <action selector="printButtonAction:" destination="-1" eventType="touchUpInside" id="vVo-dm-GwC"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4Tz-ZD-Edg">
+                    <rect key="frame" x="0.0" y="80" width="69" height="61"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Inicio" image="Logo">
+                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="HomeButtonAction:" destination="-1" eventType="touchUpInside" id="Pmq-7o-0CG"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="WCe-zp-t7B" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="12" id="6TG-gJ-UTF"/>
+                <constraint firstItem="edy-4X-Y5b" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="7a6-YE-cBi"/>
+                <constraint firstItem="ZQA-Kg-yws" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="136" id="D1J-oO-CfA"/>
+                <constraint firstItem="ZQA-Kg-yws" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="HgS-1C-DUU"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="edy-4X-Y5b" secondAttribute="trailing" id="InL-kA-5Gn"/>
+                <constraint firstItem="WCe-zp-t7B" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="KUn-iC-a9t"/>
+                <constraint firstItem="edy-4X-Y5b" firstAttribute="top" secondItem="4Tz-ZD-Edg" secondAttribute="bottom" constant="60" id="M59-tG-AgY"/>
+                <constraint firstItem="edy-4X-Y5b" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="160" id="W1a-DZ-p37"/>
+                <constraint firstItem="ZQA-Kg-yws" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" constant="58" id="WbI-bM-BhW"/>
+                <constraint firstItem="edy-4X-Y5b" firstAttribute="top" secondItem="ZQA-Kg-yws" secondAttribute="bottom" constant="-4" id="a8K-Xj-7gl"/>
+                <constraint firstItem="WCe-zp-t7B" firstAttribute="top" secondItem="edy-4X-Y5b" secondAttribute="bottom" constant="20" id="mZ4-Lx-cSW"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="WCe-zp-t7B" secondAttribute="trailing" constant="5" id="rc6-3W-rKg"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="137.68115942028987" y="99.776785714285708"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Logo" width="137.33332824707031" height="100.66666412353516"/>
+        <image name="vacuna" width="222.66667175292969" height="93"/>
+    </resources>
+</document>

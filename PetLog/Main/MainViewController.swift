@@ -20,25 +20,29 @@ class MainViewController: UIViewController {
      @IBOutlet weak var profileButton: UIButton!
     
      override func viewDidLoad() {
-        
         super.viewDidLoad()
         title = "Inicio"
+        self.navigationItem.setHidesBackButton(true, animated: false)
      }
     
     @IBAction func newButtonAction(_ sender: Any){
+        navigationController?.pushViewController(NewAnimalViewController(), animated: true)
         print("nuevo animal")
     }
     
     @IBAction func petButtonAction(_ sender: Any){
+        navigationController?.pushViewController(PetsViewController(), animated: true)
         print("Mis mascotas")
     }
     
     @IBAction func vetButtonAction(_ sender: Any){
         print("Veterinario")
+         navigationController?.pushViewController(VetListViewController(), animated: true)
     }
     
     @IBAction func vacButtonAction(_ sender: Any){
         print("Vacunas")
+         navigationController?.pushViewController(VacListViewController(), animated: true)
     }
     
     @IBAction func newsButtonAction(_ sender: Any){
@@ -53,8 +57,16 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func closeSesionButtonAction(_ sender: Any){
-           print("Cerrar sesion")
-            navigationController?.popViewController(animated: true)
+        do {
+            try Auth.auth().signOut()
+            self.dismiss(animated: true, completion: nil)
+            print("cerrando sesion")
+            } catch let err {
+                print(err)
+        }
+        let storyBoard = UIStoryboard(name: "Main", bundle:nil)
+        let viewController = storyBoard.instantiateViewController(withIdentifier: "AuthViewController") as! AuthViewController
+        self.navigationController?.pushViewController(viewController, animated:true)
        }
     
 }
