@@ -84,7 +84,7 @@ class HomeViewController: UIViewController {
         passTextField.layer.borderWidth = 2
         passTextField.layer.borderColor = colors.brownColor.cgColor
         
-        passTextField.attributedPlaceholder = NSAttributedString(string: "Contraseña",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
+        passTextField.attributedPlaceholder = NSAttributedString(string: "Contraseña. Mínimo 6 caracteres",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
         
         nameTextField.attributedPlaceholder = NSAttributedString(string: "Nombre",attributes: [NSAttributedString.Key.foregroundColor:colors.darkPinkColor,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 18)!])
     }
